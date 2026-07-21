@@ -40,6 +40,25 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  /* Orchestration Fabric (uis-master palette) */
+  --color-bg-main: #13161d;
+  --color-bg-panel: #0d0f14;
+  --color-bg-sidebar: #0a0c10;
+  --color-bg-active: #1a1e28;
+  --color-bg-hover: #161b24;
+  --color-border-main: #1f2532;
+  --color-text-main: #ffffff;
+  --color-text-muted: #8b949e;
+  --color-text-dark: #000000;
+  --color-accent-yellow: #f1f238;
+  --color-accent-yellow-dim: #949520;
+  --color-accent-red: #d33c3c;
+  --color-accent-green: #37c86a;
+  --color-accent-cyan: #38bdf2;
+  --color-accent-purple: #9d38f2;
+  --color-accent-blue: #386df2;
+  --font-orbitron: "Orbitron Local", sans-serif;
 }
 
 :root {

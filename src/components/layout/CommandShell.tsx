@@ -99,7 +99,10 @@ export function CommandShell({ children }: { children: React.ReactNode }) {
   // still wrap via app/layout.tsx. See product/specs/08-hdmi-kiosk-mode.md.
   const pathname = usePathname();
   const isHudRoute = pathname?.startsWith("/hud") ?? false;
-  if (isHudRoute) {
+  const isDarkModeRoute = pathname?.startsWith("/darkmode") ?? false;
+  const isArcC2Route = pathname?.startsWith("/arc-c2") ?? false;
+  const isC2Route = pathname?.startsWith("/c2") ?? false;
+  if (isHudRoute || isDarkModeRoute || isArcC2Route || isC2Route) {
     return <>{children}</>;
   }
   return <CommandShellInner>{children}</CommandShellInner>;

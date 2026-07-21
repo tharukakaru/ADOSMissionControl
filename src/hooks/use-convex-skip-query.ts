@@ -92,6 +92,13 @@ export function useConvexSkipQuery<
   const throwOnError = options?.throwOnError ?? false;
 
   const shouldSkip = !convexAvailable || (!skipDemoCheck && demo) || !enabled;
+
+  // `useQuery` requires a ConvexProvider even when args are `"skip"`.
+  // Local/demo builds without NEXT_PUBLIC_CONVEX_URL never mount one.
+  if (!convexAvailable) {
+    return undefined;
+  }
+
   const queryArgs = shouldSkip ? ("skip" as unknown) : ((args ?? {}) as unknown);
 
   // `useQuery` throws synchronously during render when the deployment is

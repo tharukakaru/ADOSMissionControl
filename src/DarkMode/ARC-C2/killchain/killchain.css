@@ -1,0 +1,382 @@
+/* =========================================================================
+   KILL CHAIN — Kanban board layout (scoped under .arc--killchain)
+   ========================================================================= */
+
+.arc--killchain {
+  --kc-rail-width: clamp(28px, 1.6vw, 36px);
+}
+
+.arc--killchain .kc-shell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.arc--killchain .kc-main {
+  flex: 1;
+  display: grid;
+  grid-template-rows: clamp(38px, 3.2vh, 46px) minmax(0, 1fr);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.arc--killchain .kc-body {
+  display: grid;
+  grid-template-columns: var(--kc-rail-width) minmax(0, 1fr);
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ---- top bar with centered title ---------------------------------------- */
+.arc--killchain .kc-topbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.arc--killchain .kc-topbar .tb-left {
+  justify-self: start;
+}
+
+.arc--killchain .kc-topbar .tb-right {
+  justify-self: end;
+}
+
+.arc--killchain .kc-title {
+  font-family: var(--font-yapari);
+  font-size: clamp(14px, 0.55vw + 11px, 20px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1;
+  white-space: nowrap;
+  justify-self: center;
+}
+
+/* ---- icon rail ---------------------------------------------------------- */
+.arc--killchain .kc-rail {
+  border-right: 1px solid var(--line);
+}
+
+/* ---- board grid --------------------------------------------------------- */
+.arc--killchain .kc-board {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ---- column ------------------------------------------------------------- */
+.arc--killchain .kc-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  border-right: 1px solid var(--line-hairline);
+  --kc-accent: var(--accent-gold);
+  --kc-accent-dim: rgba(245, 197, 24, 0.35);
+  --kc-col-bg-top: #0a1218;
+  --kc-col-bg-bottom: #0f1a22;
+}
+
+.arc--killchain .kc-col:last-child {
+  border-right: none;
+}
+
+.arc--killchain .kc-col--yellow {
+  --kc-accent: #e3e41b;
+  --kc-accent-dim: rgba(227, 228, 27, 0.28);
+  --kc-col-bg-top: #0a1412;
+  --kc-col-bg-bottom: #0e1e1a;
+}
+
+.arc--killchain .kc-col--purple {
+  --kc-accent: #9b7bff;
+  --kc-accent-dim: rgba(155, 123, 255, 0.28);
+  --kc-col-bg-top: #0c0e1a;
+  --kc-col-bg-bottom: #12162e;
+}
+
+.arc--killchain .kc-col--blue {
+  --kc-accent: #4d8dff;
+  --kc-accent-dim: rgba(77, 141, 255, 0.28);
+  --kc-col-bg-top: #0a0e18;
+  --kc-col-bg-bottom: #101828;
+}
+
+.arc--killchain .kc-col--teal {
+  --kc-accent: #2bbebe;
+  --kc-accent-dim: rgba(43, 190, 190, 0.28);
+  --kc-col-bg-top: #0a1210;
+  --kc-col-bg-bottom: #102018;
+}
+
+.arc--killchain .kc-col--amber {
+  --kc-accent: #e87a2e;
+  --kc-accent-dim: rgba(232, 122, 46, 0.32);
+  --kc-col-bg-top: #12100a;
+  --kc-col-bg-bottom: #1e180e;
+}
+
+.arc--killchain .kc-col--red {
+  --kc-accent: #f04438;
+  --kc-accent-dim: rgba(240, 68, 56, 0.28);
+  --kc-col-bg-top: #140a0c;
+  --kc-col-bg-bottom: #221014;
+}
+
+.arc--killchain .kc-col--green {
+  --kc-accent: #2fbf71;
+  --kc-accent-dim: rgba(47, 191, 113, 0.28);
+  --kc-col-bg-top: #0a120e;
+  --kc-col-bg-bottom: #0e1a14;
+}
+
+.arc--killchain .kc-col-head {
+  flex: 0 0 auto;
+  padding: 10px 8px 8px;
+  background: linear-gradient(180deg, var(--kc-col-bg-top) 0%, var(--kc-col-bg-bottom) 100%);
+}
+
+.arc--killchain .kc-col-line {
+  height: 2px;
+  width: 100%;
+  background: var(--kc-accent);
+  margin-bottom: 8px;
+  border-radius: 1px;
+}
+
+.arc--killchain .kc-col-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.arc--killchain .kc-col-title {
+  font-size: var(--arc-fs-section);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.arc--killchain .kc-col-sub {
+  font-size: var(--arc-fs-2xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.arc--killchain .kc-col-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 6px 10px;
+  background: linear-gradient(180deg, var(--kc-col-bg-top) 0%, var(--kc-col-bg-bottom) 55%, #0a0e14 100%);
+}
+
+/* ---- entity card -------------------------------------------------------- */
+.arc--killchain .kc-card {
+  background: rgba(13, 18, 26, 0.88);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 8px 8px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.arc--killchain .kc-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(18, 24, 34, 0.95);
+}
+
+.arc--killchain .kc-card--selected {
+  border-color: var(--kc-accent);
+  background: color-mix(in srgb, var(--kc-accent) 8%, rgba(13, 18, 26, 0.95));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--kc-accent) 40%, transparent);
+}
+
+.arc--killchain .kc-card-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.arc--killchain .kc-dia {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+}
+
+.arc--killchain .kc-dia--hostile {
+  color: var(--hostile);
+  background: rgba(240, 68, 56, 0.12);
+}
+
+.arc--killchain .kc-dia--neutral {
+  color: var(--accent-gold);
+  background: rgba(245, 197, 24, 0.1);
+}
+
+.arc--killchain .kc-dia--friendly {
+  color: var(--friendly);
+  background: rgba(47, 191, 113, 0.12);
+}
+
+.arc--killchain .kc-card-id {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: var(--arc-fs-xs);
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+.arc--killchain .kc-card-code {
+  font-family: var(--font-plex);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.arc--killchain .kc-card-sep {
+  color: var(--text-tertiary);
+}
+
+.arc--killchain .kc-card-type {
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arc--killchain .kc-card-pct {
+  flex: 0 0 auto;
+  font-family: var(--font-plex);
+  font-size: var(--arc-fs-xs);
+  font-weight: 600;
+  color: var(--kc-accent);
+}
+
+.arc--killchain .kc-card-mid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.arc--killchain .kc-card-edited {
+  font-size: var(--arc-fs-2xs);
+  color: var(--text-tertiary);
+}
+
+.arc--killchain .kc-pri {
+  flex: 0 0 auto;
+  font-family: var(--font-plex);
+  font-size: var(--arc-fs-micro);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  line-height: 1.4;
+}
+
+.arc--killchain .kc-pri--p1 {
+  color: var(--hostile);
+  background: rgba(240, 68, 56, 0.12);
+  border: 1px solid rgba(240, 68, 56, 0.35);
+}
+
+.arc--killchain .kc-pri--p2 {
+  color: var(--caution);
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+}
+
+.arc--killchain .kc-pri--p3 {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+}
+
+.arc--killchain .kc-card-foot {
+  padding-top: 4px;
+  border-top: 1px solid var(--line-hairline);
+}
+
+.arc--killchain .kc-actor {
+  display: inline-block;
+  font-family: var(--font-plex);
+  font-size: var(--arc-fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--friendly);
+  background: rgba(47, 191, 113, 0.1);
+  border: 1px solid rgba(47, 191, 113, 0.25);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+/* ---- responsive --------------------------------------------------------- */
+@container arc (max-width: 1200px) {
+  .arc--killchain .kc-board {
+    grid-template-columns: repeat(7, minmax(120px, 1fr));
+    overflow-x: auto;
+  }
+
+  .arc--killchain .kc-col {
+    min-width: 120px;
+  }
+
+  .arc--killchain .kc-topbar .tb-user .nm {
+    display: none;
+  }
+}
+
+@container arc (max-width: 900px) {
+  .arc--killchain .kc-topbar {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+
+  .arc--killchain .kc-title {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+    padding-left: 4px;
+    font-size: var(--arc-fs-display);
+  }
+
+  .arc--killchain .kc-topbar .tb-status,
+  .arc--killchain .kc-topbar .conf {
+    display: none;
+  }
+}
+
+@container arc (max-width: 680px) {
+  .arc--killchain .kc-body {
+    grid-template-columns: 1fr;
+  }
+
+  .arc--killchain .kc-rail {
+    display: none;
+  }
+}

@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Orbitron Local";
+  src: url("./fonts/Orbitron-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.arc--orchestration {
+  --font-orbitron-local: "Orbitron Local", sans-serif;
+
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-orbitron-local), sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.arc--orchestration * {
+  box-sizing: border-box;
+}
+
+.arc--orchestration button {
+  cursor: pointer;
+}
+
+.arc--orchestration ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.arc--orchestration ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.arc--orchestration ::-webkit-scrollbar-thumb {
+  background: var(--color-border-main);
+  border-radius: 10px;
+}
+
+.arc--orchestration ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+.arc--orchestration * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-main) transparent;
+}

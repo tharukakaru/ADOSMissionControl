@@ -68,11 +68,10 @@ describe("useConvexSkipQuery", () => {
     ).toThrow("server boom");
   });
 
-  it("passes 'skip' when convex is unavailable and never throws", () => {
+  it("returns undefined without calling useQuery when convex is unavailable", () => {
     useConvexAvailableMock.mockReturnValue(false);
-    useQueryMock.mockReturnValue(undefined);
     const { result } = renderHook(() => useConvexSkipQuery(dummyQuery));
-    expect(useQueryMock).toHaveBeenCalledWith(dummyQuery, "skip");
+    expect(useQueryMock).not.toHaveBeenCalled();
     expect(result.current).toBeUndefined();
   });
 
