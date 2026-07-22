@@ -12,7 +12,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type CSSProperties } from "react";
 import { useTranslations } from "next-intl";
 import { useSettingsStore } from "@/stores/settings-store";
 import { usePairingStore } from "@/stores/pairing-store";
@@ -113,6 +113,12 @@ export function WelcomeModal() {
     });
     return () => { cancelled = true; };
   }, [isSupported, requestPermission]);
+
+  useEffect(() => {
+    if (accentColor === "blue") {
+      setAccentColor("amber");
+    }
+  }, [accentColor, setAccentColor]);
 
   const skipDownloadStep = isElectron();
   const totalSteps = computeTotalSteps(skipDownloadStep);
@@ -219,6 +225,11 @@ export function WelcomeModal() {
       role="dialog"
       aria-modal="true"
       aria-label="Welcome setup"
+      style={{
+        "--alt-accent-primary": "#F4ED15",
+        "--alt-accent-primary-hover": "#fef8a3",
+        "--alt-accent-secondary": "#fef8a3",
+      } as CSSProperties}
     >
       <div className="relative w-full h-full">
         {/* Step 0: Language */}

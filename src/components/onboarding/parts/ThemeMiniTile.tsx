@@ -7,8 +7,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useSettingsStore } from "@/stores/settings-store";
-import { ACCENT_COLORS, type ThemeCardData } from "../constants";
+import { type ThemeCardData } from "../constants";
 
 interface ThemeMiniTileProps {
   theme: ThemeCardData;
@@ -18,8 +17,7 @@ interface ThemeMiniTileProps {
 export function ThemeMiniTile({ theme, onClick }: ThemeMiniTileProps) {
   const t = useTranslations("welcome.theme");
   const { colors, label } = theme;
-  const accentColor = useSettingsStore((s) => s.accentColor);
-  const accentHex = ACCENT_COLORS.find((c) => c.value === accentColor)?.hex ?? colors.accent;
+  const accentHex = "var(--alt-accent-primary)";
 
   return (
     <button
@@ -29,7 +27,7 @@ export function ThemeMiniTile({ theme, onClick }: ThemeMiniTileProps) {
       style={{
         backgroundColor: colors.bg,
         borderColor: colors.border,
-        boxShadow: `0 0 0 1px ${colors.border}, 0 0 0 2px ${accentHex}22`,
+        boxShadow: `0 0 0 1px ${colors.border}, 0 0 0 2px ${accentHex}`,
       }}
       aria-label={t("useAsPreviewAria", { name: label })}
     >

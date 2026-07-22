@@ -3,7 +3,7 @@
     "dashboard": "Dashboard",
     "plan": "Plan",
     "simulate": "Simulate",
-    "command": "Command",
+    "command": "Agent",
     "hardware": "Hardware",
     "configure": "Configure",
     "history": "Logs",
@@ -324,7 +324,7 @@
     "noTranslation": "No translation available for this language",
     "badges": {
       "categories": {
-        "command": "Command",
+        "command": "Agent",
         "ados": "ADOS",
         "website": "Website",
         "general": "General"
@@ -1262,7 +1262,7 @@
     "altitude": "Altitude",
     "speed": "Speed",
     "delay": "Delay",
-    "command": "Command",
+    "command": "Agent",
     "navigate": "Navigate to WP",
     "takeoff": "Takeoff",
     "landing": "Land",

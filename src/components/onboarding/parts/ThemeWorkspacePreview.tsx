@@ -7,8 +7,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useSettingsStore } from "@/stores/settings-store";
-import { ACCENT_COLORS, type ThemeCardData } from "../constants";
+import { type ThemeCardData } from "../constants";
 
 interface ThemeWorkspacePreviewProps {
   theme: ThemeCardData;
@@ -19,8 +18,7 @@ export function ThemeWorkspacePreview({ theme }: ThemeWorkspacePreviewProps) {
   const tNav = useTranslations("nav");
   const tStatus = useTranslations("status");
   const { colors, label } = theme;
-  const accentColor = useSettingsStore((s) => s.accentColor);
-  const accentHex = ACCENT_COLORS.find((c) => c.value === accentColor)?.hex ?? colors.accent;
+  const accentHex = "var(--alt-accent-primary)";
 
   const navItems = [
     tNav("dashboard"),
@@ -46,7 +44,7 @@ export function ThemeWorkspacePreview({ theme }: ThemeWorkspacePreviewProps) {
         }}
       >
         <span className="w-2 h-2 rounded-full" style={{ backgroundColor: accentHex }} />
-        <span className="text-xs font-semibold" style={{ color: colors.text }}>Mission Control</span>
+        <span className="text-xs font-semibold" style={{ color: colors.text }}>ARCOS HYENA</span>
         <span className="ml-auto text-[10px] opacity-70" style={{ color: colors.text }}>{tStatus("connected")}</span>
       </div>
 

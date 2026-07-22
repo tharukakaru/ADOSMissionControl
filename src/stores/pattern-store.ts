@@ -23,7 +23,7 @@ import { generateStructureScan } from "@/lib/patterns/structure-scan-generator";
 import { formatErrorMessage } from "@/lib/utils";
 import { useDrawingStore } from "./drawing-store";
 
-type PatternType = "survey" | "orbit" | "corridor" | "expandingSquare" | "sectorSearch" | "parallelTrack" | "structureScan" | null;
+export type PatternType = "survey" | "orbit" | "corridor" | "expandingSquare" | "sectorSearch" | "parallelTrack" | "structureScan" | null;
 
 interface PatternStoreState {
   activePatternType: PatternType;

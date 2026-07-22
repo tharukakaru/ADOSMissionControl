@@ -14,7 +14,7 @@ import { NO_FLY_ZONES, type NoFlyZone } from "@/lib/no-fly-zones";
 const TYPE_COLORS: Record<NoFlyZone["type"], { stroke: string; fill: string }> = {
   airport: { stroke: "#ef4444", fill: "#ef4444" },
   military: { stroke: "#f97316", fill: "#f97316" },
-  restricted: { stroke: "#eab308", fill: "#eab308" },
+  restricted: { stroke: "#F4ED15", fill: "#F4ED15" },
 };
 
 const TYPE_LABELS: Record<NoFlyZone["type"], string> = {

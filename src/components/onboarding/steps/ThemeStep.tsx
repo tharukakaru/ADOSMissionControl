@@ -68,11 +68,7 @@ export function ThemeStep({
     .slice(0, 20);
 
   const accentFocusColor = hoveredAccentColor ?? accentColor;
-  const accentFocusIndex = Math.max(
-    0,
-    ACCENT_COLORS.findIndex((color) => color.value === accentFocusColor),
-  );
-  const accentFocusHex = ACCENT_COLORS[accentFocusIndex]?.hex ?? ACCENT_COLORS[0].hex;
+  const accentFocusHex = ACCENT_COLORS.find((color) => color.value === accentFocusColor)?.hex ?? "#F4ED15";
   const accentCapsuleBackground = `linear-gradient(135deg, ${previewTheme.colors.surface} 0%, ${previewTheme.colors.bg} 52%, ${accentFocusHex}24 100%)`;
   const accentCapsuleBorder = `${previewTheme.colors.border}`;
   const accentCapsuleShadow = `inset 0 1px 0 ${previewTheme.colors.text}12, inset 0 -1px 0 ${previewTheme.colors.bg}66, 0 12px 28px ${previewTheme.colors.bg}55`;

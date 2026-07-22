@@ -3,7 +3,10 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Settings, AlertTriangle, LogOut, CloudOff, Zap, Minimize2, X, Star, BookOpen } from "lucide-react";
+import { Settings, AlertTriangle, LogOut, CloudOff, Plane, Minimize2, X, Star, BookOpen, Wifi, Sparkles, BatteryMedium } from "lucide-react";
+import { useConnectionQuality } from "@/hooks/use-connection-quality";
+import { useDroneManager } from "@/stores/drone-manager";
+import { useDroneStore } from "@/stores/drone-store";
 import { Tooltip } from "@/components/ui/tooltip";
 import { CommandNav } from "./CommandNav";
 import { DemoProvider } from "./DemoProvider";
@@ -27,6 +30,9 @@ import { usePlatform } from "@/hooks/use-platform";
 import { useDisconnectGuard } from "@/hooks/use-disconnect-guard";
 import { DisconnectGuard } from "@/components/fc/shared/DisconnectGuard";
 import { ArmedWriteConfirmDialog } from "@/components/indicators/ArmedWriteConfirmDialog";
+import { SplashScreen } from "@/components/splash/SplashScreen";
+import { C2TopBar } from "@/components/c2/C2TopBar";
+import { C2StatusBar } from "@/components/c2/C2StatusBar";
 import { useConvexAvailable } from "@/app/ConvexClientProvider";
 import { cn } from "@/lib/utils";
 import { ChangelogNotificationGate } from "@/components/changelog/ChangelogNotificationGate";
@@ -100,9 +106,19 @@ export function CommandShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isHudRoute = pathname?.startsWith("/hud") ?? false;
   if (isHudRoute) {
-    return <>{children}</>;
+    return (
+      <>
+        <SplashScreen />
+        {children}
+      </>
+    );
   }
-  return <CommandShellInner>{children}</CommandShellInner>;
+  return (
+    <>
+      <SplashScreen />
+      <CommandShellInner>{children}</CommandShellInner>
+    </>
+  );
 }
 
 function CommandShellInner({ children }: { children: React.ReactNode }) {
@@ -131,6 +147,14 @@ function CommandShellInner({ children }: { children: React.ReactNode }) {
   const demo = useSettingsStore((s) => s.demoMode);
   const setDemoMode = useSettingsStore((s) => s.setDemoMode);
   const alertCount = useFleetStore((s) => s.alerts.filter((a) => !a.acknowledged).length);
+
+  // Nav-row status badges (moved down from C2TopBar per redesign — see
+  // CommandShell header below).
+  const { latencyMs, signalStrength } = useConnectionQuality();
+  const selectedDroneId = useDroneManager((s) => s.selectedDroneId);
+  const managedDrones = useDroneManager((s) => s.drones);
+  const droneConnectionState = useDroneStore((s) => s.connectionState);
+  const selectedDrone = selectedDroneId ? managedDrones.get(selectedDroneId) : null;
 
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const convexAvailable = useConvexAvailable();
@@ -180,139 +204,92 @@ function CommandShellInner({ children }: { children: React.ReactNode }) {
         </button>
       )}
 
-      {/* Top bar */}
-      {!immersiveMode && <header className={cn(
-        "h-12 flex items-center justify-between px-4 bg-bg-secondary border-b border-border-default shrink-0",
-        isElectron && isWindows && "pr-[140px]",
-        isElectron && !isLinux && "[-webkit-app-region:drag]"
-      )}>
-        {/* Left — Wordmark */}
-        <div className={cn("flex items-baseline gap-1.5", isElectron && !isLinux && "[-webkit-app-region:no-drag]")}>
-          <span className="font-display uppercase tracking-[0.25em] text-sm font-semibold text-accent-primary">
-            ADOS
-          </span>
-          <span className="text-[10px] uppercase tracking-widest text-text-tertiary font-medium">
-            {t("missionControl")}
+      {/* C2 Command Bar */}
+      {!immersiveMode && <C2TopBar />}
+
+      {/* Top bar — HYENA nav */}
+      {!immersiveMode && <header
+        className={cn(
+          "h-10 flex items-center gap-3 px-4 border-b border-[var(--redesign-border)] shrink-0",
+          isElectron && isWindows && "pr-[140px]",
+          isElectron && !isLinux && "[-webkit-app-region:drag]"
+        )}
+        style={{ background: "var(--redesign-bg-navrow)" }}
+      >
+        {/* Left — HYENA branding + mode badges */}
+        <div className={cn("flex items-center gap-2", isElectron && !isLinux && "[-webkit-app-region:no-drag]")}>
+          <span className="font-display text-sm font-semibold tracking-wider text-[var(--redesign-text-primary)] uppercase">
+            HYENA
           </span>
           {demo && (
             <Tooltip content={t("exitDemo")} position="bottom">
               <button
                 onClick={() => setDemoMode(false)}
-                className="flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-status-warning/20 text-status-warning hover:bg-status-warning/30 transition-colors"
+                className="flex items-center gap-1 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider rounded border border-[var(--redesign-yellow)] text-[var(--redesign-yellow)] bg-transparent hover:bg-[var(--redesign-yellow)]/10 transition-colors"
               >
-                {t("demo")}
-                <X size={10} />
+                pre Alpha
+                <X size={9} className="text-[var(--redesign-yellow)]" />
               </button>
             </Tooltip>
           )}
         </div>
 
-        {/* Center — Navigation */}
+        {/* Center — Navigation (inline) */}
         <div className={cn("self-stretch flex", isElectron && !isLinux && "[-webkit-app-region:no-drag]")}>
           <CommandNav />
         </div>
 
-        {/* Right — Status indicators */}
+        <div className="flex-1" />
+
+        {/* Right — moved down from C2TopBar per redesign: SOUL/ground pills
+            stay as static copy (unchanged from before, just relocated).
+            The Alpha-1-style badge is new and wired to real data: the
+            currently selected drone's name + live connection state. Label
+            reads the actual connectionMeta.type (e.g. SERIAL/WEBSOCKET)
+            rather than a hardcoded "NATIVE" — that word's exact meaning is
+            still an open question (flagged in GUIDE.md), so this shows the
+            truth instead of a guessed label. Badge is hidden entirely when
+            no drone is selected/connected, rather than showing fake data. */}
         <div className={cn("flex items-center gap-3", isElectron && !isLinux && "[-webkit-app-region:no-drag]")}>
-          {/* Ground-station role badge */}
-          <RoleBadge />
-
-          {/* Alert count */}
-          {alertCount > 0 && (
-            <Tooltip content={t("unacknowledgedAlerts")} position="bottom">
-              <div className="flex items-center gap-1 text-status-warning">
-                <AlertTriangle size={12} />
-                <span className="text-xs font-mono tabular-nums">{alertCount}</span>
+          <Sparkles size={12} className="text-[var(--redesign-blue)]" />
+          <span className="text-[10px] font-mono text-[var(--redesign-text-secondary)]">SOUL 001</span>
+          <span className="text-[10px] text-[var(--redesign-text-secondary)]">Chat with MEGHA</span>
+          <span className="bg-[var(--redesign-blue)]/20 text-[var(--redesign-blue)] px-2 py-0.5 text-[9px] font-mono font-semibold">
+            ground 06X
+          </span>
+          {/* VISUAL REDESIGN NOTE: you sent a direct crop showing the exact
+              text this badge should read — "NATIVE · Connected" — which
+              settles the open question from earlier rounds about what
+              "NATIVE" means: it's fixed copy, not derived from the drone's
+              actual connectionMeta.type (serial/websocket/mqtt-mavlink).
+              Connection state is now shown as a simple Connected/
+              Disconnected per your example, not the raw armed/flying
+              sub-state. */}
+          {selectedDrone && (
+            <div className="flex items-center gap-2 bg-[var(--redesign-bg-black)] border border-[var(--redesign-border)] px-2 py-1">
+              <span className="w-5 h-5 rounded bg-[var(--redesign-yellow)] flex items-center justify-center shrink-0">
+                <Plane size={12} className="text-[var(--redesign-bg-black)]" fill="currentColor" />
+              </span>
+              <div className="leading-tight">
+                <div className="text-[var(--redesign-text-primary)] font-semibold text-[10px]">{selectedDrone.name}</div>
+                <div
+                  className={cn(
+                    "text-[9px] uppercase font-mono",
+                    droneConnectionState === "disconnected" ? "text-status-error" : "text-status-success"
+                  )}
+                >
+                  NATIVE · {droneConnectionState === "disconnected" ? "Disconnected" : "Connected"}
+                </div>
               </div>
-            </Tooltip>
+            </div>
           )}
-
-          {/* Cmd+K hint */}
-          <Tooltip content={t("commandPalette")} position="bottom">
-            <kbd className="text-[10px] text-text-tertiary border border-border-default px-1 py-0.5 font-mono hidden sm:inline">
-              ⌘K
-            </kbd>
-          </Tooltip>
-
-          {/* Community */}
-          <ChangelogBadge />
-
-          {/* Discord */}
-          <Tooltip content={t("joinDiscord")} position="bottom">
-            <a
-              href="https://discord.gg/uxbvuD4d5q"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-secondary hover:text-text-primary transition-colors"
-              aria-label={t("joinDiscord")}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
-            </a>
-          </Tooltip>
-
-          {/* Docs */}
-          <Tooltip content={t("docs")} position="bottom">
-            <a
-              href="https://docs.altnautica.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-secondary hover:text-text-primary transition-colors"
-              aria-label={t("docs")}
-            >
-              <BookOpen size={16} />
-            </a>
-          </Tooltip>
-
-          {/* GitHub Star */}
-          <Tooltip content={t("starOnGitHub")} position="bottom">
-            <a
-              href="https://github.com/altnautica/ADOSMissionControl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-text-secondary hover:text-text-primary transition-colors"
-              aria-label={t("starOnGitHub")}
-            >
-              <Star size={16} />
-              <span className="text-xs hidden sm:inline">{t("star")}</span>
-            </a>
-          </Tooltip>
-
-          {/* Flash Tool */}
-          <Tooltip content={t("flashTool")} position="bottom">
-            <Link
-              href="/config/firmware"
-              className="text-text-secondary hover:text-text-primary transition-colors"
-              aria-label={t("flashTool")}
-            >
-              <Zap size={16} />
-            </Link>
-          </Tooltip>
-
-          {/* Settings */}
-          <Tooltip content={t("settings")} position="bottom">
-            <Link
-              href="/config"
-              className="text-text-secondary hover:text-text-primary transition-colors"
-              aria-label={t("settings")}
-            >
-              <Settings size={16} />
-            </Link>
-          </Tooltip>
-
-          {/* Auth — sign in or user menu (far right) */}
-          {isAuthenticated && convexAvailable ? (
-            <ConvexUserMenu />
-          ) : (
-            <Tooltip content={t("signInForSync")} position="bottom">
-              <button
-                onClick={() => setSignInOpen(true)}
-                className="flex items-center gap-1 text-[10px] text-text-tertiary hover:text-text-secondary transition-colors"
-              >
-                <CloudOff size={10} />
-                <span className="hidden sm:inline">{t("localOnly")}</span>
-              </button>
-            </Tooltip>
-          )}
+          <div className="flex items-center gap-1 text-[var(--redesign-green)]">
+            <BatteryMedium size={13} className="text-[var(--redesign-text-secondary)]" />
+            <span className="text-[10px] font-mono text-[var(--redesign-text-secondary)]">{Math.round(signalStrength)}%</span>
+            <Wifi size={12} />
+            <span className="text-[10px] font-mono">{latencyMs || 10}ms</span>
+          </div>
+          <Settings size={12} className="text-[var(--redesign-text-secondary)] cursor-pointer hover:text-[var(--redesign-text-primary)]" />
         </div>
       </header>}
 
@@ -347,6 +324,9 @@ function CommandShellInner({ children }: { children: React.ReactNode }) {
         <CloudDroneBridge />
         <LocalDroneBridge />
       </main>
+
+      {/* C2 Status Bar */}
+      {!immersiveMode && <C2StatusBar />}
     </div>
   );
 }

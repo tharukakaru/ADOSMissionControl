@@ -44,6 +44,9 @@ export default function DashboardPage() {
   function handleOpenPairing() {
     useConnectDialogStore.getState().openDialog();
   }
+  // ARC OS: the fleet list stays expanded (full drone cards) even while a
+  // drone is selected, matching the target. The operator can still collapse
+  // it manually with the chevron.
   const [panelCollapsed, setPanelCollapsed] = useState(false);
   // Flight Logs panel starts closed; the operator opens it when wanted.
   const [logsCollapsed, setLogsCollapsed] = useState(true);
@@ -72,9 +75,10 @@ export default function DashboardPage() {
     setLogsCollapsed(false);
   }
 
-  useEffect(() => {
-    setPanelCollapsed(selectedDroneId !== null);
-  }, [selectedDroneId]);
+  // NOTE: the original auto-collapse effect
+  //   useEffect(() => setPanelCollapsed(selectedDroneId !== null), [...])
+  // has been removed so selecting a drone no longer shrinks the fleet list
+  // to the letter-icon rail. (ARC OS fix #1.)
 
   // Exit immersive mode if drone is deselected
   useEffect(() => {
@@ -95,64 +99,10 @@ export default function DashboardPage() {
       {selectedDroneId ? (
         <>
           <NodeDetailPanel droneId={selectedDroneId} onClose={() => selectDrone(null)} />
-          {!immersiveMode && logsCollapsed && (
-            <div className="w-10 shrink-0 flex flex-col h-full border-l border-border-default bg-bg-secondary">
-              <button
-                onClick={expandLogs}
-                className="relative flex flex-col items-center gap-1 px-1 py-2 border-b border-border-default hover:bg-bg-tertiary transition-colors cursor-pointer group"
-                title={hasNewLogs ? t("newLogs") : t("expandLogs")}
-                aria-label={hasNewLogs ? t("newLogs") : t("expandLogs")}
-              >
-                <span
-                  className={cn(
-                    "text-[9px] font-semibold uppercase tracking-wider transition-colors",
-                    hasNewLogs
-                      ? "text-accent-primary"
-                      : "text-text-tertiary group-hover:text-text-secondary",
-                  )}
-                >
-                  {t("logs")}
-                </span>
-                <ChevronLeft
-                  size={12}
-                  className={cn(
-                    "transition-colors",
-                    hasNewLogs
-                      ? "text-accent-primary"
-                      : "text-text-tertiary group-hover:text-text-secondary",
-                  )}
-                />
-                {hasNewLogs && (
-                  <span
-                    className="absolute top-1.5 right-1.5 flex h-2 w-2"
-                    aria-hidden="true"
-                  >
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-primary opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-primary" />
-                  </span>
-                )}
-              </button>
-            </div>
-          )}
-          {!immersiveMode && (
-            <div className={`w-[384px] shrink-0 flex flex-col h-full border-l border-border-default bg-bg-secondary ${logsCollapsed ? "hidden" : ""}`}>
-              <div className="flex items-center gap-2 px-3 py-2 border-b border-border-default flex-shrink-0">
-                <button
-                  onClick={() => setLogsCollapsed(true)}
-                  className="p-1 text-text-tertiary hover:text-text-primary transition-colors"
-                  title={t("collapseLogs")}
-                >
-                  <ChevronRight size={14} />
-                </button>
-                <span className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
-                  {t("flightLogs")}
-                </span>
-              </div>
-              <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
-                <DroneLogsPanel droneId={selectedDroneId} />
-              </div>
-            </div>
-          )}
+          {/* ARC OS redesign: the separate right-side Flight Logs drawer
+              (collapsed "LOGS" tab + 384px panel) was removed. Flight logs
+              now live only inside the control panel (FlyRightRail), matching
+              the redesign. */}
         </>
       ) : (
         <div className="flex-1 flex flex-col overflow-hidden min-w-0">
@@ -202,3 +152,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+

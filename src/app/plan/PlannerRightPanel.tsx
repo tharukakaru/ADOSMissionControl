@@ -55,7 +55,7 @@ export function PlannerRightPanel({
   const activePlanName = p.activePlanId ? p.missionName || t("untitledMission") : null;
 
   return (
-    <div className="w-[320px] shrink-0 flex flex-col border-l border-border-default bg-bg-secondary">
+    <div className="w-[260px] shrink-0 flex flex-col border-l border-border-default bg-bg-secondary">
       <div className="flex items-center justify-between px-3 py-2 border-b border-border-default">
         <div className="flex items-center gap-1.5 min-w-0">
           {p.isDirty && <span className="w-1.5 h-1.5 rounded-full bg-status-warning shrink-0" title={t("unsavedChanges")} />}

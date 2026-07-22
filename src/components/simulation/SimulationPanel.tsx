@@ -3,6 +3,10 @@
  * @description Unified right-side panel for simulation mode. Composes the
  * stats grid, waypoint list, and controls sub-components. Owns store
  * subscriptions, derived data, collapsible state, and action handlers.
+ *
+ * VISUAL REDESIGN NOTE: restyled to match the "SIMULATE.png" redesign
+ * (dark navy panel var(--redesign-bg-panel), yellow accent var(--redesign-yellow) for the active/selected
+ * states). See /docs/redesign-guide.md for the full list of changes.
  * @license GPL-3.0-only
  */
 
@@ -11,7 +15,7 @@
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { ChevronRight } from "lucide-react";
+import { Box, ChevronRight } from "lucide-react";
 import type { Waypoint } from "@/lib/types";
 import { exportWaypointsFormat } from "@/lib/mission-io";
 import { useSimulationStore, type CameraMode } from "@/stores/simulation-store";
@@ -24,9 +28,11 @@ import { SimulationStatsGrid } from "./SimulationStatsGrid";
 import { SimulationWaypointList } from "./SimulationWaypointList";
 import { SimulationControls } from "./SimulationControls";
 
-// Camera modes
+// Camera modes — labels updated to match the redesign (FPV / Follow / Orbit / Free).
+// NOTE: "FPV" reuses the existing "topdown" camera id/behaviour. Rename the id too
+// if the underlying camera behaviour should also change — flag this for product review.
 const CAMERA_MODES: { id: CameraMode; label: string; key: string; title: string }[] = [
-  { id: "topdown", label: "Top-down", key: "T", title: "Bird's eye view" },
+  { id: "topdown", label: "FPV", key: "T", title: "Bird's eye view" },
   { id: "follow", label: "Follow", key: "F", title: "Chase cam following drone" },
   { id: "orbit", label: "Orbit", key: "O", title: "Orbit around mission" },
   { id: "free", label: "Free", key: "X", title: "Free camera control" },
@@ -82,13 +88,11 @@ export function SimulationPanel({
   const { pos, flightPlan, elapsed } = useInterpolatedPosition();
 
   // Local UI state
-  const [terrainExpanded, setTerrainExpanded] = useState(false);
   const [historyExpanded, setHistoryExpanded] = useState(false);
   const [shortcutsExpanded, setShortcutsExpanded] = useState(false);
 
   // Derived data
   const activePlan = plans.find((p) => p.id === activePlanId);
-  const progressPct = totalDuration > 0 ? Math.min(100, (elapsed / totalDuration) * 100) : 0;
 
   // Cumulative segment times for ETA calculation
   const cumulativeTimes = useMemo(() => {
@@ -120,20 +124,23 @@ export function SimulationPanel({
   };
 
   return (
-    <div className="w-[320px] shrink-0 flex flex-col border-l border-border-default bg-bg-secondary">
+    <div className="w-[320px] shrink-0 flex flex-col border-l border-[var(--redesign-border)] bg-[var(--redesign-bg-panel)]">
       {/* Header */}
-      <div className="flex items-center justify-between px-3 py-2 border-b border-border-default">
+      <div className="flex items-center justify-between px-3 py-3 border-b border-[var(--redesign-border)]">
         <div className="flex items-center gap-2 min-w-0">
-          <h2 className="text-sm font-display font-semibold text-text-primary">{t("title")}</h2>
-          {activePlan && (
-            <span className="text-[10px] font-mono text-text-tertiary truncate">
-              {activePlan.name}
+          <Box size={16} className="text-[var(--redesign-yellow)] shrink-0" />
+          <div className="min-w-0">
+            <h2 className="text-[13px] font-display font-semibold text-[var(--redesign-text-primary)] leading-tight">
+              {t("title")}
+            </h2>
+            <span className="text-[10px] font-mono text-[var(--redesign-text-secondary)] truncate block leading-tight">
+              {activePlan?.name ?? "No plan loaded"}
             </span>
-          )}
+          </div>
         </div>
         <button
           onClick={onClose}
-          className="text-text-tertiary hover:text-text-primary cursor-pointer shrink-0"
+          className="text-[var(--redesign-text-secondary)] hover:text-[var(--redesign-text-primary)] cursor-pointer shrink-0"
         >
           <ChevronRight size={14} />
         </button>
@@ -146,10 +153,6 @@ export function SimulationPanel({
           flightPlan={flightPlan}
           totalDuration={totalDuration}
           speed={pos.speed}
-          heading={pos.heading}
-          progressPct={progressPct}
-          terrainExpanded={terrainExpanded}
-          onToggleTerrain={() => setTerrainExpanded(!terrainExpanded)}
         />
 
         <SimulationWaypointList

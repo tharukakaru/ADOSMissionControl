@@ -8,7 +8,12 @@
  */
 
 // ── Colors ──────────────────────────────────────────────────────
-export const HUD_GREEN = "#00ff41";
+// HUD_GREEN is the cosmetic instrument color (crosshair, pitch ladder,
+// speed/alt tapes, heading compass, signal bars) — purely a brand accent,
+// retinted to the ARC OS yellow. ARMED_RED / DISARMED_GREEN / battery
+// colors are semantic state indicators, not branding, and are left as-is
+// so armed/disarmed and battery health keep their conventional meaning.
+export const HUD_GREEN = "#f2eb15";
 export const ARMED_RED = "#ef4444";
 export const DISARMED_GREEN = "#22c55e";
 export const BAT_GREEN = "#22c55e";

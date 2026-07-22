@@ -19,6 +19,38 @@
 @import "@fontsource/jetbrains-mono/400.css";
 @import "@fontsource/jetbrains-mono/600.css";
 
+/* ARC OS redesign typeface. Self-hosted (not on fontsource) — files live in
+   /public/fonts/yapari/. Space Grotesk stays imported above as a fallback
+   in case a weight fails to load; --font-display below prefers Yapari. */
+@font-face {
+  font-family: "Yapari Trial";
+  src: url("/fonts/yapari/YapariTrial-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Yapari Trial";
+  src: url("/fonts/yapari/YapariTrial-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Yapari Trial";
+  src: url("/fonts/yapari/YapariTrial-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Yapari Trial";
+  src: url("/fonts/yapari/YapariTrial-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-bg-primary: var(--alt-bg-primary);
   --color-bg-secondary: var(--alt-bg-secondary);
@@ -37,12 +69,41 @@
   --color-gcs-hud-green: var(--gcs-hud-green);
   --color-gcs-armed: var(--gcs-armed);
   --color-gcs-disarmed: var(--gcs-disarmed);
-  --font-display: "Space Grotesk", sans-serif;
+  /* Fixed brand yellow for the ARC OS wordmark/accents. Deliberately NOT
+     theme-driven (unlike --color-accent-secondary, which already varies
+     per theme below) — the rebrand's logo color should stay constant
+     regardless of which theme the operator has selected. */
+  --color-brand-arc: #f2eb15;
+  --font-display: "Yapari Trial", "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 :root {
+  /* ARC OS redesign palette — exact hex values from the Figma export
+     (Simulate screen colors panel). Kept separate from the app's existing
+     theme tokens (--alt-*) rather than overwriting them, since these are
+     specific to the redesigned screens and the existing theme system is
+     still used elsewhere. Reused across all redesigned screens for
+     consistency — don't hand-roll new hex values per screen, add to this
+     list instead if a new redesign screen needs one that isn't here. */
+  --redesign-bg-black: #07090b;
+  --redesign-bg-navrow: #040609;
+  --redesign-bg-panel: #141a20;
+  --redesign-bg-topbar: #0e1216;
+  --redesign-border: #222d3c;
+  --redesign-border-soft: #232c36;
+  --redesign-text-primary: #ecf1f5;
+  --redesign-text-secondary: #93a1ad;
+  --redesign-yellow: #e3e41b;
+  --redesign-yellow-soft: #f4ed15;
+  --redesign-green: #3ddc84;
+  --redesign-cyan: #6fd3e8;
+  --redesign-teal: #2bb7c4;
+  --redesign-blue: #5aa9e6;
+  --redesign-blue-alt: #4d79ea;
+  --redesign-red: #ff4242;
+
   /* Background */
   --alt-bg-primary: #000000;
   --alt-bg-secondary: #0a0a0a;

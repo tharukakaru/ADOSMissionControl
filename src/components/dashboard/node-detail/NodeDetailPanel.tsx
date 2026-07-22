@@ -188,7 +188,7 @@ export function NodeDetailPanel({ droneId, onClose }: NodeDetailPanelProps) {
   if (!drone) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center h-full gap-3">
-        <p className="text-sm text-text-secondary">
+        <p className="text-sm text-[var(--redesign-text-secondary)]">
           Drone &quot;{droneId}&quot; not found
         </p>
         <Button variant="secondary" size="sm" onClick={onClose}>
@@ -250,8 +250,8 @@ export function NodeDetailPanel({ droneId, onClose }: NodeDetailPanelProps) {
     <div className="flex-1 flex flex-col h-full overflow-hidden">
       {/* Merged header + tabs bar */}
       {!immersiveMode && (
-        <div className="flex items-center gap-2 px-3 py-1.5 border-b border-border-default bg-bg-secondary flex-shrink-0">
-          <h1 className="text-sm font-semibold text-text-primary shrink-0">{displayName}</h1>
+        <div className="flex items-center gap-2 px-3 py-1.5 border-b border-[var(--redesign-border)] bg-[var(--redesign-bg-panel)] flex-shrink-0">
+          <h1 className="text-sm font-semibold text-[var(--redesign-text-primary)] shrink-0">{displayName}</h1>
           <DroneStatusBadge status={drone.status} />
           <Button
             variant="ghost"
@@ -308,12 +308,12 @@ export function NodeDetailPanel({ droneId, onClose }: NodeDetailPanelProps) {
                     : undefined
                 }
                 className={cn(
-                  "self-stretch flex items-center gap-1 px-2.5 text-xs font-medium transition-colors cursor-pointer shrink-0 -mb-px border-b-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary",
+                  "self-stretch flex items-center gap-1 px-2.5 text-xs font-medium transition-colors cursor-pointer shrink-0 -mb-px border-b-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--redesign-yellow)]",
                   visibleTab === tab.id
-                    ? "text-accent-primary border-accent-primary"
+                    ? "text-[var(--redesign-yellow)] border-[var(--redesign-yellow)]"
                     : tab.locked
-                      ? "text-text-tertiary hover:text-text-secondary border-transparent"
-                      : "text-text-secondary hover:text-text-primary border-transparent"
+                      ? "text-[var(--redesign-text-secondary)] hover:text-[var(--redesign-text-secondary)] border-transparent"
+                      : "text-[var(--redesign-text-secondary)] hover:text-[var(--redesign-text-primary)] border-transparent"
                 )}
               >
                 {tab.locked && <Lock size={10} className="opacity-70" />}
@@ -332,7 +332,7 @@ export function NodeDetailPanel({ droneId, onClose }: NodeDetailPanelProps) {
             />
           </div>
 
-          <span className="text-[10px] font-mono text-text-tertiary ml-auto shrink-0">
+          <span className="text-[10px] font-mono text-[var(--redesign-text-secondary)] ml-auto shrink-0">
             ID: {drone.id}
           </span>
           <Button

@@ -29,9 +29,8 @@ export function IntroStep({ next, back, dotStep, totalSteps }: Props) {
       {/* Left: brand lockup */}
       <div className="flex-none md:w-2/5 flex flex-col items-center justify-center p-8 pt-14 sm:p-10 md:p-16 border-b md:border-b-0 md:border-e border-border-default">
         <div className="text-center">
-          <p className="font-display text-4xl sm:text-5xl md:text-7xl font-bold text-accent-primary leading-none">ADOS</p>
-          <p className="font-display text-lg sm:text-xl md:text-2xl font-semibold text-text-primary mt-2">Mission</p>
-          <p className="font-display text-lg sm:text-xl md:text-2xl font-semibold text-text-primary">Control</p>
+          <p className="font-body text-sm sm:text-base md:text-lg font-semibold text-accent-primary tracking-widest uppercase">ARCOS</p>
+          <p className="font-display text-5xl sm:text-6xl md:text-8xl font-bold text-accent-primary leading-none mt-1">HYENA</p>
           <div className="mt-4 sm:mt-6 w-16 h-px bg-accent-primary mx-auto opacity-50" />
         </div>
       </div>

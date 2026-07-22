@@ -9,10 +9,16 @@ export const DEFAULT_CENTER: [number, number] = [12.95, 77.668];
 
 /** Design-system color tokens used across map components. */
 export const MAP_COLORS = {
-  /** Primary accent — waypoint fill, path stroke, chart stroke. */
-  accentPrimary: "#3a82ff",
-  /** Secondary accent — selected waypoint fill. */
-  accentSelected: "#dff140",
+  /** Primary accent — waypoint fill, path stroke, chart stroke. Retinted
+   * to the ARC OS brand yellow (was #3a82ff). */
+  accentPrimary: "#f2eb15",
+  /** Secondary accent — selected waypoint fill, pattern capture-dot color.
+   * Kept as a distinct amber (was a yellow-green, #dff140) rather than
+   * reusing accentPrimary's yellow — AltitudeProfile and PatternOverlay
+   * both rely on these two colors reading as visibly different so a
+   * selected waypoint / capture point stands out from the unselected
+   * path color. */
+  accentSelected: "#f59e0b",
   /** Light foreground — unselected waypoint stroke, dot fill. */
   foreground: "#fafafa",
   /** Dark background — selected waypoint text. */

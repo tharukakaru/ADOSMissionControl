@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { useFleetStore } from "@/stores/fleet-store";
 import { useDroneManager } from "@/stores/drone-manager";
-import { DroneCard } from "@/components/shared/drone-card";
+import { FlyViewDroneCard } from "@/components/dashboard/FlyViewDroneCard";
 import { LinkBadgesRow } from "@/components/connect/LinkBadgesRow";
 import { useConnectDialogStore } from "@/stores/connect-dialog-store";
 import { Plus, Search, ChevronLeft, ChevronRight } from "lucide-react";
@@ -25,7 +25,7 @@ function DroneListItem({
   const linkInfo = managedDrone?.protocol.linkInfo ?? [];
   return (
     <div className="flex flex-col gap-1">
-      <DroneCard drone={fleetDrone} selected={selected} onClick={onSelect} />
+      <FlyViewDroneCard drone={fleetDrone} selected={selected} onClick={onSelect} />
       {linkInfo.length > 0 && (
         <div className="px-2">
           <LinkBadgesRow droneId={droneId} links={linkInfo} />
@@ -62,25 +62,25 @@ export function DroneListPanel({ collapsed, onToggleCollapse }: DroneListPanelPr
 
   if (collapsed) {
     return (
-      <div className="w-12 shrink-0 flex flex-col h-full border-r border-border-default bg-bg-secondary">
+      <div className="w-12 shrink-0 flex flex-col h-full border-r border-[var(--redesign-border)] bg-[var(--redesign-bg-panel)]">
         {/* Header: label + add + expand */}
-        <div className="flex flex-col items-center gap-1.5 px-1 py-2 border-b border-border-default">
-          <span className="text-[9px] font-semibold uppercase tracking-wider text-text-tertiary">
+        <div className="flex flex-col items-center gap-1.5 px-1 py-2 border-b border-[var(--redesign-border)]">
+          <span className="text-[9px] font-semibold uppercase tracking-wider text-[var(--redesign-text-secondary)]">
             {t("title")}
           </span>
           <button
             onClick={(e) => { e.stopPropagation(); openDialog(); }}
-            className="w-full aspect-square flex items-center justify-center bg-accent-primary/10 hover:bg-accent-primary transition-colors cursor-pointer group"
+            className="w-full aspect-square flex items-center justify-center bg-[var(--redesign-yellow)]/10 hover:bg-[var(--redesign-yellow)] transition-colors cursor-pointer group"
             title={t("addDrone")}
           >
-            <Plus size={12} className="text-accent-primary group-hover:text-bg-primary transition-colors" />
+            <Plus size={12} className="text-[var(--redesign-yellow)] group-hover:text-bg-primary transition-colors" />
           </button>
           <button
             onClick={onToggleCollapse}
-            className="w-full aspect-square flex items-center justify-center hover:bg-bg-tertiary transition-colors cursor-pointer group"
+            className="w-full aspect-square flex items-center justify-center hover:bg-[var(--redesign-border)] transition-colors cursor-pointer group"
             title={t("expandPanel")}
           >
-            <ChevronRight size={12} className="text-text-tertiary group-hover:text-text-secondary transition-colors" />
+            <ChevronRight size={12} className="text-[var(--redesign-text-secondary)] group-hover:text-[var(--redesign-text-secondary)] transition-colors" />
           </button>
         </div>
 
@@ -97,30 +97,30 @@ export function DroneListPanel({ collapsed, onToggleCollapse }: DroneListPanelPr
         </div>
 
         {/* Count */}
-        <div className="text-center py-1 border-t border-border-default">
-          <span className="text-[9px] text-text-tertiary font-mono">{drones.length}</span>
+        <div className="text-center py-1 border-t border-[var(--redesign-border)]">
+          <span className="text-[9px] text-[var(--redesign-text-secondary)] font-mono">{drones.length}</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-64 shrink-0 flex flex-col h-full border-r border-border-default bg-bg-secondary">
+    <div className="w-64 shrink-0 flex flex-col h-full border-r border-[var(--redesign-border)] bg-[var(--redesign-bg-panel)]">
       {/* Header */}
-      <div className="flex items-center justify-between px-3 py-2 border-b border-border-default">
-        <span className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
+      <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--redesign-border)]">
+        <span className="text-xs font-semibold uppercase tracking-wider text-[var(--redesign-text-secondary)]">
           {t("title")}
         </span>
         <div className="flex items-center gap-1">
           <button
             onClick={openDialog}
-            className="p-1 text-text-tertiary hover:text-text-primary transition-colors"
+            className="p-1 text-[var(--redesign-text-secondary)] hover:text-[var(--redesign-text-primary)] transition-colors"
           >
             <Plus size={14} />
           </button>
           <button
             onClick={onToggleCollapse}
-            className="p-1 text-text-tertiary hover:text-text-primary transition-colors"
+            className="p-1 text-[var(--redesign-text-secondary)] hover:text-[var(--redesign-text-primary)] transition-colors"
             title={t("collapsePanel")}
           >
             <ChevronLeft size={14} />
@@ -129,14 +129,14 @@ export function DroneListPanel({ collapsed, onToggleCollapse }: DroneListPanelPr
       </div>
 
       {/* Search */}
-      <div className="px-3 py-2 border-b border-border-default">
-        <div className="flex items-center gap-2 px-2 py-1 bg-bg-primary border border-border-default">
-          <Search size={12} className="text-text-tertiary shrink-0" />
+      <div className="px-3 py-2 border-b border-[var(--redesign-border)]">
+        <div className="flex items-center gap-2 px-2 py-1 bg-[var(--redesign-bg-black)] border border-[var(--redesign-border)]">
+          <Search size={12} className="text-[var(--redesign-text-secondary)] shrink-0" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t("searchDrones")}
-            className="flex-1 bg-transparent text-xs text-text-primary placeholder:text-text-tertiary outline-none"
+            className="flex-1 bg-transparent text-xs text-[var(--redesign-text-primary)] placeholder:text-[var(--redesign-text-secondary)] outline-none"
           />
         </div>
       </div>
@@ -153,15 +153,15 @@ export function DroneListPanel({ collapsed, onToggleCollapse }: DroneListPanelPr
           />
         ))}
         {filtered.length === 0 && (
-          <div className="text-xs text-text-tertiary text-center py-4">
+          <div className="text-xs text-[var(--redesign-text-secondary)] text-center py-4">
             {search ? t("noMatch") : t("noDrones")}
           </div>
         )}
       </div>
 
       {/* Footer */}
-      <div className="px-3 py-1.5 border-t border-border-default">
-        <span className="text-[10px] text-text-tertiary">
+      <div className="px-3 py-1.5 border-t border-[var(--redesign-border)]">
+        <span className="text-[10px] text-[var(--redesign-text-secondary)]">
           {drones.length} {drones.length === 1 ? "drone" : "drones"}
         </span>
       </div>

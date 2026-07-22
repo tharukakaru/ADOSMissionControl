@@ -222,7 +222,7 @@ export function SimulationViewer({ waypoints, defaultSpeed }: SimulationViewerPr
 
       <MapControlsPanel hasIonToken={!!effectiveCesiumToken} />
       <SimulationHUD />
-      <PlaybackControls waypoints={waypoints} totalDuration={flightPlan.totalDuration} />
+      <PlaybackControls waypoints={waypoints} flightPlan={flightPlan} totalDuration={flightPlan.totalDuration} />
 
       {/* Loading state */}
       {!viewer && !viewerError && (

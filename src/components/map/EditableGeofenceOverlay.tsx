@@ -13,8 +13,8 @@ import { useMap } from "react-leaflet";
 import L from "leaflet";
 import { useGeofenceStore } from "@/stores/geofence-store";
 
-const FENCE_COLOR = "#f59e0b";
-const FENCE_ACTIVE_COLOR = "#3A82FF";
+const FENCE_COLOR = "#F4ED15";
+const FENCE_ACTIVE_COLOR = "#F4ED15";
 const HANDLE_RADIUS = 7;
 
 function makeVertexIcon(active = false): L.DivIcon {

@@ -30,8 +30,8 @@ export function LanguageStep({ selectedLocale, onLocaleChange, next, dotStep, to
     <>
       {/* Brand header */}
       <div className="text-center mb-10">
-        <p className="font-display text-xs font-semibold uppercase tracking-[0.25em] text-accent-primary">ADOS</p>
-        <p className="text-[10px] uppercase tracking-widest text-text-tertiary font-medium mt-0.5">Mission Control</p>
+        <p className="font-display text-xs font-semibold uppercase tracking-[0.25em] text-[#F4ED15]">ARCOS</p>
+        <p className="text-[10px] uppercase tracking-widest text-text-tertiary font-medium mt-0.5">HYENA</p>
       </div>
 
       <h2 className="text-xl font-display font-semibold text-text-primary mb-8 text-center">
@@ -53,7 +53,7 @@ export function LanguageStep({ selectedLocale, onLocaleChange, next, dotStep, to
               }}
               className={`flex flex-col items-center gap-1 p-4 border rounded-sm transition-all ${
                 isSelected
-                  ? "border-accent-primary bg-accent-primary/10 text-text-primary"
+                  ? "border-accent-primary bg-[#F4ED15]/10 text-text-primary"
                   : "border-border-default bg-bg-secondary text-text-secondary hover:border-accent-primary/50"
               }`}
             >

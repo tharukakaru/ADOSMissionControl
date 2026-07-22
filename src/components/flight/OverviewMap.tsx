@@ -78,7 +78,7 @@ const STATUS_COLORS: Record<string, string> = {
   online: "#22c55e",
   in_mission: "#3a82ff",
   idle: "#a0a0a0",
-  returning: "#f59e0b",
+  returning: "#F2EB15",
   maintenance: "#ef4444",
   offline: "#666666",
 };
@@ -270,8 +270,8 @@ export function OverviewMap() {
   );
 
   return (
-    <div className="relative w-full h-full border border-border-default overflow-hidden bg-[#0a0a0a] isolate">
-      <span className={`absolute top-2 left-2 z-[1000] text-[10px] font-mono bg-bg-primary/80 backdrop-blur-md rounded px-1.5 py-0.5 border border-border-strong shadow-lg ${fixType >= 3 ? "text-status-success" : fixType >= 2 ? "text-status-warning" : "text-status-error"}`}>
+    <div className="relative w-full h-full border border-[var(--redesign-border)] overflow-hidden bg-[#0a0a0a] isolate" style={{ height: "100%" }}>
+      <span className={`absolute top-2 left-2 z-[1000] text-[10px] font-mono bg-[var(--redesign-bg-black)]/80 backdrop-blur-md rounded px-1.5 py-0.5 border border-[var(--redesign-border)] shadow-lg ${fixType >= 3 ? "text-status-success" : fixType >= 2 ? "text-status-warning" : "text-status-error"}`}>
         {fixLabel} | {satellites} SAT
       </span>
 
@@ -280,7 +280,7 @@ export function OverviewMap() {
       {/* No GPS overlay */}
       {!hasGps && (
         <div className="absolute inset-0 z-[1000] flex items-center justify-center pointer-events-none">
-          <span className="text-sm font-mono font-semibold text-text-secondary bg-bg-primary/90 backdrop-blur-md px-3 py-1.5 border border-border-strong rounded shadow-lg">
+          <span className="text-sm font-mono font-semibold text-[var(--redesign-text-secondary)] bg-[var(--redesign-bg-black)]/90 backdrop-blur-md px-3 py-1.5 border border-[var(--redesign-border)] rounded shadow-lg">
             NO GPS FIX
           </span>
         </div>
@@ -292,7 +292,7 @@ export function OverviewMap() {
         className="w-full h-full"
         zoomControl={false}
         attributionControl={false}
-        style={{ background: "#0a0a0a" }}
+        style={{ background: "#0a0a0a", height: "100%", width: "100%" }}
         whenReady={() => { mapReadyRef.current = true; }}
       >
         <TileLayerSwitcher />
@@ -413,15 +413,15 @@ export function OverviewMap() {
       )}
 
       {/* Follow toggle + plan overlay + measure -- bottom right */}
-      <div className="absolute bottom-2 right-2 z-[1000] flex items-center gap-1 bg-bg-primary/80 backdrop-blur-md rounded-lg p-1 shadow-lg border border-border-strong">
+      <div className="absolute bottom-2 right-2 z-[1000] flex items-center gap-1 bg-[var(--redesign-bg-black)]/80 backdrop-blur-md rounded-lg p-1 shadow-lg border border-[var(--redesign-border)]">
         <button
           onClick={() => {
             setMeasureActive((v) => !v);
           }}
           className={`text-[10px] font-mono px-2 py-1 transition-colors flex items-center gap-1 rounded ${
             measureActive
-              ? "text-[#3A82FF] bg-[#3A82FF]/10"
-              : "text-text-secondary hover:text-text-primary"
+              ? "text-[var(--redesign-yellow)] bg-[var(--redesign-yellow)]/10"
+              : "text-[var(--redesign-text-secondary)] hover:text-[var(--redesign-text-primary)]"
           }`}
           title="Measure distance and bearing (click points, double-click to finish)"
         >
@@ -432,8 +432,8 @@ export function OverviewMap() {
           onClick={() => setShowPlannedPath((v) => !v)}
           className={`text-[10px] font-mono px-2 py-1 transition-colors rounded ${
             showPlannedPath
-              ? "text-[#3A82FF] bg-[#3A82FF]/10"
-              : "text-text-secondary hover:text-text-primary"
+              ? "text-[var(--redesign-yellow)] bg-[var(--redesign-yellow)]/10"
+              : "text-[var(--redesign-text-secondary)] hover:text-[var(--redesign-text-primary)]"
           }`}
         >
           PLAN
@@ -442,8 +442,8 @@ export function OverviewMap() {
           onClick={() => setFollow((f) => !f)}
           className={`text-[10px] font-mono px-2 py-1 transition-colors rounded ${
             follow
-              ? "text-[#3A82FF] bg-[#3A82FF]/10"
-              : "text-text-secondary hover:text-text-primary"
+              ? "text-[var(--redesign-yellow)] bg-[var(--redesign-yellow)]/10"
+              : "text-[var(--redesign-text-secondary)] hover:text-[var(--redesign-text-primary)]"
           }`}
         >
           {follow ? "FOLLOW" : "FREE"}
@@ -452,7 +452,7 @@ export function OverviewMap() {
 
       {/* Coordinates -- bottom left */}
       {dronePos && (
-        <div className="absolute bottom-2 left-2 z-[1000] text-[10px] font-mono text-text-secondary bg-bg-primary/80 backdrop-blur-md px-2 py-1 border border-border-strong rounded shadow-lg">
+        <div className="absolute bottom-2 left-2 z-[1000] text-[10px] font-mono text-[var(--redesign-text-secondary)] bg-[var(--redesign-bg-black)]/80 backdrop-blur-md px-2 py-1 border border-[var(--redesign-border)] rounded shadow-lg">
           {dronePos[0].toFixed(6)}, {dronePos[1].toFixed(6)}
         </div>
       )}

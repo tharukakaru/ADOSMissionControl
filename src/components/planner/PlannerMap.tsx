@@ -250,7 +250,7 @@ export function PlannerMap({
   );
 
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative" style={{ height: "100%" }}>
       {/* GPS status badge */}
       {hasActivePlan && (
         <span className={`absolute top-2 left-2 z-[1000] text-[10px] font-mono bg-bg-primary/80 backdrop-blur-md rounded px-1.5 py-0.5 border border-border-strong shadow-lg ${fixType >= 3 ? "text-status-success" : fixType >= 2 ? "text-status-warning" : "text-status-error"}`}>
@@ -259,7 +259,7 @@ export function PlannerMap({
       )}
       {hasActivePlan && <GuidanceSettingsMenu />}
       <MapContainer center={defaultCenter} zoom={13} className="w-full h-full" zoomControl={false} attributionControl={false}
-        style={{ background: "#0a0a0a" }} ref={(instance) => { if (instance) setMapInstance(instance); }}>
+        style={{ background: "#0a0a0a", height: "100%", width: "100%" }} ref={(instance) => { if (instance) setMapInstance(instance); }}>
         <TileLayerSwitcher showControls={hasActivePlan} />
         {hasActivePlan && <KmlOverlayLayers />}
         {/* Straight path (always shown for non-spline or as baseline) */}
@@ -307,7 +307,7 @@ export function PlannerMap({
           </div>
         </div>
       )}
-
+// current slide shows the design of the gettig icon of te postion: alginement:
       {hasActivePlan && TOOL_INSTRUCTIONS[activeTool] && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1000] pointer-events-none">
           {/* The default select tool keeps a subdued, always-on hint that a plain
