@@ -159,9 +159,9 @@ export function PluginInstallProgress(props: PluginInstallProgressProps) {
   //
   // Browsers cannot set custom headers on the WebSocket handshake,
   // so the pairing key cannot ride a request header here. We exchange
-  // the pairing key (via the normal ``X-ADOS-Key`` REST middleware)
+  // the pairing key (via the normal ``X-ARCOS-Key`` REST middleware)
   // for a one-shot ticket and hand the ticket to
-  // ``new WebSocket(url, ["ados-job-ticket", ticket])`` so it rides
+  // ``new WebSocket(url, ["arcos-job-ticket", ticket])`` so it rides
   // the subprotocol header instead of the URL. URLs end up in
   // DevTools, HAR exports, and reverse-proxy access logs; the ticket
   // does not.
@@ -190,7 +190,7 @@ export function PluginInstallProgress(props: PluginInstallProgressProps) {
       }
 
       // 1) Mint a one-shot ticket. The REST middleware authenticates
-      //    this call with ``X-ADOS-Key`` exactly like every other
+      //    this call with ``X-ARCOS-Key`` exactly like every other
       //    REST route.
       let ticket: string;
       try {
@@ -199,7 +199,7 @@ export function PluginInstallProgress(props: PluginInstallProgressProps) {
           `${agentLanUrl.replace(/\/$/, "")}/api/plugins/jobs/${encodeURIComponent(jobId)}/ticket`,
           {
             method: "POST",
-            headers: { "X-ADOS-Key": pairingKey },
+            headers: { "X-ARCOS-Key": pairingKey },
             signal: ticketAbort.signal,
           },
         );
@@ -235,7 +235,7 @@ export function PluginInstallProgress(props: PluginInstallProgressProps) {
 
       // 2) Open the WebSocket. The ticket rides the subprotocol
       //    array per RFC 6455 — the agent echoes back
-      //    ``ados-job-ticket`` so the handshake completes.
+      //    ``arcos-job-ticket`` so the handshake completes.
       let wsUrlStr: string;
       try {
         const u = new URL(
@@ -252,7 +252,7 @@ export function PluginInstallProgress(props: PluginInstallProgressProps) {
         }));
         return;
       }
-      ws = new WebSocket(wsUrlStr, ["ados-job-ticket", ticket]);
+      ws = new WebSocket(wsUrlStr, ["arcos-job-ticket", ticket]);
       ws.onmessage = (ev) => {
         try {
           const frame = JSON.parse(String(ev.data)) as Partial<JobDoc> & {

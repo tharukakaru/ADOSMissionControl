@@ -1,6 +1,6 @@
 /**
  * @module ManifestParse
- * @description Client-side `.adosplug` archive inspection. Extracts
+ * @description Client-side `.arcosplug` archive inspection. Extracts
  * `manifest.yaml`, parses the small subset of YAML the manifest uses,
  * and computes a SHA-256 over the archive bytes. The cloud-relay path
  * needs the hash for archive deduplication; the LAN-direct path uses
@@ -9,7 +9,7 @@
  * edge case.
  *
  * Limited YAML support is intentional. The manifest schema is fixed by
- * `product/specs/ados-plugin-system/02-manifest-schema.md` and never
+ * `product/specs/arcos-plugin-system/02-manifest-schema.md` and never
  * needs anchors, multi-line strings, or flow collections at the top
  * level. A 30-line parser is enough to render the dialog preview.
  *
@@ -34,7 +34,7 @@ export async function computeSha256(file: File): Promise<string> {
 }
 
 /**
- * Pull `manifest.yaml` text out of the .adosplug archive.
+ * Pull `manifest.yaml` text out of the .arcosplug archive.
  * Throws when the file is not a valid zip or the manifest is absent.
  */
 export async function extractManifestYaml(file: File): Promise<string> {
@@ -42,7 +42,7 @@ export async function extractManifestYaml(file: File): Promise<string> {
   const entry = zip.file("manifest.yaml") ?? zip.file("MANIFEST.yaml");
   if (!entry) {
     throw new Error(
-      "Archive is missing manifest.yaml. Is this a valid .adosplug file?",
+      "Archive is missing manifest.yaml. Is this a valid .arcosplug file?",
     );
   }
   return entry.async("string");

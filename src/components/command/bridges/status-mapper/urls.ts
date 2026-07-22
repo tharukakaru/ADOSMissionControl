@@ -83,7 +83,7 @@ export function resolveMavlinkUrl(
     return { url: `ws://${lastIp}:${mavlinkWsPort}/` };
   }
   if (lanHost) {
-    // ados-mavlink defaults to port 8765 across all shipped agents.
+    // arcos-mavlink defaults to port 8765 across all shipped agents.
     return { url: `ws://${lanHost}:8765/` };
   }
   return { url: null };

@@ -8,13 +8,13 @@
  * The agent forwards the engine's detection-batch broadcast socket as JSON
  * with the contract's own field names (snake_case). This client maps those
  * onto the store's camelCase shape and reuses the LAN agent base URL +
- * `X-ADOS-Key` resolution that the rest of the agent surface uses (a one-shot
+ * `X-ARCOS-Key` resolution that the rest of the agent surface uses (a one-shot
  * WebSocket ticket is minted under the hood, so the pairing key never reaches
  * the URL).
  *
  * Local-first: this is the LAN path (browser → agent over the same network).
  * The cloud-relay path for a remote drone (a vision/detection MQTT topic via
- * `ados-cloud`) is a documented follow-up; when it lands it feeds the same
+ * `arcos-cloud`) is a documented follow-up; when it lands it feeds the same
  * `setBatch`, so this module does not change.
  *
  * @license GPL-3.0-only

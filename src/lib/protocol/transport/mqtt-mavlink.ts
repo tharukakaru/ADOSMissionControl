@@ -4,8 +4,8 @@
  * agent is unavailable (user not on same LAN).
  *
  * Data flow:
- *   FC → Agent → MQTT (ados/{id}/mavlink/tx) → Browser GCS
- *   Browser GCS → MQTT (ados/{id}/mavlink/rx) → Agent → FC
+ *   FC → Agent → MQTT (arcos/{id}/mavlink/tx) → Browser GCS
+ *   Browser GCS → MQTT (arcos/{id}/mavlink/rx) → Agent → FC
  *
  * @module protocol/transport/mqtt-mavlink
  * @license GPL-3.0-only
@@ -52,7 +52,7 @@ export class MqttMavlinkTransport implements Transport {
     }
 
     this.deviceId = deviceId;
-    const topicTx = `ados/${deviceId}/mavlink/tx`;
+    const topicTx = `arcos/${deviceId}/mavlink/tx`;
 
     return new Promise<void>(async (resolve, reject) => {
       let resolved = false;
@@ -175,7 +175,7 @@ export class MqttMavlinkTransport implements Transport {
     // socket) instead of dropping it silently, so the command layer can
     // fail fast rather than only timing out.
     this.client.publish(
-      `ados/${this.deviceId}/mavlink/rx`,
+      `arcos/${this.deviceId}/mavlink/rx`,
       Buffer.from(data),
       { qos: 0 },
       (err: Error | null | undefined) => {

@@ -10,14 +10,14 @@
 import { Usb, X, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Select } from "@/components/ui/select";
-import type { AdosAgentWebFlashInstall } from "@/lib/protocol/firmware/ados-agent-manifest";
+import type { ArcOsAgentWebFlashInstall } from "@/lib/protocol/firmware/arcos-agent-manifest";
 import type { FlashProgress } from "@/lib/protocol/firmware/types";
 import type { UsbDeviceInfo } from "@/lib/usb-device-manager";
 import { FirmwareFlashProgress } from "../FirmwareFlashProgress";
 import { RockchipConnectionPanel } from "./RockchipConnectionPanel";
 
 export interface WebFlashCardProps {
-  webFlashInstall: AdosAgentWebFlashInstall;
+  webFlashInstall: ArcOsAgentWebFlashInstall;
   devices: UsbDeviceInfo[];
   usbSupported: boolean;
   isFlashing: boolean;
@@ -51,7 +51,7 @@ export function WebFlashCard({
   onConfirmFlash,
   onAbort,
 }: WebFlashCardProps) {
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
 
   const flashDisabled =
     isFlashing ||

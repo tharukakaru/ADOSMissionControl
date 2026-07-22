@@ -1,7 +1,7 @@
 /**
- * H.264 SEI parser for ADOS air-side latency timestamps.
+ * H.264 SEI parser for ARCOS air-side latency timestamps.
  *
- * Mirror of `ADOSDroneAgent/src/ados/services/video/sei_injector.py`
+ * Mirror of `ARCOSDroneAgent/src/arcos/services/video/sei_injector.py`
  * (build_sei_nal) and `local_tap.py` (parse_sei_latency_ns). The
  * injector wedges a SEI NAL unit before every VCL slice carrying a
  * 16-byte UUID + 8-byte big-endian nanosecond timestamp. The receiver
@@ -12,7 +12,7 @@
  *     00 00 00 01      Annex-B start code (4-byte form)
  *     06               NAL header byte (forbidden_zero=0, nal_ref_idc=0, nal_unit_type=6 SEI)
  *     05 18            SEI message: payload type 5 (user_data_unreg), payload size 24
- *     <UUID 16 bytes>  ADOS_SEI_UUID
+ *     <UUID 16 bytes>  ARCOS_SEI_UUID
  *     <ns  8 bytes BE> time.time_ns() snapshot at frame encode time
  *     80               rbsp_trailing_bits (stop bit)
  *
@@ -21,8 +21,8 @@
  * on the wire; the parser strips those before decoding the payload.
  */
 
-// Byte-for-byte mirror of ADOS_LATENCY_SEI_UUID in sei_injector.py.
-const ADOS_SEI_UUID = new Uint8Array([
+// Byte-for-byte mirror of ARCOS_LATENCY_SEI_UUID in sei_injector.py.
+const ARCOS_SEI_UUID = new Uint8Array([
   0xad, 0x05, 0x14, 0x0e, 0x9c, 0x2c, 0x4f, 0x6e,
   0x8a, 0x31, 0xf0, 0xe5, 0xb7, 0xd4, 0xc8, 0xa2,
 ]);
@@ -98,10 +98,10 @@ function stripEmulationPrevention(ebsp: Uint8Array): Uint8Array {
  *   - payload_size: same encoding
  *   - payload: payload_size bytes
  *
- * Returns the first ADOS-UUID payload's nanosecond timestamp, or null
+ * Returns the first ARCOS-UUID payload's nanosecond timestamp, or null
  * when none is present.
  */
-function findAdosTimestampInRbsp(rbsp: Uint8Array): bigint | null {
+function findArcOsTimestampInRbsp(rbsp: Uint8Array): bigint | null {
   const n = rbsp.length;
   let i = 0;
   while (i < n) {
@@ -136,7 +136,7 @@ function findAdosTimestampInRbsp(rbsp: Uint8Array): bigint | null {
     ) {
       let uuidMatches = true;
       for (let j = 0; j < 16; j += 1) {
-        if (rbsp[i + j] !== ADOS_SEI_UUID[j]) {
+        if (rbsp[i + j] !== ARCOS_SEI_UUID[j]) {
           uuidMatches = false;
           break;
         }
@@ -156,14 +156,14 @@ function findAdosTimestampInRbsp(rbsp: Uint8Array): bigint | null {
 }
 
 /**
- * Extract the ADOS latency timestamp from an Annex-B H.264 buffer.
+ * Extract the ARCOS latency timestamp from an Annex-B H.264 buffer.
  * Returns the nanosecond timestamp embedded by the drone-side SEI
  * injector, or null when the buffer contains no matching SEI NAL.
  *
  * Pure function — no DOM, no worker globals. Safe to use from main
  * thread, web worker, or unit test.
  */
-export function findAdosSeiTimestampNs(
+export function findArcOsSeiTimestampNs(
   annexB: Uint8Array,
 ): bigint | null {
   let cursor = 0;
@@ -182,7 +182,7 @@ export function findAdosSeiTimestampNs(
     if (nalType === NAL_TYPE_SEI) {
       const ebsp = annexB.subarray(nalStart + 1, nalEnd);
       const rbsp = stripEmulationPrevention(ebsp);
-      const ts = findAdosTimestampInRbsp(rbsp);
+      const ts = findArcOsTimestampInRbsp(rbsp);
       if (ts !== null) return ts;
     }
 
@@ -196,9 +196,9 @@ export function findAdosSeiTimestampNs(
  * SEI NAL carrying the given timestamp. Mirror of the Python
  * `build_sei_nal` so the parser can be tested without a live encoder.
  */
-export function buildAdosSeiNalForTest(timestampNs: bigint): Uint8Array {
+export function buildArcOsSeiNalForTest(timestampNs: bigint): Uint8Array {
   const payload = new Uint8Array(24);
-  payload.set(ADOS_SEI_UUID, 0);
+  payload.set(ARCOS_SEI_UUID, 0);
   for (let j = 0; j < 8; j += 1) {
     payload[16 + j] = Number(
       (timestampNs >> BigInt(56 - j * 8)) & BigInt(0xff),
@@ -238,4 +238,4 @@ export function buildAdosSeiNalForTest(timestampNs: bigint): Uint8Array {
   return out;
 }
 
-export const ADOS_SEI_UUID_BYTES = ADOS_SEI_UUID;
+export const ARCOS_SEI_UUID_BYTES = ARCOS_SEI_UUID;

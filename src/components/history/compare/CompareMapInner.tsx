@@ -17,25 +17,25 @@ import type { FlightRecord } from "@/lib/types";
 
 const ICONS = {
   takeoffA: L.divIcon({
-    className: "ados-history-marker",
+    className: "arcos-history-marker",
     html: `<div style="background:#3a82ff;width:12px;height:12px;border-radius:50%;border:2px solid #0a0a0f"></div>`,
     iconSize: [12, 12],
     iconAnchor: [6, 6],
   }),
   landingA: L.divIcon({
-    className: "ados-history-marker",
+    className: "arcos-history-marker",
     html: `<div style="background:#3a82ff;width:12px;height:12px;border:2px solid #0a0a0f"></div>`,
     iconSize: [12, 12],
     iconAnchor: [6, 6],
   }),
   takeoffB: L.divIcon({
-    className: "ados-history-marker",
+    className: "arcos-history-marker",
     html: `<div style="background:#dff140;width:12px;height:12px;border-radius:50%;border:2px solid #0a0a0f"></div>`,
     iconSize: [12, 12],
     iconAnchor: [6, 6],
   }),
   landingB: L.divIcon({
-    className: "ados-history-marker",
+    className: "arcos-history-marker",
     html: `<div style="background:#dff140;width:12px;height:12px;border:2px solid #0a0a0f"></div>`,
     iconSize: [12, 12],
     iconAnchor: [6, 6],

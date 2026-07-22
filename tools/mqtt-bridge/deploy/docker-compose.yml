@@ -13,7 +13,7 @@ services:
       - mosquitto-log:/mosquitto/log
     # First-time deploy: see README.md for how to generate the passwd file.
     # OSS quick start:
-    #   docker exec -it mosquitto mosquitto_passwd -c /mosquitto/config/passwd ados
+    #   docker exec -it mosquitto mosquitto_passwd -c /mosquitto/config/passwd arcos
     #   docker exec -it mosquitto mosquitto_passwd /mosquitto/config/passwd <device_id>
 
   bridge:

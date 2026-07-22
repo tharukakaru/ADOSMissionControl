@@ -2,7 +2,7 @@
 
 /**
  * @module pair/page
- * @description Deep-link entry for pairing a new ADOS Drone Agent.
+ * @description Deep-link entry for pairing a new ARCOS Drone Agent.
  * The agent's setup wizard generates a 6-character code and links the
  * operator here. The page reads the code from `?code=`, opens the
  * pairing dialog, and lets the existing `claimPairingCode` mutation
@@ -16,7 +16,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { PairingDialog } from "@/components/command/PairingDialog";
 
-const STORAGE_KEY = "ados.pair.deep_link";
+const STORAGE_KEY = "arcos.pair.deep_link";
 
 interface StoredDeepLink {
   code: string;

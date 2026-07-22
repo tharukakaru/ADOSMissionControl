@@ -64,7 +64,7 @@ export async function probeByCode(
     );
   }
 
-  // 1) LAN-first (the primary path): discover ADOS agents on the local subnet
+  // 1) LAN-first (the primary path): discover ARCOS agents on the local subnet
   //    via mDNS and pick the one whose published code matches. Local-only, no
   //    Convex round-trip, works when the agent's cloud beacon is disabled (the
   //    default since agent 0.26.5) and when the GCS has no relay at all.
@@ -117,7 +117,7 @@ export async function probeByCode(
   // than at cloud relay, which is the secondary path for remote access only.
   throw new PairClientError(
     "codeNoLanMatchError",
-    `No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and \`ados status\` on the agent shows this code, or add the agent by its hostname or IP instead.${hint}`,
+    `No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and \`arcos status\` on the agent shows this code, or add the agent by its hostname or IP instead.${hint}`,
     { hint },
   );
 }

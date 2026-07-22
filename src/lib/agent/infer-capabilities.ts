@@ -255,7 +255,7 @@ export function inferCapabilities(
     }));
 
   // Infer attached display (SPI LCD) from peripherals. The agent
-  // pushes one peripheral with category="display" per /etc/ados/display.conf
+  // pushes one peripheral with category="display" per /etc/arcos/display.conf
   // entry; phase-1 only ships SPI LCDs but the type field stays open
   // so a future HDMI / DPI panel reuses the same surface.
   // Live-state fields (touchCalibrated, activePage, lastTouchAt,
@@ -263,7 +263,7 @@ export function inferCapabilities(
   // so they refresh every tick. Rotation can come from either source;
   // the heartbeat wins because it's authoritative for the current
   // running state (peripheral.extra.rotation reflects only what
-  // /etc/ados/display.conf had at boot).
+  // /etc/arcos/display.conf had at boot).
   const extras = heartbeatExtras ?? {};
   const heartbeatGestureRaw =
     typeof extras.lcdLastGesture === "string"

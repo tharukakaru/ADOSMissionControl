@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to ADOS Mission Control are recorded here.
+All notable changes to ARCOS Mission Control are recorded here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
 the project follows [Semantic Versioning](https://semver.org/).
 
@@ -190,7 +190,7 @@ the project follows [Semantic Versioning](https://semver.org/).
 ### Added
 
 - LAN-first code pair. Entering a 6-character pair code now scans the
-  local network over mDNS (`_ados._tcp.local.`), probes each candidate
+  local network over mDNS (`_arcos._tcp.local.`), probes each candidate
   for its current pair code, and claims the match directly. No cloud
   relay round-trip needed when the agent is on the same LAN, so code
   pair works against a fresh-installed agent even when its outbound
@@ -198,7 +198,7 @@ the project follows [Semantic Versioning](https://semver.org/).
   remains as a cross-network fallback for cases where the agent has
   beaconing enabled and the GCS is off-LAN.
 - New `/api/lan-pair/discover` route, Node-side mDNS browser via
-  `bonjour-service`. Returns the LAN-visible ADOS agents with mDNS
+  `bonjour-service`. Returns the LAN-visible ARCOS agents with mDNS
   host, IPv4, and port within a 3-second discovery window. Same
   private-host whitelist as the existing probe route.
 
@@ -249,7 +249,7 @@ the project follows [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Command sidebar terminology renamed from "drone" to "node". An ADOS
+- Command sidebar terminology renamed from "drone" to "node". An ARCOS
   agent can run as a drone agent, ground agent, compute agent, relay
   agent, or receiver agent — the umbrella term in the UI is now "node".
   Each row shows the specific agent type as a subtitle, derived from
@@ -275,7 +275,7 @@ the project follows [Semantic Versioning](https://semver.org/).
   than an operator. Three values trigger the pill: `detected` (clean
   fingerprint match), `tiebreaker` (auto with ambiguous signals), and
   `default` (no detect signals, fell back). Profiles set by an operator
-  in the setup webapp or forced via `/etc/ados/board_override` render
+  in the setup webapp or forced via `/etc/arcos/board_override` render
   no pill, matching the prior layout for legacy heartbeats.
 - Cloud heartbeat schema accepts two new optional fields, `setupState`
   and `profileSource`, so the universal setup contract on the agent
@@ -324,16 +324,16 @@ host foundation, fleet overview, and the Hardware tab.
 
 ### Added
 
-- **ADOS agent stack support in the firmware tab.** Flash the agent
+- **ARCOS agent stack support in the firmware tab.** Flash the agent
   software stack alongside flight-controller firmware, with a Rockchip
-  bootrom flasher for ADOS-class companion computers. The agent manifest
+  bootrom flasher for ARCOS-class companion computers. The agent manifest
   is signed with minisign and verified at install time; an offline catalog
   UI lets operators pick a build without a live network connection. Schema
   versioning on the manifest keeps older clients compatible.
 - **Fleet overview** with live video and telemetry on the Command page.
   Multiple drones at a glance, with each card pulling its own status,
   battery, GPS fix, runtime mode, and live preview.
-- **Plugin host foundation** for ADOS plugins. Settings page exposes a
+- **Plugin host foundation** for ARCOS plugins. Settings page exposes a
   Plugins tab with an installed-plugins list and a registry browser. The
   slot orchestrator mounts each plugin contribution into a sandboxed
   iframe gated on a `ui.slot.*` capability. Two-stage install dialog
@@ -419,9 +419,9 @@ does not ship.
 
 ### Notes
 - The lite Rust agent codebase lives at `agents/lite-rs/` in the
-  ADOSDroneAgent repository. CI publishes prebuilt signed binaries
+  ARCOSDroneAgent repository. CI publishes prebuilt signed binaries
   to GitHub Releases. Operators install the lite backend with
-  `ADOS_PROFILE=lite-rs` set as an environment variable on the
+  `ARCOS_PROFILE=lite-rs` set as an environment variable on the
   install.sh invocation.
 
 ## [0.9.11] - 2026-05-04
@@ -501,7 +501,7 @@ a security + reliability sweep on the cloud-relay surface.
 
 ### Notes
 
-- Pairs with ADOS Drone Agent v0.10.0 (universal setup contract).
+- Pairs with ARCOS Drone Agent v0.10.0 (universal setup contract).
 - Mission Control still consumes `lastIp + port` as a fallback so
   older agents continue to work without re-pairing.
 - Convex schema is in sync with the website's `convex/schema.ts`

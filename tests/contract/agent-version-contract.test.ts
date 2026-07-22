@@ -7,7 +7,7 @@ import type { AgentVersionInfo } from "@/lib/agent/types";
  * Cross-repo contract test for /api/version capability negotiation.
  *
  * The agent has the mirror test at:
- *   ADOSDroneAgent/tests/test_api_version.py
+ *   ARCOSDroneAgent/tests/test_api_version.py
  *
  * Both AGENT_CAPABILITIES_FROZEN tuples below must stay in lockstep.
  * When you add or remove a flag from CAPABILITIES in the agent's

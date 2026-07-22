@@ -69,7 +69,7 @@ export function MqttBridge({
         }
 
         // Pass viewer credentials when the broker requires auth. The
-        // broker's ACL grants this user read-only access on `ados/+/#`;
+        // broker's ACL grants this user read-only access on `arcos/+/#`;
         // it cannot publish. When the credentials are absent (bench
         // broker / OSS self-host with anonymous mode), connect without
         // username so the legacy anonymous path keeps working.
@@ -112,13 +112,13 @@ export function MqttBridge({
               );
             }
           };
-          c.subscribe(`ados/${cloudDeviceId}/status`, onSubErr);
+          c.subscribe(`arcos/${cloudDeviceId}/status`, onSubErr);
           // Skip telemetry for paired drones — the fleet-wide bridge owns it.
           if (!selectedIsPaired) {
-            c.subscribe(`ados/${cloudDeviceId}/telemetry`, onSubErr);
+            c.subscribe(`arcos/${cloudDeviceId}/telemetry`, onSubErr);
           }
           c.subscribe(
-            `ados/${cloudDeviceId}/plugin/update_available`,
+            `arcos/${cloudDeviceId}/plugin/update_available`,
             onSubErr,
           );
         });

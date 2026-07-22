@@ -46,7 +46,7 @@ const FORMAT_LABELS: Record<DetectedFormat, string> = {
   bin: "ArduPilot (.bin)",
   ulg: "PX4 ULog (.ulg)",
   tlog: "MAVLink (.tlog)",
-  json: "ADOS JSON",
+  json: "ARCOS JSON",
   unknown: "Unknown",
 };
 
@@ -183,7 +183,7 @@ export function ImportLogModal({ open, onClose }: ImportLogModalProps) {
                 <Upload size={24} className="mx-auto text-text-tertiary mb-2" />
                 <p className="text-xs text-text-secondary">Drop log files here, or click to browse</p>
                 <p className="text-[10px] text-text-tertiary mt-1">
-                  ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ADOS .json
+                  ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ARCOS .json
                 </p>
               </div>
 

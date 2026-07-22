@@ -414,7 +414,7 @@ async function main(): Promise<void> {
 
   // Print connection info block
   log('');
-  log('=== ADOS SITL Ready ===');
+  log('=== ARCOS SITL Ready ===');
   log('');
   log('MAVLink connections:');
   for (const inst of instances) {

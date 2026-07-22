@@ -2,7 +2,7 @@
 
 /**
  * @module command/blackbox/HistoryChart
- * @description A single time-aligned metric chart for the ADOS Black Box
+ * @description A single time-aligned metric chart for the ARCOS Black Box
  * review pane. Renders a durable aggregate series (from the on-device
  * store) as a filled area, X-axis bucketed by time.
  * @license GPL-3.0-only

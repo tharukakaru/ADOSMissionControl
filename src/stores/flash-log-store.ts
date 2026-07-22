@@ -153,7 +153,7 @@ export const useFlashLogStore = create<FlashLogState>((set, get) => ({
 
   buildLogText: () => {
     const { entries, meta } = get();
-    const lines: string[] = ["# ADOS Mission Control — Flash Log"];
+    const lines: string[] = ["# ARCOS Mission Control — Flash Log"];
     if (meta) {
       lines.push(`# app: ${meta.appVersion}`);
       lines.push(`# ua: ${meta.userAgent}`);

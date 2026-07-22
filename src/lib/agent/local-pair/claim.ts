@@ -55,7 +55,7 @@ export async function pairLocally(
   return {
     apiKey: String(body.api_key ?? ""),
     deviceId: String(body.device_id ?? ""),
-    name: String(body.name ?? "ADOS Agent"),
+    name: String(body.name ?? "ARCOS Agent"),
     mdnsHost: String(body.mdns_host ?? ""),
     hostname: host,
   };

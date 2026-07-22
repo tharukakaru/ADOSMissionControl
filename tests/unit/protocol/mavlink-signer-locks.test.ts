@@ -68,7 +68,7 @@ describe("MavlinkSigner Web Locks", () => {
     await signer.sign(new Uint8Array(16));
 
     expect(mockLocks.request).toHaveBeenCalledTimes(1);
-    expect(mockLocks.request.mock.calls[0][0]).toBe("ados-signing:drone-a:7");
+    expect(mockLocks.request.mock.calls[0][0]).toBe("arcos-signing:drone-a:7");
     expect(mockLocks.request.mock.calls[0][1]).toMatchObject({ mode: "exclusive" });
   });
 

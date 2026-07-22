@@ -17,7 +17,7 @@
     },
     "intro": {
       "tagline": "Control terrestre para drones definidos por software.",
-      "description": "Configura, planifica misiones y vuela cualquier dron ArduPilot, PX4 o Betaflight. Combina con ADOS Drone Agent para ejecutar inteligencia en el borde. Código abierto. Funciona en tu navegador.",
+      "description": "Configura, planifica misiones y vuela cualquier dron ArduPilot, PX4 o Betaflight. Combina con ARCOS Drone Agent para ejecutar inteligencia en el borde. Código abierto. Funciona en tu navegador.",
       "openBeta": "Beta abierta",
       "freeForever": "Gratis para siempre",
       "openSource": "GPL-3.0 Open Source",
@@ -27,7 +27,7 @@
     },
     "disclaimer": {
       "title": "Antes de volar",
-      "subtitle": "ADOS Mission Control puede controlar aeronaves reales. Lee y acepta lo siguiente.",
+      "subtitle": "ARCOS Mission Control puede controlar aeronaves reales. Lee y acepta lo siguiente.",
       "lawfulUse": {
         "heading": "Solo uso legal",
         "body": "Aceptas usar este software solo con fines legales. No lo usarás para realizar vigilancia, acosar a personas, violar la privacidad ni apoyar actividades prohibidas por la ley en tu país o región."
@@ -52,11 +52,11 @@
       "noWarranty": {
         "heading": "Sin garantía y asunción de riesgos",
         "warranty": "Este software se proporciona \"tal cual\", sin garantía de ningún tipo, expresa ni implícita. Esto incluye, entre otras, garantías de comerciabilidad, idoneidad para un propósito particular y no infracción.",
-        "risk": "Los drones son máquinas físicas que pueden causar daños materiales, lesiones o muerte si se operan incorrectamente o si el software falla. Al usar este software, asumes todos los riesgos asociados a su uso. Altnautica y sus colaboradores no serán responsables de ninguna reclamación, daño o pérdida derivada del uso de este software, ya sea directa, indirecta, incidental o consecuente."
+        "risk": "Los drones son máquinas físicas que pueden causar daños materiales, lesiones o muerte si se operan incorrectamente o si el software falla. Al usar este software, asumes todos los riesgos asociarcos a su uso. Altnautica y sus colaboradores no serán responsables de ninguna reclamación, daño o pérdida derivada del uso de este software, ya sea directa, indirecta, incidental o consecuente."
       },
       "openSource": {
         "heading": "Licencia de código abierto",
-        "body": "ADOS Mission Control está licenciado bajo la GNU General Public License v3.0. Eres libre de usar, modificar y distribuir este software según los términos de esa licencia.",
+        "body": "ARCOS Mission Control está licenciado bajo la GNU General Public License v3.0. Eres libre de usar, modificar y distribuir este software según los términos de esa licencia.",
         "link": "Leer la licencia GPL-3.0 completa"
       },
       "acceptCheckbox": "He leído y acepto los términos anteriores. Entiendo que soy el piloto al mando y asumo toda la responsabilidad de una operación segura y legal.",
@@ -70,7 +70,7 @@
       "metric": "Métrico (m, km/h, °C)",
       "imperial": "Imperial (ft, mph, °F)",
       "demoMode": "Modo demo",
-      "demoModeDescription": "Prueba la interfaz con 5 drones simulados. Desactívalo cuando conectes hardware real.",
+      "demoModeDescription": "Prueba la interfaz con 5 drones simularcos. Desactívalo cuando conectes hardware real.",
       "audioAlerts": "Alertas de audio",
       "audioAlertsDescription": "Alertas sonoras de batería, pérdida de GPS y fallos de seguridad.",
       "yourPosition": "Mostrar mi posición en el mapa",
@@ -87,7 +87,7 @@
       "docsDescription": "Guides, API reference, and tutorials to get your drone flying.",
       "browseDocs": "Browse docs",
       "communityHeading": "Built in the open",
-      "communityDescription": "ADOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
+      "communityDescription": "ARCOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
       "discordHeading": "Talk to us",
       "discordDescription": "Ask questions, share your setup, report bugs, or just hang out with other pilots and developers.",
       "githubHeading": "Help the project grow",
@@ -295,7 +295,7 @@
     "type": "Tipo",
     "filters": "Filtros",
     "allTypes": "Todos los tipos",
-    "allStatuses": "Todos los estados",
+    "allStatuses": "Todos los estarcos",
     "feature": "Función",
     "fix": "Corrección",
     "improvement": "Mejora",
@@ -310,7 +310,7 @@
     "badges": {
       "categories": {
         "command": "Comando",
-        "ados": "ADOS",
+        "arcos": "ARCOS",
         "website": "Sitio web",
         "general": "General"
       },
@@ -489,7 +489,7 @@
   },
   "inputDevices": {
     "title": "Dispositivos de entrada",
-    "detectedControllers": "Controles detectados",
+    "detectedControllers": "Controles detectarcos",
     "keyboard": "Teclado",
     "gamepadConnected": "Gamepad conectado",
     "rcTransmitter": "Transmisor RC",
@@ -603,7 +603,7 @@
   },
   "emptyState": {
     "title": "Ningún dron conectado",
-    "description": "Conecta un controlador de vuelo por USB o red para comenzar con ADOS Mission Control.",
+    "description": "Conecta un controlador de vuelo por USB o red para comenzar con ARCOS Mission Control.",
     "connectDrone": "Conectar dron",
     "commandPaletteHint": "para abrir paleta de comandos"
   },
@@ -618,8 +618,8 @@
     "connecting": "Conectando...",
     "connect": "Conectar",
     "requestPort": "Solicitar puerto",
-    "savedPresets": "Presets guardados",
-    "noPresets": "Sin presets guardados. Conecta y guarda un preset para acceso rápido.",
+    "savedPresets": "Presets guardarcos",
+    "noPresets": "Sin presets guardarcos. Conecta y guarda un preset para acceso rápido.",
     "recentConnections": "Conexiones recientes",
     "reconnect": "Reconectar",
     "clear": "Borrar",
@@ -638,7 +638,7 @@
     "fcStackTitle": "Flight Controller",
     "fcStackDesc": "Direct MAVLink — USB, WebSocket, Bluetooth",
     "agentStackTitle": "Companion Computer",
-    "agentStackDesc": "ADOS Agent — software-defined",
+    "agentStackDesc": "ARCOS Agent — software-defined",
     "agentStackBadge": "Full features"
   },
   "droneDetail": {
@@ -828,7 +828,7 @@
     "subtitle": "Extensions installed on this drone. Each plugin runs sandboxed and only does what its granted permissions allow.",
     "installOnThisDrone": "Install plugin on this drone",
     "emptyStateTitle": "No plugins installed on this drone yet.",
-    "emptyStateBody": "Plugins extend ADOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
+    "emptyStateBody": "Plugins extend ARCOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
     "loading": "Loading...",
     "droneNotFound": "Drone \"{id}\" not found.",
     "notConnectedTitle": "Connect to a drone to manage its plugins.",
@@ -866,7 +866,7 @@
     },
     "installFromFile": "Install from file",
     "installedSectionTitle": "Installed on this drone",
-    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .adosplug file."
+    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .arcosplug file."
   },
   "droneRadio": {
     "airSideBadge": "Air side",
@@ -894,7 +894,7 @@
     "directConnection": "Conexión directa",
     "enterPairingCode": "Enter pairing code from your node agent",
     "pairingCode": "Código de emparejamiento",
-    "pairingInstructions": "Run 'ados pair' on your node to get a pairing code",
+    "pairingInstructions": "Run 'arcos pair' on your node to get a pairing code",
     "paired": "Emparejado",
     "lastSeen": "Visto por última vez",
     "neverConnected": "Nunca conectado",
@@ -938,7 +938,7 @@
     "pairedCount": "{count} paired",
     "addNode": {
       "title": "Añadir un nodo",
-      "subtitle": "Empareja cualquier nodo ADOS (dron, estación terrestre o futura unidad de cómputo) directamente a través de tu red local.",
+      "subtitle": "Empareja cualquier nodo ARCOS (dron, estación terrestre o futura unidad de cómputo) directamente a través de tu red local.",
       "pairOnLan": "Empareja un nodo en tu LAN",
       "noAccountRequired": "No se requiere cuenta. Funciona totalmente sin conexión.",
       "hostnamePlaceholder": "skynode.local  o  http://192.168.1.42:8080",
@@ -978,17 +978,17 @@
       "unpairFailedStatusError": "Error al desemparejar: {status} {statusText}",
       "firstPairWarning": {
         "title": "Sus claves de API se guardan en este navegador",
-        "body": "Borrar el almacenamiento del navegador desvinculará todos los nodos emparejados localmente. Para recuperarlos, desvincule desde la aplicación web de configuración del agente en http://your-agent.local:8080/setup.html y vuelva a emparejar desde aquí.",
+        "body": "Borrar el almacenamiento del navegador desvinculará todos los nodos emparejarcos localmente. Para recuperarlos, desvincule desde la aplicación web de configuración del agente en http://your-agent.local:8080/setup.html y vuelva a emparejar desde aquí.",
         "dismiss": "Entendido"
       },
       "addNodeTitle": "Add a drone or ground station",
       "addNodeSubtitle": "No account required. Works fully offline.",
       "addNodePlaceholder": "skynode.local  or  9TW85C",
-      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `ados status`? Type that.",
+      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `arcos status`? Type that.",
       "codeTryHostnameTip": "Tip: if the agent is on your network, enter its hostname or IP instead (for example my-drone.local).",
       "pairButton": "Pair",
       "codeNoHostError": "Pair code is valid but the agent hasn't advertised a network address yet. Wait a few seconds and try again.",
-      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `ados status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
+      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `arcos status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
       "badCodeError": "Pair code must be six characters (letters and digits).",
       "signInBody": "Cloud relay routes your drone's telemetry and video through Convex over HTTPS, so Mission Control reaches the agent even when your phone or laptop is on a different network. Optional, never blocking — LAN-direct pairing works without it.",
       "signInButton": "Sign in",
@@ -1052,7 +1052,7 @@
       },
       "enterCodeTitle": "Pair with a code from your drone",
       "enterCodeSubtitle": "Works over HTTPS. No LAN access required.",
-      "enterCodeHint": "Run `ados status` on your drone to see its current code, or copy it from the install banner.",
+      "enterCodeHint": "Run `arcos status` on your drone to see its current code, or copy it from the install banner.",
       "pair": "Pair",
       "pairing": "Pairing"
     },
@@ -1114,7 +1114,7 @@
     "fcDisconnected": "FC desconectado",
     "arch": "Arch",
     "board": "Board",
-    "noServicesReported": "Sin servicios reportados",
+    "noServicesReported": "Sin servicios reportarcos",
     "refreshLogs": "Refrescar logs",
     "restartService": "Reiniciar {name}",
     "serviceAction": "Acción",
@@ -1149,13 +1149,13 @@
     "brokerStatus": "Estado del broker",
     "meshRadio": "Radio mesh",
     "meshStatus": "Estado del mesh",
-    "connectedPeers": "Pares conectados",
+    "connectedPeers": "Pares conectarcos",
     "noPeers": "No se detectaron pares",
     "signalStrength": "Intensidad de señal",
     "latency": "Latencia",
     "packetsLost": "Paquetes perdidos",
     "networkTopology": "Topología de red",
-    "adosPeers": "ADOS Peers",
+    "arcosPeers": "ARCOS Peers",
     "battery": "Batería",
     "broker": "Broker",
     "connected": "Conectado",
@@ -1194,7 +1194,7 @@
     "all": "Todos",
     "availableModules": "Módulos disponibles ({count})",
     "featuredSuites": "Suites destacadas",
-    "installedModules": "Módulos instalados ({count})",
+    "installedModules": "Módulos instalarcos ({count})",
     "modules": "Módulos",
     "searchPlaceholder": "Buscar suites y módulos...",
     "suites": "Suites"
@@ -1402,14 +1402,14 @@
     "default": "Predeterminado",
     "chooseFormat": "Elegir formato",
     "batchEditHint": "Editar múltiples waypoints a la vez",
-    "waypointsSelected": "{count} waypoints seleccionados",
+    "waypointsSelected": "{count} waypoints seleccionarcos",
     "clear": "Limpiar",
     "altitudeM": "Altitud (m)",
     "set": "Establecer",
     "commandPlaceholder": "Seleccionar comando...",
     "deleteWaypoints": "Eliminar {count} waypoints",
     "deleteWaypointsTitle": "Eliminar waypoints",
-    "deleteWaypointsConfirm": "¿Eliminar {count} waypoints seleccionados? No se puede deshacer.",
+    "deleteWaypointsConfirm": "¿Eliminar {count} waypoints seleccionarcos? No se puede deshacer.",
     "delete": "Eliminar",
     "importFromFile": "Importar desde archivo",
     "recentMissions": "Misiones recientes",
@@ -1554,7 +1554,7 @@
     "totalDistance": "Distancia total",
     "maxAltitude": "Altitud máx.",
     "avgSpeed": "Velocidad promedio",
-    "waypointsVisited": "Waypoints visitados",
+    "waypointsVisited": "Waypoints visitarcos",
     "saveToHistory": "Guardar en historial",
     "missionHasErrors": "Mission has {count, plural, one {# error} other {# errors}}",
     "missionHasWarnings": "Mission has {count, plural, one {# warning} other {# warnings}}",
@@ -1628,7 +1628,7 @@
     "viewDetails": "Ver detalles",
     "page": "Página {current} de {total}",
     "showing": "Mostrando {from}-{to} de {total}",
-    "allStatuses": "Todos los estados",
+    "allStatuses": "Todos los estarcos",
     "emergency": "Emergencia",
     "newestFirst": "Más reciente primero",
     "oldestFirst": "Más antiguo primero",
@@ -1648,7 +1648,7 @@
     "prev": "Anterior",
     "next": "Siguiente",
     "emptyTitle": "Aún no se han registrado vuelos",
-    "emptySubtitle": "Conecte un dron y arme para iniciar su primera grabación. Los registros importados y las grabaciones en vivo aparecerán aquí.",
+    "emptySubtitle": "Conecte un dron y arme para iniciar su primera grabación. Los registros importarcos y las grabaciones en vivo aparecerán aquí.",
     "search": "Buscar",
     "searchPlaceholder": "Buscar nombre, dron, notas, etiquetas…",
     "datePresetLabel": "Rango",
@@ -1659,7 +1659,7 @@
     "presetMonth": "Este mes",
     "favoritesOnly": "Favoritos",
     "reset": "Restablecer",
-    "selected": "{count} seleccionados",
+    "selected": "{count} seleccionarcos",
     "selectAll": "Seleccionar todo",
     "favorite": "Favorito",
     "unfavorite": "Quitar favorito",
@@ -1680,7 +1680,7 @@
     "importBin": "Importar .bin",
     "logBrowserTitle": "Registros dataflash a bordo",
     "logBrowserNoDrone": "Conecte un controlador de vuelo real para explorar los registros a bordo.",
-    "logBrowserArmedRefuse": "Desarme el vehículo antes de descargar registros; descargar con motores armados puede corromper el búfer.",
+    "logBrowserArmedRefuse": "Desarme el vehículo antes de descargar registros; descargar con motores armarcos puede corromper el búfer.",
     "logBrowserMockNotice": "Protocolo simulado activo. Conecte hardware real para importar registros dataflash.",
     "logBrowserNoLogs": "No hay registros en el controlador de vuelo.",
     "logBrowserDownloading": "Descargando {received} / {total} bytes…",
@@ -1750,7 +1750,7 @@
     "importLogs": "Importar registros",
     "importTitle": "Importar registros de vuelo",
     "importDrop": "Arrastre archivos de registro aquí, o haga clic para explorar",
-    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ADOS .json",
+    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ARCOS .json",
     "importComplete": "Importación completada.",
     "importImporting": "Importando…",
     "importUnknownFormat": "Formato desconocido",
@@ -1759,8 +1759,8 @@
     "mediaDrop": "Arrastre fotos o videos aquí, o haga clic para explorar",
     "mediaFormats": "JPEG, PNG, WebP, HEIC, MP4, MOV, WebM",
     "mediaNoMatch": "Sin coincidencias",
-    "mediaImported": "{count} archivos importados correctamente.",
-    "mediaNoMedia": "No hay medios vinculados a este vuelo. Use el botón Importar medios para agregar fotos o videos.",
+    "mediaImported": "{count} archivos importarcos correctamente.",
+    "mediaNoMedia": "No hay medios vincularcos a este vuelo. Use el botón Importar medios para agregar fotos o videos.",
     "chartsLoading": "Cargando tramas…",
     "chartsNoRecording": "No hay grabación de telemetría adjunta a este vuelo.",
     "chartsLoadError": "Error al cargar las tramas de telemetría.",
@@ -1770,7 +1770,7 @@
     "statisticsTitle": "Estadísticas",
     "statisticsNoData": "Sin datos de telemetría.",
     "correlationTitle": "Correlación",
-    "correlationNoOverlap": "Sin muestras superpuestas. Pruebe con campos registrados a tasas similares.",
+    "correlationNoOverlap": "Sin muestras superpuestas. Pruebe con campos registrarcos a tasas similares.",
     "spectrogramTitle": "Espectrograma de vibración",
     "spectrogramInsufficient": "Muestras de vibración insuficientes ({count}). Se necesitan ≥32 para el espectrograma.",
     "eventsNone": "Sin eventos para este vuelo.",
@@ -1812,7 +1812,7 @@
   "library": {
     "title": "PLANES DE VUELO",
     "search": "Buscar planes...",
-    "noPlans": "Sin planes guardados",
+    "noPlans": "Sin planes guardarcos",
     "newFolder": "Nueva carpeta",
     "newPlan": "Nuevo plan",
     "rename": "Renombrar",
@@ -1857,10 +1857,10 @@
     "saving": "Guardando...",
     "writeToFlash": "Escribir en flash",
     "writingFlash": "Escribiendo...",
-    "flashSuccess": "Parámetros guardados en flash",
+    "flashSuccess": "Parámetros guardarcos en flash",
     "unsavedChanges": "Tienes cambios sin guardar",
     "armedLockTitle": "Vehículo armado",
-    "armedLockMessage": "Los cambios de configuración están deshabilitados mientras el vehículo está armado. Desarma para hacer cambios.",
+    "armedLockMessage": "Los cambios de configuración están deshabilitarcos mientras el vehículo está armado. Desarma para hacer cambios.",
     "disconnectedTitle": "Controlador de vuelo desconectado",
     "disconnectedMessage": "Conecta un controlador de vuelo para acceder a los paneles de configuración.",
     "rebootRequired": "Se requiere reinicio para aplicar los cambios",
@@ -1914,7 +1914,7 @@
     "calibrating": "Calibrando",
     "compassCalibrationDesc": "Rota el vehículo lentamente en todas las orientaciones hasta completar.",
     "compassCalibrationTitle": "Calibración de Compass",
-    "compassOffsetsSaved": "Offsets de compass guardados",
+    "compassOffsetsSaved": "Offsets de compass guardarcos",
     "compassOrientationChanged": "Orientación del Compass cambiada",
     "compassOrientationChangedDesc": "La calibración detectó una orientación del compass diferente a la configurada. Verifica la orientación de montaje en los parámetros después del reinicio.",
     "compassTip1": "Aléjate al menos 3m de objetos metálicos, vehículos y edificios",
@@ -1938,23 +1938,23 @@
     "noResults": "Sin parámetros coincidentes",
     "totalParams": "{count} parámetros",
     "modifiedCount": "{count} modificado(s)",
-    "resetToDefault": "Restablecer valores predeterminados",
-    "compareDefaults": "Comparar con predeterminados",
+    "resetToDefault": "Restablecer valores predeterminarcos",
+    "compareDefaults": "Comparar con predeterminarcos",
     "exportParams": "Exportar parámetros",
     "importParams": "Importar parámetros",
-    "showModifiedOnly": "Mostrar solo modificados",
+    "showModifiedOnly": "Mostrar solo modificarcos",
     "all": "Todos",
     "categories": "Categorías",
     "compareTitle": "Comparación de parámetros",
     "downloadFailed": "Error al descargar parámetros",
     "downloadFromFc": "Descargar del FC",
     "noDroneConnected": "Ningún dron conectado",
-    "noParamsLoaded": "Sin parámetros cargados",
+    "noParamsLoaded": "Sin parámetros cargarcos",
     "rebootConfirmLabel": "Reiniciar FC",
-    "rebootMessage": "Algunos parámetros modificados requieren reiniciar el controlador de vuelo. ¿Reiniciar ahora?",
+    "rebootMessage": "Algunos parámetros modificarcos requieren reiniciar el controlador de vuelo. ¿Reiniciar ahora?",
     "rebootTitle": "Reinicio requerido",
     "resetConfirmLabel": "Restablecer todos los parámetros",
-    "resetMessage": "Esto restablecerá TODOS los parámetros a los valores predeterminados del firmware. Necesitarás recalibrar los sensores. El controlador de vuelo requerirá reinicio.",
+    "resetMessage": "Esto restablecerá TODOS los parámetros a los valores predeterminarcos del firmware. Necesitarás recalibrar los sensores. El controlador de vuelo requerirá reinicio.",
     "resetTitle": "Restablecer valores de fábrica"
   },
   "preArm": {
@@ -2202,7 +2202,7 @@
     "geofenceLoaded": "Geocerca cargada (si se requiere)",
     "weatherChecked": "Condiciones meteorológicas verificadas",
     "payloadSecure": "Carga útil asegurada (si aplica)",
-    "failsafeConfigured": "Ajustes de failsafe configurados",
+    "failsafeConfigured": "Ajustes de failsafe configurarcos",
     "notifyNearby": "Personas cercanas notificadas",
     "allComplete": "Todas las verificaciones completadas — listo para volar",
     "itemsRemaining": "{count} elemento(s) restante(s)",
@@ -2225,7 +2225,7 @@
   },
   "commandPalette": {
     "placeholder": "Escribe un comando...",
-    "noResults": "Sin resultados",
+    "noResults": "Sin resultarcos",
     "connectDrone": "Conectar dron",
     "disconnectDrone": "Desconectar dron",
     "armVehicle": "Armar vehículo",
@@ -2285,7 +2285,7 @@
     "droneCount": "{count} dron{count, plural, one {} other {es}}",
     "toolbar": {
       "status": {
-        "all": "Todos los estados",
+        "all": "Todos los estarcos",
         "online": "En línea",
         "inMission": "En misión",
         "idle": "Inactivo",
@@ -2379,7 +2379,7 @@
       "configure": "Configurar",
       "apn": "APN",
       "cap": "Límite de datos",
-      "dataUsed": "Datos usados",
+      "dataUsed": "Datos usarcos",
       "signalQuality": "Calidad de señal",
       "operator": "Operador",
       "notConnected": "No conectado"
@@ -2441,8 +2441,8 @@
       "pair": "Emparejar",
       "forget": "Olvidar",
       "scanning": "Escaneando...",
-      "scanResults": "Resultados del escaneo",
-      "pairedDevices": "Dispositivos Bluetooth emparejados",
+      "scanResults": "Resultarcos del escaneo",
+      "pairedDevices": "Dispositivos Bluetooth emparejarcos",
       "pairSuccess": "Emparejado",
       "pairFailed": "Error al emparejar",
       "noDevicesFound": "No se encontraron dispositivos.",
@@ -2489,16 +2489,16 @@
     "controllers": "Controles",
     "peripherals": {
       "title": "Periféricos",
-      "emptyState": "No hay periféricos registrados. Conecta un dispositivo compatible o instala un plugin de periférico.",
+      "emptyState": "No hay periféricos registrarcos. Conecta un dispositivo compatible o instala un plugin de periférico.",
       "name": "Nombre",
       "transport": "Transporte",
       "connected": "Conectado",
       "capabilities": "Capacidades"
     },
     "androidRc": {
-      "title": "Controlador RC Android ADOS",
+      "title": "Controlador RC Android ARCOS",
       "stubHeading": "Producto en desarrollo",
-      "stubBody": "El controlador de mano Android RC de ADOS está en desarrollo activo. Este panel se activará cuando se lance el producto.",
+      "stubBody": "El controlador de mano Android RC de ARCOS está en desarrollo activo. Este panel se activará cuando se lance el producto.",
       "stubBadge": "Roadmap"
     },
     "tabs": {
@@ -2660,7 +2660,7 @@
       "rowFecRecovered": "FEC recovered",
       "rowFecLost": "FEC lost",
       "noAgentTitle": "No ground station connected",
-      "noAgentBody": "Connect to an ADOS ground station agent to manage hardware, radios, and peripherals.",
+      "noAgentBody": "Connect to an ARCOS ground station agent to manage hardware, radios, and peripherals.",
       "openSetup": "Open setup",
       "connectGroundStation": "Connect ground station"
     },
@@ -3074,7 +3074,7 @@
     "slotDroppedToast": "{name} cannot render in {slot} (missing permission)",
     "browse": {
       "title": "Browse plugins",
-      "subtitle": "Discover signed extensions for the ADOS platform.",
+      "subtitle": "Discover signed extensions for the ARCOS platform.",
       "searchPlaceholder": "Search by name or description",
       "signedOnly": "Signed only",
       "verifiedOnly": "Verified publisher",
@@ -3182,7 +3182,7 @@
         "currentVersion": "Current version",
         "latestAvailable": "Latest available",
         "autoUpdateLabel": "Auto-update this plugin",
-        "autoUpdateHint": "Edit via the ados plugin auto-update CLI on the drone.",
+        "autoUpdateHint": "Edit via the arcos plugin auto-update CLI on the drone.",
         "pinnedVersionLabel": "Pin to version",
         "pinnedVersionAuto": "Auto (latest)",
         "lastChecked": "Last checked {time}",
@@ -3250,11 +3250,11 @@
     "link": "Link"
   },
   "flashTool": {
-    "ados": {
-      "subtitle": "Install the ADOS agent on a companion computer",
+    "arcos": {
+      "subtitle": "Install the ARCOS agent on a companion computer",
       "stack": {
-        "drone": "ADOS Drone Agent",
-        "ground": "ADOS Ground Agent"
+        "drone": "ARCOS Drone Agent",
+        "ground": "ARCOS Ground Agent"
       },
       "common": {
         "copy": "Copy",
@@ -3861,7 +3861,7 @@
         "transferId": "ID de transferencia",
         "throughput": "Rendimiento",
         "retries": "Reintentos",
-        "timeouts": "Tiempos agotados",
+        "timeouts": "Tiempos agotarcos",
         "crcMismatches": "Discrepancias de CRC",
         "empty": "No hay transferencia en curso"
       },
@@ -4014,7 +4014,7 @@
       "rebootSent": "Comando de reinicio enviado, FC reconectando"
     },
     "nodeBrowser": {
-      "title": "Nodos DroneCAN detectados",
+      "title": "Nodos DroneCAN detectarcos",
       "autoRefresh": "Auto-actualizar",
       "anonymousDiscovery": "Descubrimiento anónimo",
       "rescan": "Re-escanear",
@@ -4122,7 +4122,7 @@
         "dwell": "Permanencia",
         "button": "Ejecutar barrido",
         "safetyTitle": "Hélices fuera, motores solo en banco",
-        "safetyMessage": "ESC RawCommand controla la salida del motor directamente. Confirma que las hélices están quitadas y los motores fijados al banco antes de continuar.",
+        "safetyMessage": "ESC RawCommand controla la salida del motor directamente. Confirma que las hélices están quitadas y los motores fijarcos al banco antes de continuar.",
         "safetyConfirm": "Ejecutar barrido",
         "pendingMessage": "Cliente no conectado.",
         "stop": "Detener",
@@ -4183,7 +4183,7 @@
     },
     "locked": {
       "title": "Añade una computadora compañera para desbloquear {surface}",
-      "body": "Este dron está conectado solo por controlador de vuelo. Vincula una computadora compañera, una placa pequeña como una Raspberry Pi que ejecuta el agente ADOS, para transmitir video HD, ejecutar scripts, añadir plugins y alcanzar el dron por 4G."
+      "body": "Este dron está conectado solo por controlador de vuelo. Vincula una computadora compañera, una placa pequeña como una Raspberry Pi que ejecuta el agente ARCOS, para transmitir video HD, ejecutar scripts, añadir plugins y alcanzar el dron por 4G."
     },
     "no-fc-direct": {
       "title": "Controlador de vuelo no conectado",
@@ -4203,7 +4203,7 @@
     },
     "agent-stale": {
       "title": "Flujo del agente en pausa",
-      "body": "Sin latido reciente durante {ago}. Los valores mostrados son los últimos que informó el agente y se reanudarán en la próxima actualización."
+      "body": "Sin latido reciente durante {ago}. Los valores mostrarcos son los últimos que informó el agente y se reanudarán en la próxima actualización."
     },
     "no-camera": {
       "title": "Ninguna cámara detectada",
@@ -4229,7 +4229,7 @@
       "body": "El escaneo revisó USB, CSI e I2C y no encontró nada conectado. Conecta un sensor, una cámara o un módem y vuelve a escanear."
     },
     "no-flights": {
-      "title": "Aún no hay vuelos registrados",
+      "title": "Aún no hay vuelos registrarcos",
       "body": "Los registros de vuelo aparecen aquí tras el primer vuelo armado o misión autónoma con este dron."
     },
     "loading": {
@@ -4256,10 +4256,10 @@
       "chip": "Datos en pausa",
       "tooltip": "En pausa desde la última lectura {ago}. Los valores se reanudan cuando vuelve el latido."
     },
-    "disambiguation": "Conectar controlador de vuelo se comunica con el autopiloto directamente por USB o tu red. Vincular una computadora compañera añade una placa que ejecuta el agente ADOS para video, scripts y 4G."
+    "disambiguation": "Conectar controlador de vuelo se comunica con el autopiloto directamente por USB o tu red. Vincular una computadora compañera añade una placa que ejecuta el agente ARCOS para video, scripts y 4G."
   },
   "blackbox": {
-    "title": "ADOS Black Box",
+    "title": "ARCOS Black Box",
     "session": "Session",
     "allSessions": "All sessions",
     "open": "open",

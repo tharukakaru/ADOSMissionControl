@@ -1,6 +1,6 @@
 /**
  * Verifies the LAN unpair proxy forwards the API key under the
- * `X-ADOS-Key` header the agent's auth middleware reads — not the
+ * `X-ARCOS-Key` header the agent's auth middleware reads — not the
  * legacy `X-API-Key` name, which the agent ignores and 401s on,
  * silently leaving the agent paired.
  *
@@ -41,19 +41,19 @@ describe("lan-pair unpair proxy", () => {
     vi.restoreAllMocks();
   });
 
-  it("forwards the api key as X-ADOS-Key (not X-API-Key)", async () => {
+  it("forwards the api key as X-ARCOS-Key (not X-API-Key)", async () => {
     const res = await POST(postJson({ host: "skynode.local", apiKey: "k-123" }));
     expect(res.status).toBe(200);
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const init = fetchMock.mock.calls[0][1] as RequestInit;
     const headers = init.headers as Record<string, string>;
-    expect(headers["X-ADOS-Key"]).toBe("k-123");
+    expect(headers["X-ARCOS-Key"]).toBe("k-123");
     expect(headers["X-API-Key"]).toBeUndefined();
   });
 
   it("relays the agent's status verbatim", async () => {
     fetchMock.mockResolvedValueOnce(
-      new Response(JSON.stringify({ error: "Missing X-ADOS-Key header" }), {
+      new Response(JSON.stringify({ error: "Missing X-ARCOS-Key header" }), {
         status: 401,
       }),
     );

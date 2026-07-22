@@ -62,7 +62,7 @@ export async function mintLan(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-ADOS-Key": lanKey,
+      "X-ARCOS-Key": lanKey,
     },
     body: JSON.stringify({ plugin_id: pluginInstallId }),
   });

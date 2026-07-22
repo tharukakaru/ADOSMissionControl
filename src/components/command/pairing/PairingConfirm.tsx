@@ -114,7 +114,7 @@ export function PairingConfirm({
         <p className="text-[10px] text-text-tertiary">
           {t("alreadyInstalled")}{" "}
           <code className="font-mono text-text-secondary">
-            sudo ados pair {code}
+            sudo arcos pair {code}
           </code>
         </p>
       </div>

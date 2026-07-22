@@ -104,7 +104,7 @@ export interface FleetDrone extends DroneInfo {
     * tooltip. Null when unknown or 0 dBm. */
    peerRssiDbm?: number | null;
    /** Air-side camera discovery state. "ready" / "missing" / "error"
-    * mirror the agent's /run/ados/camera-state.json snapshot.
+    * mirror the agent's /run/arcos/camera-state.json snapshot.
     * Drives the "Camera Missing" pill on the fleet card so an
     * operator sees a wedged or unplugged USB camera without
     * SSH'ing in. Null / undefined on agents that predate the

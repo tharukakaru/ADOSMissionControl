@@ -1,6 +1,6 @@
 /**
  * @module AgentTypes
- * @description TypeScript types for the ADOS Drone Agent REST API.
+ * @description TypeScript types for the ARCOS Drone Agent REST API.
  * @license GPL-3.0-only
  */
 

@@ -6,7 +6,7 @@
  */
 
 const AIRPORTS_URL =
-  "https://raw.githubusercontent.com/altnautica/ADOSMissionControl/main/src/data/airports.json";
+  "https://raw.githubusercontent.com/altnautica/ArcOS/main/src/data/airports.json";
 
 export interface Airport {
   icao: string;

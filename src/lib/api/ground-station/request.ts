@@ -27,7 +27,7 @@ export async function gsRequest<T>(
     ...(init?.headers as Record<string, string>),
   };
   if (ctx.apiKey) {
-    headers["X-ADOS-Key"] = ctx.apiKey;
+    headers["X-ARCOS-Key"] = ctx.apiKey;
   }
   const res = await fetch(`${ctx.baseUrl}${path}`, { ...init, headers });
   if (!res.ok) {

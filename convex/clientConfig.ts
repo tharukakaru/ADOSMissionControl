@@ -10,7 +10,7 @@ export const getClientConfig = query({
       aiPidWeeklyLimit: Number.isFinite(parsed) && parsed > 0 ? parsed : 3,
       mqttBrokerUrl: process.env.MQTT_BROKER_URL ?? null,
       // Read-only viewer credential for the in-browser MQTT subscriber.
-      // The broker enforces `topic read ados/+/#` on this user; it cannot
+      // The broker enforces `topic read arcos/+/#` on this user; it cannot
       // publish. The password is shared across browser sessions; protect
       // beyond that via broker TLS + Cloudflare Tunnel.
       mqttViewerUsername: process.env.MQTT_VIEWER_USERNAME ?? "gcs-viewer",

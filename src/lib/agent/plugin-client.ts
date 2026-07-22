@@ -89,7 +89,7 @@ export class PluginAgentClient {
   }
 
   private authHeader(): Record<string, string> {
-    return this.apiKey ? { "X-ADOS-Key": this.apiKey } : {};
+    return this.apiKey ? { "X-ARCOS-Key": this.apiKey } : {};
   }
 
   async list(): Promise<{ installs: PluginAgentManifestDetail["install"][] }> {

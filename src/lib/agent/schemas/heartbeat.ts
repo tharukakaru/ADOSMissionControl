@@ -1,6 +1,6 @@
 /**
  * @module AgentSchemas/Heartbeat
- * @description zod schemas for the ADOS Drone Agent heartbeat surfaces:
+ * @description zod schemas for the ARCOS Drone Agent heartbeat surfaces:
  * board identity, health, status, telemetry snapshot, service summaries,
  * resources, video, and the consolidated /api/status/full response.
  *

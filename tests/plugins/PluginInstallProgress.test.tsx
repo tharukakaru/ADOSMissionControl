@@ -131,9 +131,9 @@ describe("PluginInstallProgress", () => {
     expect(ws.url.includes("api_key")).toBe(false);
     expect(ws.url.includes("secret-key")).toBe(false);
     // The ticket rides the subprotocol array.
-    expect(ws.protocols).toEqual(["ados-job-ticket", "abcdef0123"]);
+    expect(ws.protocols).toEqual(["arcos-job-ticket", "abcdef0123"]);
     // The ticket mint POST went through the REST middleware with
-    // X-ADOS-Key.
+    // X-ARCOS-Key.
     expect(fetchMock).toHaveBeenCalled();
     const [mintUrl, init] = fetchMock.mock.calls[0]!;
     expect(String(mintUrl)).toBe(
@@ -145,7 +145,7 @@ describe("PluginInstallProgress", () => {
     const hdrs = (init as RequestInit | undefined)?.headers as
       | Record<string, string>
       | undefined;
-    expect(hdrs?.["X-ADOS-Key"]).toBe("secret-key");
+    expect(hdrs?.["X-ARCOS-Key"]).toBe("secret-key");
 
     act(() => {
       ws.emit("installing");

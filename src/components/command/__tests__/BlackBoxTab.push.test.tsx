@@ -1,7 +1,7 @@
 /**
  * @license GPL-3.0-only
  *
- * Render tests for the ADOS Black Box push affordances: the "Push to cloud"
+ * Render tests for the ARCOS Black Box push affordances: the "Push to cloud"
  * button is disabled (with a tooltip) on a LAN-only drone with no cloud id and
  * in cloud mode, and the exported-windows list renders only when the drone has
  * a cloud id and the reactive query returns a non-empty list.

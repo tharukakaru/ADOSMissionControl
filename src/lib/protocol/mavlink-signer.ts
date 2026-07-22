@@ -34,7 +34,7 @@ const BIG_MASK_48 = (BigInt(1) << BigInt(48)) - BigInt(1);
  * drone broadcast their liveness so other tabs showing the same drone can
  * render a "signing active in another tab" hint. Purely observational.
  */
-const BROADCAST_CHANNEL_NAME = "ados-signing";
+const BROADCAST_CHANNEL_NAME = "arcos-signing";
 let _broadcastChannel: BroadcastChannel | null = null;
 function broadcastChannel(): BroadcastChannel | null {
   if (typeof BroadcastChannel === "undefined") return null;
@@ -125,7 +125,7 @@ export class MavlinkSigner {
     // persisted timestamp counter independently, and the flight controller
     // would reject whichever frame arrives with the lower timestamp as a
     // replay. Fixes audit finding B2.
-    const lockName = `ados-signing:${this.droneId}:${this.linkId}`;
+    const lockName = `arcos-signing:${this.droneId}:${this.linkId}`;
     return this.withSigningLock(lockName, () => this.signLocked(frameBytesThroughCrc));
   }
 

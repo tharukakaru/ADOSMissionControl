@@ -1,6 +1,6 @@
 # MQTT Bridge
 
-Bridges MQTT messages from ADOS Drone Agent devices to Convex HTTP endpoints. Subscribes to `ados/+/status` and `ados/+/telemetry` topics, debounces per device (3s), and POSTs JSON payloads to the Convex backend.
+Bridges MQTT messages from ARCOS Drone Agent devices to Convex HTTP endpoints. Subscribes to `arcos/+/status` and `arcos/+/telemetry` topics, debounces per device (3s), and POSTs JSON payloads to the Convex backend.
 
 ## Architecture
 
@@ -40,7 +40,7 @@ docker compose up -d
 On first run, create the Mosquitto password file:
 
 ```bash
-docker exec -it deploy-mosquitto-1 mosquitto_passwd -c /mosquitto/config/passwd ados
+docker exec -it deploy-mosquitto-1 mosquitto_passwd -c /mosquitto/config/passwd arcos
 docker compose restart mosquitto
 ```
 
@@ -58,8 +58,8 @@ Browser MQTT clients (like the GCS) connect via `wss://mqtt.altnautica.com`.
 
 | Topic | Description |
 |-------|-------------|
-| `ados/{deviceId}/status` | Agent status (online, version, uptime) |
-| `ados/{deviceId}/telemetry` | Flight telemetry (position, attitude, battery) |
+| `arcos/{deviceId}/status` | Agent status (online, version, uptime) |
+| `arcos/{deviceId}/telemetry` | Flight telemetry (position, attitude, battery) |
 
 All payloads must be valid JSON. The bridge extracts `deviceId` from the topic and forwards the parsed payload plus `deviceId` and `topic` fields to the Convex endpoint.
 

@@ -239,7 +239,7 @@ export function VideoLatencyBreakdown({
                         : lanPollUnreachable
                           ? "Not measured over cloud relay — AIR / G2G metrics need a LAN-direct connection to the agent. Switch transport to LAN to see them."
                           : latency.airSource === "unavailable"
-                            ? "Not measured — SEI is off on the agent. Set wfb.sei_latency: true in /etc/ados/config.yaml and restart ados-supervisor."
+                            ? "Not measured — SEI is off on the agent. Set wfb.sei_latency: true in /etc/arcos/config.yaml and restart arcos-supervisor."
                             : !seiEnabled
                               ? "Measuring… waiting for the first SEI sample to land."
                               : "Measuring… waiting for the first SEI sample to land."}
@@ -261,8 +261,8 @@ export function VideoLatencyBreakdown({
                   ) : latency.airSource === "unavailable" ? (
                     <Note>
                       SEI is off on the agent. Enable
-                      wfb.sei_latency: true in /etc/ados/config.yaml
-                      and restart ados-supervisor.
+                      wfb.sei_latency: true in /etc/arcos/config.yaml
+                      and restart arcos-supervisor.
                     </Note>
                   ) : (
                     <>

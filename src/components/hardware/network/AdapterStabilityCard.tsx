@@ -8,7 +8,7 @@
  * the IP stops moving. This card surfaces that so the operator sees it was
  * handled and can copy the pinned MAC for a DHCP reservation. Read-only here;
  * pin / unpin / confirm actions are available via the agent's
- * `ados network mac` CLI and `/v1/network/mac/*` REST routes.
+ * `arcos network mac` CLI and `/v1/network/mac/*` REST routes.
  * @license GPL-3.0-only
  */
 
@@ -91,7 +91,7 @@ export function AdapterStabilityCard() {
                   This adapter looks like it randomizes its MAC. Confirm the pin
                   with{" "}
                   <code className="font-mono">
-                    ados network mac pin {a.name ?? "<iface>"}
+                    arcos network mac pin {a.name ?? "<iface>"}
                   </code>
                   .
                 </p>

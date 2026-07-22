@@ -5,7 +5,7 @@
  * @description System-tab card for the agent's OTA self-update. Shows the
  * current → available version, a live phase checklist (Download → Verify →
  * Install → Restart) with a determinate download bar, and check / install
- * actions — mirroring the `ados update` CLI experience. Polls the locally
+ * actions — mirroring the `arcos update` CLI experience. Polls the locally
  * paired agent's `GET /api/ota`; hides itself when the agent has no OTA surface
  * (or in cloud mode). Local-first per the connection model.
  * @license GPL-3.0-only

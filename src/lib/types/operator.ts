@@ -27,7 +27,7 @@ export interface OperatorProfile {
   /** ISO date string. */
   pilotLicenseExpiry?: string;
   pilotEndorsements?: string[];
-  /** Hours flown before ADOS started tracking. */
+  /** Hours flown before ARCOS started tracking. */
   pilotTotalHoursPriorPic?: number;
   /** CASA Aviation Reference Number. */
   pilotArn?: string;

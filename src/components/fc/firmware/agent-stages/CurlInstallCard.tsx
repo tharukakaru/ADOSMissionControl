@@ -3,7 +3,7 @@
 /**
  * @module fc/firmware/agent-stages/CurlInstallCard
  * @description Renders the curl one-liner install card for boards
- * whose ADOS Agent install method is `curl`. Includes a copy button
+ * whose ARCOS Agent install method is `curl`. Includes a copy button
  * with a transient confirmation pip and a setup-hint pointing the
  * operator at the captive portal.
  * @license GPL-3.0-only
@@ -29,7 +29,7 @@ export interface CurlInstallCardProps {
 }
 
 export function CurlInstallCard({ install, resetSignal }: CurlInstallCardProps) {
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {

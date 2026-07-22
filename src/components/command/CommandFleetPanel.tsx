@@ -37,7 +37,7 @@ export function CommandFleetPanel({ collapsed, onToggleCollapse }: CommandFleetP
       <div className="w-12 shrink-0 flex flex-col h-full border-r border-border-default bg-bg-secondary">
         <div className="flex flex-col items-center gap-1.5 px-1 py-2 border-b border-border-default">
           <span className="text-[9px] font-semibold uppercase tracking-wider text-text-tertiary">
-            ADOS
+            ARCOS
           </span>
           <button
             onClick={onToggleCollapse}
@@ -70,7 +70,7 @@ export function CommandFleetPanel({ collapsed, onToggleCollapse }: CommandFleetP
     <div className="w-64 shrink-0 flex flex-col h-full border-r border-border-default bg-bg-secondary">
       <div className="flex items-center justify-between px-3 py-2 border-b border-border-default">
         <span className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
-          ADOS Fleet
+          ARCOS Fleet
         </span>
         <button
           onClick={onToggleCollapse}
@@ -104,7 +104,7 @@ export function CommandFleetPanel({ collapsed, onToggleCollapse }: CommandFleetP
         ))}
         {filtered.length === 0 && (
           <div className="text-xs text-text-tertiary text-center py-4">
-            {search ? "No agents match search" : "No ADOS agents"}
+            {search ? "No agents match search" : "No ARCOS agents"}
           </div>
         )}
       </div>

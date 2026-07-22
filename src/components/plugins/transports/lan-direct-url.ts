@@ -33,7 +33,7 @@ import {
 export interface LanDirectFromUrlInputs {
   /** Resolved LAN base URL for the target agent (no trailing slash). */
   agentUrl: string;
-  /** Pairing key stamped into the `X-ADOS-Key` header. */
+  /** Pairing key stamped into the `X-ARCOS-Key` header. */
   pairingKey: string;
   /** Canonical archive URL the agent will fetch. */
   url: string;
@@ -100,7 +100,7 @@ export async function installLanDirectFromUrl(
     response = await fetch(`${inputs.agentUrl}/api/plugins/install_from_url`, {
       method: "POST",
       headers: {
-        "X-ADOS-Key": inputs.pairingKey,
+        "X-ARCOS-Key": inputs.pairingKey,
         "Content-Type": "application/json",
       },
       body,

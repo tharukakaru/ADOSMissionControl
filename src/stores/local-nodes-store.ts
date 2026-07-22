@@ -53,7 +53,7 @@ export interface LocalNode {
   board?: string;
   /** Agent version string at pair time. */
   version?: string;
-  /** mDNS hostname (``ados-<id>.local``) — used as the canonical reach. */
+  /** mDNS hostname (``arcos-<id>.local``) — used as the canonical reach. */
   mdnsHost?: string;
   /** Server-resolved IPv4 captured at pair time. Used as a fallback
    * when the browser stops resolving the .local hostname (Safari,

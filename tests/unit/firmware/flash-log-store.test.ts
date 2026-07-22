@@ -53,7 +53,7 @@ describe("flash-log-store", () => {
     useFlashLogStore.getState().log("error", "px4", "Board ID mismatch", { category: "board_id_mismatch", phase: "chip_detect" });
     useFlashLogStore.getState().log("debug", "px4", "TX 21 20", { rawHex: "21 20" });
     const text = useFlashLogStore.getState().buildLogText();
-    expect(text).toContain("ADOS Mission Control — Flash Log");
+    expect(text).toContain("ARCOS Mission Control — Flash Log");
     expect(text).toContain("board: Pixhawk 6X");
     expect(text).toContain("chip: STM32H743");
     expect(text).toContain("method: px4-serial");

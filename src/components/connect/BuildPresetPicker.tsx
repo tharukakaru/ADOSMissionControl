@@ -13,7 +13,7 @@ const CATEGORY_LABELS: Record<PresetCategory, string> = {
   cine: "Cine",
   racing: "Racing",
   micro: "Micro",
-  reference: "ADOS",
+  reference: "ARCOS",
 };
 
 export function BuildPresetPicker({

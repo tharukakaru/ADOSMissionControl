@@ -10,7 +10,7 @@
  *
  * v1 limitation: the GCS cannot mutate the agent's auto-update config
  * from this drawer. The two controls (auto-update toggle + version
- * pin) are read-only with a hint pointing the operator at the `ados
+ * pin) are read-only with a hint pointing the operator at the `arcos
  * plugin auto-update` CLI on the drone itself. A follow-up cycle will
  * add a REST surface on the agent that lets the GCS enqueue a config
  * mutation through the existing command queue.

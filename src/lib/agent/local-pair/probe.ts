@@ -32,14 +32,14 @@ export async function probeAgent(
   // probe so the Add-a-Node card renders the bind-state surface.
   if (isDemoMode()) {
     return {
-      deviceId: "ados-demo01",
+      deviceId: "arcos-demo01",
       name: "Demo Drone",
       version: "0.0.0-demo",
       board: "Demo Board",
       paired: false,
       radioPaired: true,
-      radioPeerDeviceId: "ados-demo-gs",
-      mdnsHost: "ados-demo01.local",
+      radioPeerDeviceId: "arcos-demo-gs",
+      mdnsHost: "arcos-demo01.local",
       profile: "drone",
       role: null,
       hostname: host,
@@ -105,7 +105,7 @@ export async function probeAgent(
       : undefined;
   return {
     deviceId,
-    name: String(body.name ?? "ADOS Agent"),
+    name: String(body.name ?? "ARCOS Agent"),
     version: String(body.version ?? ""),
     board: String(body.board ?? "unknown"),
     paired: Boolean(body.paired),

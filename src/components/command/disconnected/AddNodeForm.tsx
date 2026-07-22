@@ -2,7 +2,7 @@
 
 /**
  * @module AddNodeForm
- * @description Single-input entry point for adding any ADOS node
+ * @description Single-input entry point for adding any ARCOS node
  * (drone, ground station, future compute) to the GCS. Replaces the
  * four stacked cards on the disconnected page with one smart field
  * that accepts EITHER a hostname / URL OR a 6-character pair code.

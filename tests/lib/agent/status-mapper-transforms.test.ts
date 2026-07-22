@@ -183,9 +183,9 @@ describe("buildSystemUpdate", () => {
     const cloudStatus = {
       ...base,
       services: [
-        { name: "ados-supervisor", status: "running", pid: 100, cpuPercent: 1.2, memoryMb: 30, uptimeSeconds: 500 },
-        { name: "ados-mystery", status: "bogus", pid: 101 },
-        { name: "ados-nopid", status: "stopped" },
+        { name: "arcos-supervisor", status: "running", pid: 100, cpuPercent: 1.2, memoryMb: 30, uptimeSeconds: 500 },
+        { name: "arcos-mystery", status: "bogus", pid: 101 },
+        { name: "arcos-nopid", status: "stopped" },
       ],
       processCpuPercent: 3.5,
       processMemoryMb: 120,
@@ -235,7 +235,7 @@ describe("buildGroundStationPatch", () => {
           fecRecovered: 4,
           fecLost: 1,
           channel: 149,
-          pairedWithDeviceId: "ados-drone1",
+          pairedWithDeviceId: "arcos-drone1",
         },
         wfbFailoverState: "local",
       },
@@ -248,7 +248,7 @@ describe("buildGroundStationPatch", () => {
     expect(linkHealth.fec_rec).toBe(4);
     expect(linkHealth.channel).toBe(149);
     const status = patch?.status as Record<string, unknown>;
-    expect(status.paired_drone).toBe("ados-drone1");
+    expect(status.paired_drone).toBe("arcos-drone1");
     expect(status.profile).toBe("ground_station");
     expect(status.uplink_active).toBe("local");
   });
@@ -301,7 +301,7 @@ describe("buildHeartbeatExtras", () => {
       wfbFailoverState: "cloud_relay",
       cloudRelayUrl: "https://relay.example/abc",
       cameraState: "ready",
-      peerDeviceId: "ados-peer01",
+      peerDeviceId: "arcos-peer01",
       peerChannel: 149,
       manualConnectionUrls: {
         mavlinkTcp: "tcp://10.0.0.7:5760",
@@ -315,7 +315,7 @@ describe("buildHeartbeatExtras", () => {
     expect(extras.wfbFailoverState).toBe("cloud_relay");
     expect(extras.cloudRelayUrl).toBe("https://relay.example/abc");
     expect(extras.cameraState).toBe("ready");
-    expect(extras.peerDeviceId).toBe("ados-peer01");
+    expect(extras.peerDeviceId).toBe("arcos-peer01");
     expect(extras.peerChannel).toBe(149);
     // Empty / null sub-fields collapse to null.
     expect(extras.manualConnectionUrls?.mavlinkTcp).toBe("tcp://10.0.0.7:5760");

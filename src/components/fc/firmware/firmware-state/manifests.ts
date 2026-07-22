@@ -9,9 +9,9 @@
 import { ArduPilotManifest } from "@/lib/protocol/firmware/manifest";
 import { BetaflightManifest } from "@/lib/protocol/firmware/betaflight-manifest";
 import { PX4Manifest } from "@/lib/protocol/firmware/px4-manifest";
-import { AdosAgentManifest } from "@/lib/protocol/firmware/ados-agent-manifest";
+import { ArcOsAgentManifest } from "@/lib/protocol/firmware/arcos-agent-manifest";
 
 export const apManifest = new ArduPilotManifest();
 export const bfManifest = new BetaflightManifest();
 export const px4Manifest = new PX4Manifest();
-export const adosManifest = new AdosAgentManifest();
+export const arcosManifest = new ArcOsAgentManifest();

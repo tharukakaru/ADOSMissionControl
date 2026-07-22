@@ -1,6 +1,6 @@
 /**
  * @module AgentPeripheralsStore
- * @description Zustand store for ADOS Drone Agent peripheral device management.
+ * @description Zustand store for ARCOS Drone Agent peripheral device management.
  * @license GPL-3.0-only
  */
 

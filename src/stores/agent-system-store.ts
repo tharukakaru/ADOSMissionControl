@@ -1,6 +1,6 @@
 /**
  * @module AgentSystemStore
- * @description Zustand store for ADOS Drone Agent system monitoring.
+ * @description Zustand store for ARCOS Drone Agent system monitoring.
  * Manages status, services, resources, CPU/memory history, and logs.
  * @license GPL-3.0-only
  */

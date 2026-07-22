@@ -6,7 +6,7 @@ import type { ItemCategory } from "@/lib/community-types";
 
 const categoryConfig: Record<ItemCategory, { className: string }> = {
   command: { className: "text-accent-primary border-accent-primary/30" },
-  ados: { className: "text-accent-secondary border-accent-secondary/30" },
+  arcos: { className: "text-accent-secondary border-accent-secondary/30" },
   website: { className: "text-status-warning border-status-warning/30" },
   general: { className: "text-text-secondary border-text-tertiary/30" },
 };

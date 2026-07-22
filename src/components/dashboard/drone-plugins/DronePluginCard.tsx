@@ -9,7 +9,7 @@
  * `plugin.disable` against the drone's agent via the existing
  * `cmd_droneCommands` queue. The card stays transport-agnostic; the
  * agent picks the right transport per the management-actions matrix
- * in `product/specs/ados-plugin-system/18-ux-plugin-management.md`
+ * in `product/specs/arcos-plugin-system/18-ux-plugin-management.md`
  * Section 6.
  *
  * @license GPL-3.0-only

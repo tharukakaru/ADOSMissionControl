@@ -1,7 +1,7 @@
 /**
  * @module community-api-logd
  * @description Typed Convex API references for the explicitly-exported
- * durable-log windows surfaced in the ADOS Black Box view. The list query
+ * durable-log windows surfaced in the ARCOS Black Box view. The list query
  * and the signed-download action are resolved through
  * `makeFunctionReference` rather than the generated `api` surface so this
  * barrel keeps type-checking even before the backend module has been picked

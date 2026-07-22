@@ -1,8 +1,8 @@
 /**
- * Server-side proxy for the ADOS Agent firmware manifest.
+ * Server-side proxy for the ARCOS Agent firmware manifest.
  *
  * Fetches the manifest published as a GitHub Release asset on the public
- * altnautica/ADOSDroneAgent repo. Falls back to an embedded baseline so the
+ * altnautica/ARCOSDroneAgent repo. Falls back to an embedded baseline so the
  * Flash Tool stays usable when no release is reachable. 1-hour in-memory
  * cache, with a `?bust=true` query param to force a fresh upstream fetch.
  *
@@ -19,20 +19,20 @@ import {
   readArrayBufferWithLimit,
 } from "@/lib/net/fetch-with-timeout";
 import type {
-  AdosAgentInstall,
-  AdosAgentManifestData,
-  AdosAgentBoard,
-} from "@/lib/protocol/firmware/ados-agent-manifest";
+  ArcOsAgentInstall,
+  ArcOsAgentManifestData,
+  ArcOsAgentBoard,
+} from "@/lib/protocol/firmware/arcos-agent-manifest";
 import { EMBEDDED_FALLBACK } from "./fallback";
 
 const DEFAULT_MANIFEST_URL =
-  "https://github.com/altnautica/ADOSDroneAgent/releases/latest/download/ados-agent-manifest.json";
+  "https://github.com/altnautica/ARCOSDroneAgent/releases/latest/download/arcos-agent-manifest.json";
 const CACHE_TTL = 60 * 60 * 1000;
 const MAX_BYTES = 1 * 1024 * 1024;
 
 interface CachedData {
   timestamp: number;
-  data: AdosAgentManifestData;
+  data: ArcOsAgentManifestData;
   source: "github" | "fallback";
 }
 
@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ ...cache.data, source: cache.source });
   }
 
-  const manifestUrl = process.env.ADOS_MANIFEST_URL || DEFAULT_MANIFEST_URL;
+  const manifestUrl = process.env.ARCOS_MANIFEST_URL || DEFAULT_MANIFEST_URL;
 
   try {
     const res = await fetchWithTimeout(manifestUrl, {
@@ -97,13 +97,13 @@ export async function GET(request: NextRequest) {
 
 interface ValidationResult {
   ok: boolean;
-  data: AdosAgentManifestData;
+  data: ArcOsAgentManifestData;
   error?: string;
 }
 
 const SHA256_HEX = /^[0-9a-f]{64}$/i;
 const ARCHES = new Set(["armv7-musl", "aarch64-musl", "aarch64-glibc"]);
-const STACKS = new Set(["ados-drone-agent", "ados-ground-agent"]);
+const STACKS = new Set(["arcos-drone-agent", "arcos-ground-agent"]);
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -112,7 +112,7 @@ function isObject(value: unknown): value is Record<string, unknown> {
 function validateInstall(
   install: unknown,
   context: string,
-): { ok: boolean; error?: string; install?: AdosAgentInstall } {
+): { ok: boolean; error?: string; install?: ArcOsAgentInstall } {
   if (!isObject(install)) {
     return { ok: false, error: `${context}: install entry is not an object` };
   }
@@ -125,7 +125,7 @@ function validateInstall(
         error: `${context}: curl install missing non-empty command`,
       };
     }
-    return { ok: true, install: install as unknown as AdosAgentInstall };
+    return { ok: true, install: install as unknown as ArcOsAgentInstall };
   }
   if (method === "web-flash") {
     const imageUrl = install.imageUrl;
@@ -189,7 +189,7 @@ function validateInstall(
         };
       }
     }
-    return { ok: true, install: install as unknown as AdosAgentInstall };
+    return { ok: true, install: install as unknown as ArcOsAgentInstall };
   }
   return {
     ok: false,
@@ -200,7 +200,7 @@ function validateInstall(
 function validateBoard(
   board: unknown,
   index: number,
-): { ok: boolean; error?: string; board?: AdosAgentBoard } {
+): { ok: boolean; error?: string; board?: ArcOsAgentBoard } {
   if (!isObject(board)) {
     return { ok: false, error: `boards[${index}] is not an object` };
   }
@@ -252,7 +252,7 @@ function validateBoard(
       return { ok: false, error: installResult.error };
     }
   }
-  return { ok: true, board: board as unknown as AdosAgentBoard };
+  return { ok: true, board: board as unknown as ArcOsAgentBoard };
 }
 
 function validateManifest(data: unknown): ValidationResult {
@@ -297,10 +297,10 @@ function validateManifest(data: unknown): ValidationResult {
       return { ok: false, data: EMBEDDED_FALLBACK, error: result.error };
     }
   }
-  return { ok: true, data: data as unknown as AdosAgentManifestData };
+  return { ok: true, data: data as unknown as ArcOsAgentManifestData };
 }
 
-function serveEmbedded(): AdosAgentManifestData & { source: "fallback" } {
+function serveEmbedded(): ArcOsAgentManifestData & { source: "fallback" } {
   if (cache && cache.source === "fallback" && Date.now() - cache.timestamp < CACHE_TTL) {
     return { ...cache.data, source: "fallback" };
   }

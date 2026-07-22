@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 const INSTALL_URL =
-  "https://raw.githubusercontent.com/altnautica/ADOSDroneAgent/main/scripts/install.sh";
+  "https://raw.githubusercontent.com/altnautica/ARCOSDroneAgent/main/scripts/install.sh";
 
 export interface PairingCodeCardProps {
   codeError: string | null;
@@ -168,7 +168,7 @@ export function PairingCodeCard({
         <p className="text-xs text-text-tertiary">
           {tc("alreadyInstalled")}{" "}
           <code className="font-mono text-text-secondary">
-            sudo ados pair {code}
+            sudo arcos pair {code}
           </code>
         </p>
       </div>

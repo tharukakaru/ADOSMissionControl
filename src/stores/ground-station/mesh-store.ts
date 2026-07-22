@@ -76,7 +76,7 @@ export const createMeshSlice: GroundStationSliceCreator<MeshSlice> = (
       const { message, status } = errorMessage(err);
       const friendly =
         status === 404
-          ? "This agent is not in ground-station profile. Reinstall with install.sh --with-mesh or set agent.profile = ground-station in /etc/ados/config.yaml."
+          ? "This agent is not in ground-station profile. Reinstall with install.sh --with-mesh or set agent.profile = ground-station in /etc/arcos/config.yaml."
           : message;
       set({ role: { ...get().role, loading: false, error: friendly } });
     }

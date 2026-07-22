@@ -3,7 +3,7 @@
  * @description Demo-mode stand-in for the durable log/telemetry store
  * reader. Replays the same mock service log timeline through the
  * `LoggingService` envelope shape, synthesises a couple of sessions, and
- * feeds the CPU/memory aggregate so the ADOS Black Box view renders fully
+ * feeds the CPU/memory aggregate so the ARCOS Black Box view renders fully
  * in `npm run demo`. The `tail()` method returns a tiny in-process
  * EventSource-like object that emits a few rows then idles, so the live
  * LogViewer works without a real `:8090` endpoint.

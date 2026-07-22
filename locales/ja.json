@@ -17,7 +17,7 @@
     },
     "intro": {
       "tagline": "ソフトウェア定義ドローンのための地上管制。",
-      "description": "ArduPilot、PX4、Betaflightドローンを設定し、ミッションを計画し、飛行させましょう。ADOS Drone Agentと組み合わせてエッジでインテリジェンスを実行。オープンソース。ブラウザで動作します。",
+      "description": "ArduPilot、PX4、Betaflightドローンを設定し、ミッションを計画し、飛行させましょう。ARCOS Drone Agentと組み合わせてエッジでインテリジェンスを実行。オープンソース。ブラウザで動作します。",
       "openBeta": "オープンベータ",
       "freeForever": "永久無料",
       "openSource": "GPL-3.0 オープンソース",
@@ -50,7 +50,7 @@
       "docsDescription": "Guides, API reference, and tutorials to get your drone flying.",
       "browseDocs": "Browse docs",
       "communityHeading": "Built in the open",
-      "communityDescription": "ADOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
+      "communityDescription": "ARCOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
       "discordHeading": "Talk to us",
       "discordDescription": "Ask questions, share your setup, report bugs, or just hang out with other pilots and developers.",
       "githubHeading": "Help the project grow",
@@ -66,7 +66,7 @@
     },
     "disclaimer": {
       "title": "飛行する前に",
-      "subtitle": "ADOS Mission Controlは実際の航空機を制御できます。以下をお読みになり、同意してください。",
+      "subtitle": "ARCOS Mission Controlは実際の航空機を制御できます。以下をお読みになり、同意してください。",
       "lawfulUse": {
         "heading": "合法的使用のみ",
         "body": "本ソフトウェアは合法的な目的にのみ使用することに同意します。監視、個人への嫌がらせ、プライバシーの侵害、またはお住まいの国や地域の法律で禁止されている活動を支援するために使用しないでください。"
@@ -95,7 +95,7 @@
       },
       "openSource": {
         "heading": "オープンソースライセンス",
-        "body": "ADOS Mission ControlはGNU General Public License v3.0の下でライセンスされています。そのライセンスの条件の下で、本ソフトウェアを自由に使用、変更、配布できます。",
+        "body": "ARCOS Mission ControlはGNU General Public License v3.0の下でライセンスされています。そのライセンスの条件の下で、本ソフトウェアを自由に使用、変更、配布できます。",
         "link": "GPL-3.0ライセンスの全文を読む"
       },
       "acceptCheckbox": "上記の条件を読み、同意しました。私が機長であり、安全かつ合法的な運用のすべての責任を負うことを理解しています。",
@@ -325,7 +325,7 @@
     "badges": {
       "categories": {
         "command": "コマンド",
-        "ados": "ADOS",
+        "arcos": "ARCOS",
         "website": "ウェブサイト",
         "general": "一般"
       },
@@ -618,7 +618,7 @@
   },
   "emptyState": {
     "title": "ドローン未接続",
-    "description": "USBまたはネットワーク経由でフライトコントローラーを接続してADOS Mission Controlを開始してください。",
+    "description": "USBまたはネットワーク経由でフライトコントローラーを接続してARCOS Mission Controlを開始してください。",
     "connectDrone": "ドローンを接続",
     "commandPaletteHint": "でコマンドパレットを開く"
   },
@@ -653,7 +653,7 @@
     "fcStackTitle": "Flight Controller",
     "fcStackDesc": "Direct MAVLink — USB, WebSocket, Bluetooth",
     "agentStackTitle": "Companion Computer",
-    "agentStackDesc": "ADOS Agent — software-defined",
+    "agentStackDesc": "ARCOS Agent — software-defined",
     "agentStackBadge": "Full features"
   },
   "droneDetail": {
@@ -843,7 +843,7 @@
     "subtitle": "Extensions installed on this drone. Each plugin runs sandboxed and only does what its granted permissions allow.",
     "installOnThisDrone": "Install plugin on this drone",
     "emptyStateTitle": "No plugins installed on this drone yet.",
-    "emptyStateBody": "Plugins extend ADOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
+    "emptyStateBody": "Plugins extend ARCOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
     "loading": "Loading...",
     "droneNotFound": "Drone \"{id}\" not found.",
     "notConnectedTitle": "Connect to a drone to manage its plugins.",
@@ -881,7 +881,7 @@
     },
     "installFromFile": "Install from file",
     "installedSectionTitle": "Installed on this drone",
-    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .adosplug file."
+    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .arcosplug file."
   },
   "droneRadio": {
     "airSideBadge": "Air side",
@@ -909,7 +909,7 @@
     "directConnection": "直接接続",
     "enterPairingCode": "Enter pairing code from your node agent",
     "pairingCode": "ペアリングコード",
-    "pairingInstructions": "Run 'ados pair' on your node to get a pairing code",
+    "pairingInstructions": "Run 'arcos pair' on your node to get a pairing code",
     "paired": "ペアリング済み",
     "lastSeen": "最終確認",
     "neverConnected": "未接続",
@@ -953,7 +953,7 @@
     "pairedCount": "{count} paired",
     "addNode": {
       "title": "ノードを追加",
-      "subtitle": "任意の ADOS ノード（ドローン、地上局、または将来のコンピュートノード）を LAN 経由で直接ペアリングします。",
+      "subtitle": "任意の ARCOS ノード（ドローン、地上局、または将来のコンピュートノード）を LAN 経由で直接ペアリングします。",
       "pairOnLan": "LAN上のノードをペアリング",
       "noAccountRequired": "アカウント不要。完全オフラインで動作します。",
       "hostnamePlaceholder": "skynode.local  または  http://192.168.1.42:8080",
@@ -999,11 +999,11 @@
       "addNodeTitle": "Add a drone or ground station",
       "addNodeSubtitle": "No account required. Works fully offline.",
       "addNodePlaceholder": "skynode.local  or  9TW85C",
-      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `ados status`? Type that.",
+      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `arcos status`? Type that.",
       "codeTryHostnameTip": "Tip: if the agent is on your network, enter its hostname or IP instead (for example my-drone.local).",
       "pairButton": "Pair",
       "codeNoHostError": "Pair code is valid but the agent hasn't advertised a network address yet. Wait a few seconds and try again.",
-      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `ados status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
+      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `arcos status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
       "badCodeError": "Pair code must be six characters (letters and digits).",
       "signInBody": "Cloud relay routes your drone's telemetry and video through Convex over HTTPS, so Mission Control reaches the agent even when your phone or laptop is on a different network. Optional, never blocking — LAN-direct pairing works without it.",
       "signInButton": "Sign in",
@@ -1067,7 +1067,7 @@
       },
       "enterCodeTitle": "Pair with a code from your drone",
       "enterCodeSubtitle": "Works over HTTPS. No LAN access required.",
-      "enterCodeHint": "Run `ados status` on your drone to see its current code, or copy it from the install banner.",
+      "enterCodeHint": "Run `arcos status` on your drone to see its current code, or copy it from the install banner.",
       "pair": "Pair",
       "pairing": "Pairing"
     },
@@ -1179,7 +1179,7 @@
     "notInstalled": "未インストール",
     "wifiDirect": "WiFi Direct",
     "disabled": "無効",
-    "adosPeers": "ADOSピア",
+    "arcosPeers": "ARCOSピア",
     "lastScan": "最終スキャン: {time}",
     "scan": "スキャン",
     "noPeersDiscovered": "ピアが発見されません",
@@ -1765,7 +1765,7 @@
     "importLogs": "ログをインポート",
     "importTitle": "フライトログをインポート",
     "importDrop": "ログファイルをここにドロップ、またはクリックして選択",
-    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ADOS .json",
+    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ARCOS .json",
     "importComplete": "インポート完了。",
     "importImporting": "インポート中…",
     "importUnknownFormat": "不明なフォーマット",
@@ -2496,9 +2496,9 @@
       "capabilities": "機能"
     },
     "androidRc": {
-      "title": "ADOS Android RC コントローラー",
+      "title": "ARCOS Android RC コントローラー",
       "stubHeading": "製品開発中",
-      "stubBody": "ADOS Android RC ハンドヘルドコントローラーは活発に開発中です。製品がリリースされるとこのパネルが有効になります。",
+      "stubBody": "ARCOS Android RC ハンドヘルドコントローラーは活発に開発中です。製品がリリースされるとこのパネルが有効になります。",
       "stubBadge": "Roadmap"
     },
     "tabs": {
@@ -2660,7 +2660,7 @@
       "rowFecRecovered": "FEC recovered",
       "rowFecLost": "FEC lost",
       "noAgentTitle": "No ground station connected",
-      "noAgentBody": "Connect to an ADOS ground station agent to manage hardware, radios, and peripherals.",
+      "noAgentBody": "Connect to an ARCOS ground station agent to manage hardware, radios, and peripherals.",
       "openSetup": "Open setup",
       "connectGroundStation": "Connect ground station"
     },
@@ -3074,7 +3074,7 @@
     "slotDroppedToast": "{name} cannot render in {slot} (missing permission)",
     "browse": {
       "title": "Browse plugins",
-      "subtitle": "Discover signed extensions for the ADOS platform.",
+      "subtitle": "Discover signed extensions for the ARCOS platform.",
       "searchPlaceholder": "Search by name or description",
       "signedOnly": "Signed only",
       "verifiedOnly": "Verified publisher",
@@ -3182,7 +3182,7 @@
         "currentVersion": "Current version",
         "latestAvailable": "Latest available",
         "autoUpdateLabel": "Auto-update this plugin",
-        "autoUpdateHint": "Edit via the ados plugin auto-update CLI on the drone.",
+        "autoUpdateHint": "Edit via the arcos plugin auto-update CLI on the drone.",
         "pinnedVersionLabel": "Pin to version",
         "pinnedVersionAuto": "Auto (latest)",
         "lastChecked": "Last checked {time}",
@@ -3250,11 +3250,11 @@
     "link": "Link"
   },
   "flashTool": {
-    "ados": {
-      "subtitle": "Install the ADOS agent on a companion computer",
+    "arcos": {
+      "subtitle": "Install the ARCOS agent on a companion computer",
       "stack": {
-        "drone": "ADOS Drone Agent",
-        "ground": "ADOS Ground Agent"
+        "drone": "ARCOS Drone Agent",
+        "ground": "ARCOS Ground Agent"
       },
       "common": {
         "copy": "Copy",
@@ -4183,7 +4183,7 @@
     },
     "locked": {
       "title": "コンパニオンコンピューターを追加して{surface}を有効化",
-      "body": "このドローンはフライトコントローラーのみで接続されています。Raspberry PiのようなADOSエージェントを実行する小型ボード、コンパニオンコンピューターをペアリングすると、HD映像のストリーミング、スクリプトの実行、プラグインの追加、4G経由でのドローンへの接続が可能になります。"
+      "body": "このドローンはフライトコントローラーのみで接続されています。Raspberry PiのようなARCOSエージェントを実行する小型ボード、コンパニオンコンピューターをペアリングすると、HD映像のストリーミング、スクリプトの実行、プラグインの追加、4G経由でのドローンへの接続が可能になります。"
     },
     "no-fc-direct": {
       "title": "フライトコントローラー未接続",
@@ -4256,10 +4256,10 @@
       "chip": "データ一時停止",
       "tooltip": "最終受信値（{ago}前）で一時停止中です。ハートビートが戻ると値が再開します。"
     },
-    "disambiguation": "「フライトコントローラーを接続」は、USBまたはネットワーク経由でオートパイロットと直接通信します。「コンパニオンコンピューターをペアリング」は、映像、スクリプト、4GのためにADOSエージェントを実行するボードを追加します。"
+    "disambiguation": "「フライトコントローラーを接続」は、USBまたはネットワーク経由でオートパイロットと直接通信します。「コンパニオンコンピューターをペアリング」は、映像、スクリプト、4GのためにARCOSエージェントを実行するボードを追加します。"
   },
   "blackbox": {
-    "title": "ADOS Black Box",
+    "title": "ARCOS Black Box",
     "session": "Session",
     "allSessions": "All sessions",
     "open": "open",

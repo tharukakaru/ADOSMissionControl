@@ -4,14 +4,14 @@
 
 ![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-green.svg) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg) ![Next.js 16](https://img.shields.io/badge/Next.js-16-black.svg) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) [![Discord](https://img.shields.io/badge/Discord-Join-5865F2.svg)](https://discord.gg/uxbvuD4d5q)
 
-Command any drone from any browser. ADOS Mission Control is a full-stack ground control station built for software-defined drones. Configure 59 flight controller panels, plan missions with 7 pattern generators, fly with a gamepad at 50Hz, and tune PIDs with AI. No install. No locked hardware. 98,000 lines of TypeScript.
+Command any drone from any browser. ARCOS Mission Control is a full-stack ground control station built for software-defined drones. Configure 59 flight controller panels, plan missions with 7 pattern generators, fly with a gamepad at 50Hz, and tune PIDs with AI. No install. No locked hardware. 98,000 lines of TypeScript.
 
-> **Part of the ADOS ecosystem.** Pairs with [ADOS Drone Agent](https://github.com/altnautica/ADOSDroneAgent) (the onboard companion OS) for 50km data link, HD video, and cloud fleet management. Works standalone with any MAVLink drone over USB or WebSocket. Add features with [ADOS Extensions](https://github.com/altnautica/ADOSExtensions), the first-party plugin repo.
+> **Part of the ARCOS ecosystem.** Pairs with [ARCOS Drone Agent](https://github.com/altnautica/ARCOSDroneAgent) (the onboard companion OS) for 50km data link, HD video, and cloud fleet management. Works standalone with any MAVLink drone over USB or WebSocket. Add features with [ARCOS Extensions](https://github.com/altnautica/ARCOSExtensions), the first-party plugin repo.
 
 <p align="center">
   <strong><a href="https://command.altnautica.com">Live App</a></strong> |
   <strong><a href="https://docs.altnautica.com">Docs</a></strong> |
-  <strong><a href="https://github.com/altnautica/ADOSExtensions">ADOS Extensions</a></strong> |
+  <strong><a href="https://github.com/altnautica/ARCOSExtensions">ARCOS Extensions</a></strong> |
   <strong><a href="https://command.altnautica.com/community/changelog">Changelog</a></strong> |
   <strong><a href="https://discord.gg/uxbvuD4d5q">Discord</a></strong> |
   <strong><a href="mailto:team@altnautica.com">Email</a></strong> |
@@ -104,8 +104,8 @@ Try it right now at [command.altnautica.com](https://command.altnautica.com). No
 Or run locally:
 
 ```bash
-git clone https://github.com/altnautica/ADOSMissionControl.git
-cd ADOSMissionControl
+git clone https://github.com/altnautica/ArcOS.git
+cd ArcOS
 npm install
 npm run demo
 ```
@@ -114,7 +114,7 @@ Open [http://localhost:4000](http://localhost:4000). Five simulated drones. No h
 
 ---
 
-## What ADOS Mission Control Is
+## What ARCOS Mission Control Is
 
 - **Platform:** Browser-based. Runs on any OS with a modern browser. Optional Electron desktop build for WebSerial + WebUSB access.
 - **Firmware:** ArduPilot, PX4, Betaflight, and iNav as first-class targets.
@@ -151,7 +151,7 @@ HMAC-SHA256 on every outbound MAVLink v2 frame. The 32-byte key lives only in yo
 
 ### Connect over the cloud
 
-Works standalone in field mode (direct WebSocket or WebSerial). Cloud mode adds fleet management, mission sync, and MQTT telemetry relay. When paired with ADOS Drone Agent, the GCS receives live telemetry at 2Hz+ and can send commands through a three-layer relay: Convex HTTP (baseline), MQTT real-time, and WebSocket video streaming.
+Works standalone in field mode (direct WebSocket or WebSerial). Cloud mode adds fleet management, mission sync, and MQTT telemetry relay. When paired with ARCOS Drone Agent, the GCS receives live telemetry at 2Hz+ and can send commands through a three-layer relay: Convex HTTP (baseline), MQTT real-time, and WebSocket video streaming.
 
 ### Manage a ground station
 
@@ -277,14 +277,14 @@ A multi-stage `Dockerfile` ships at the repo root for running Mission Control as
 ```bash
 docker build \
   --build-arg NEXT_PUBLIC_CONVEX_URL=https://your-convex.example \
-  -t ados-mission-control .
+  -t arcos-mission-control .
 
 docker run -d \
   -p 4000:4000 \
   -e NEXT_PUBLIC_CONVEX_URL=https://your-convex.example \
   --restart unless-stopped \
   --name mission-control \
-  ados-mission-control
+  arcos-mission-control
 ```
 
 Open `http://localhost:4000`.
@@ -338,7 +338,7 @@ All variables are optional. Set them with `npm run cli config` or edit `.env.loc
 
 ## Hardware Partners
 
-Building and testing ADOS Mission Control on real hardware. Want to get involved? [Email us](mailto:team@altnautica.com).
+Building and testing ARCOS Mission Control on real hardware. Want to get involved? [Email us](mailto:team@altnautica.com).
 
 <!-- Format: | [![Company](logo-url)](website) -->
 
@@ -352,7 +352,7 @@ Building and testing ADOS Mission Control on real hardware. Want to get involved
 - **[LinkedIn](https://www.linkedin.com/company/altnautica/)** — Follow company updates
 - **[Email](mailto:team@altnautica.com)** — team@altnautica.com
 - **[Changelog](https://command.altnautica.com/community/changelog)** — What shipped and when
-- **[GitHub Issues](https://github.com/altnautica/ADOSMissionControl/issues)** — Bug reports and technical discussions
+- **[GitHub Issues](https://github.com/altnautica/ArcOS/issues)** — Bug reports and technical discussions
 
 ---
 

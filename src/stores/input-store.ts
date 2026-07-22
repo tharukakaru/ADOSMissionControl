@@ -3,7 +3,7 @@ import type { InputController } from "@/lib/types";
 
 import { safeLocalRead } from "@/lib/storage/safe-parse";
 
-const CAL_STORAGE_KEY = "ados-gamepad-cal";
+const CAL_STORAGE_KEY = "arcos-gamepad-cal";
 
 export interface GamepadCalibration {
   center: [number, number, number, number]; // roll, pitch, throttle, yaw center values

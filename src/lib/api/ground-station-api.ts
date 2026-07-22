@@ -1,6 +1,6 @@
 /**
  * @module GroundStationApi
- * @description Typed REST client for the ADOS Ground Agent HTTP surface.
+ * @description Typed REST client for the ARCOS Ground Agent HTTP surface.
  * Thin orchestrator that delegates to per-domain modules under './ground-station/'.
  * @license GPL-3.0-only
  */

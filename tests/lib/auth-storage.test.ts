@@ -5,7 +5,7 @@ import { resolve } from "node:path";
 /**
  * Regression net for auth credential storage.
  *
- * The agent's X-ADOS-Key (and the per-paired-drone apiKey it derives
+ * The agent's X-ARCOS-Key (and the per-paired-drone apiKey it derives
  * from) must live in-memory only. Persisting them to localStorage would
  * make them readable by every script on the page and recoverable from
  * a shared computer or a public-WiFi cache. Today the apiKey-bearing

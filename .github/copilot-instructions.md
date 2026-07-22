@@ -1,4 +1,4 @@
-# ADOS Mission Control — Copilot Instructions
+# ARCOS Mission Control — Copilot Instructions
 
 **See [CLAUDE.md](../CLAUDE.md) for full architecture, checklist patterns, and detailed examples.**
 

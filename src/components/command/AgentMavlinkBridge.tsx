@@ -2,7 +2,7 @@
 
 /**
  * @module AgentMavlinkBridge
- * @description Automatically establishes a MAVLink connection to the ADOS Drone
+ * @description Automatically establishes a MAVLink connection to the ARCOS Drone
  * Agent when the agent reports an FC connected. Tries two paths in order:
  *
  *   1. Direct WebSocket (ws://agent:8765/) — lowest latency, works on LAN

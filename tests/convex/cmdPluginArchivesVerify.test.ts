@@ -1,5 +1,5 @@
 /**
- * Server-side integrity verifier for `.adosplug` plugin archives.
+ * Server-side integrity verifier for `.arcosplug` plugin archives.
  *
  * `cmdPluginArchivesVerify.verifyArchive` is a Convex Node action that
  * cannot be executed without a Convex runtime, so the contract is
@@ -260,7 +260,7 @@ async function buildArchive(options: {
 
 describe("verifier behavior on real archives", () => {
   it("accepts a STORED archive whose manifest hash matches the claim", async () => {
-    const manifestBody = "id: ados.test\nversion: 0.1.0\n";
+    const manifestBody = "id: arcos.test\nversion: 0.1.0\n";
     const archive = await buildArchive({ manifestBody, compress: false });
     const sha256 = createHash("sha256").update(archive).digest("hex");
     const manifestHash = createHash("sha256")
@@ -279,7 +279,7 @@ describe("verifier behavior on real archives", () => {
 
   it("accepts a DEFLATE archive whose manifest hash matches the claim", async () => {
     // Repeating body so DEFLATE actually produces method=8 entries.
-    const manifestBody = "id: ados.test\n".repeat(200);
+    const manifestBody = "id: arcos.test\n".repeat(200);
     const archive = await buildArchive({ manifestBody, compress: true });
     const sha256 = createHash("sha256").update(archive).digest("hex");
     const manifestHash = createHash("sha256")
@@ -294,8 +294,8 @@ describe("verifier behavior on real archives", () => {
   });
 
   it("rejects an archive with a tampered manifest (hash mismatch)", async () => {
-    const realManifest = "id: ados.test\nversion: 0.1.0\n";
-    const tamperedManifest = "id: ados.evil\nversion: 0.1.0\n";
+    const realManifest = "id: arcos.test\nversion: 0.1.0\n";
+    const tamperedManifest = "id: arcos.evil\nversion: 0.1.0\n";
     const archive = await buildArchive({
       manifestBody: realManifest,
       compress: false,
@@ -332,7 +332,7 @@ describe("verifier behavior on real archives", () => {
 
   it("rejects an archive whose declared sha256 does not match the bytes", async () => {
     const archive = await buildArchive({
-      manifestBody: "id: ados.test\n",
+      manifestBody: "id: arcos.test\n",
       compress: false,
     });
     const wrongSha = "0".repeat(64);
@@ -340,7 +340,7 @@ describe("verifier behavior on real archives", () => {
       archiveBytes: archive,
       claimedSha256: wrongSha,
       claimedManifestHash: createHash("sha256")
-        .update("id: ados.test\n")
+        .update("id: arcos.test\n")
         .digest("hex"),
     });
     expect(outcome.ok).toBe(false);
@@ -349,7 +349,7 @@ describe("verifier behavior on real archives", () => {
 
   it("rejects an archive larger than the configured cap", async () => {
     const archive = await buildArchive({
-      manifestBody: "id: ados.test\n",
+      manifestBody: "id: arcos.test\n",
       compress: false,
     });
     const sha256 = createHash("sha256").update(archive).digest("hex");
@@ -357,7 +357,7 @@ describe("verifier behavior on real archives", () => {
       archiveBytes: archive,
       claimedSha256: sha256,
       claimedManifestHash: createHash("sha256")
-        .update("id: ados.test\n")
+        .update("id: arcos.test\n")
         .digest("hex"),
       maxBytes: 16, // absurdly small to force the cap
     });
@@ -379,7 +379,7 @@ describe("verifier behavior on real archives", () => {
 
   it("returns null when the requested entry is absent", async () => {
     const archive = await buildArchive({
-      manifestBody: "id: ados.test\n",
+      manifestBody: "id: arcos.test\n",
       compress: false,
     });
     const out = extractZipEntryMirror(archive, "definitely-missing.txt");

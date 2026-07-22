@@ -9,7 +9,7 @@ import type { MeshNetEnrollment, NetworkPeer } from "@/lib/agent/types";
 
 export const MOCK_ENROLLMENT: MeshNetEnrollment = {
   enrolled: true,
-  droneId: "ados-alpha-1-cm4",
+  droneId: "arcos-alpha-1-cm4",
   fleetName: "Alpha Fleet",
   tier: 3,
   enrolledSince: "2026-02-28T10:00:00+05:30",

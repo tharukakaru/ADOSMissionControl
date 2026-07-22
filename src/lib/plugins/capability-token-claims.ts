@@ -8,7 +8,7 @@
  *                                `operator_hmac_secrets`).
  *   * `iss: agent:<deviceId>` - per-pairing HMAC secret derived via
  *                                HKDF-SHA256 from the pairing key
- *                                (salt: `b"ados/plugin-capability-token/v1"`,
+ *                                (salt: `b"arcos/plugin-capability-token/v1"`,
  *                                info empty). Agent mirror:
  *                                `_plugins_helpers.derive_agent_token_secret`.
  *   * `iss: local`            - dev-mode CLI token; signed with a local
@@ -24,7 +24,7 @@
 /** HKDF salt is fixed by spec so the GCS and the agent derive the same
  * secret independently. Mirrors `_plugins_helpers.HKDF_SALT_TOKEN_V1`. */
 export const HKDF_SALT_TOKEN_V1 = new TextEncoder().encode(
-  "ados/plugin-capability-token/v1",
+  "arcos/plugin-capability-token/v1",
 );
 
 /** Decoded JSON-claim token shape. Matches the agent's `AgentTokenClaims`

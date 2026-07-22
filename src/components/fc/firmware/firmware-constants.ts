@@ -19,8 +19,8 @@ export const FIRMWARE_STACKS: { id: FirmwareStack; label: string; labelKey?: str
   { id: "betaflight", label: "Betaflight" },
   { id: "px4", label: "PX4" },
   { id: "ap-periph", label: "AP_Periph (CAN nodes)", labelKey: "apPeriph" },
-  { id: "ados-drone-agent", label: "ADOS Drone Agent", labelKey: "stack.drone" },
-  { id: "ados-ground-agent", label: "ADOS Ground Agent", labelKey: "stack.ground" },
+  { id: "arcos-drone-agent", label: "ARCOS Drone Agent", labelKey: "stack.drone" },
+  { id: "arcos-ground-agent", label: "ARCOS Ground Agent", labelKey: "stack.ground" },
 ];
 
 /** Stacks that target a flight controller chip rather than a companion SBC. */
@@ -30,10 +30,10 @@ export const FC_STACKS: ReadonlySet<FirmwareStack> = new Set([
   "px4",
 ]);
 
-/** Stacks that target an ADOS companion-computer SBC. */
-export const ADOS_STACKS: ReadonlySet<FirmwareStack> = new Set([
-  "ados-drone-agent",
-  "ados-ground-agent",
+/** Stacks that target an ARCOS companion-computer SBC. */
+export const ARCOS_STACKS: ReadonlySet<FirmwareStack> = new Set([
+  "arcos-drone-agent",
+  "arcos-ground-agent",
 ]);
 
 /** Stacks that target a CAN-bus peripheral node (flashed over DroneCAN OTA). */
@@ -41,8 +41,8 @@ export const PERIPHERAL_STACKS: ReadonlySet<FirmwareStack> = new Set([
   "ap-periph",
 ]);
 
-export function isAdosStack(stack: FirmwareStack): boolean {
-  return ADOS_STACKS.has(stack);
+export function isArcOsStack(stack: FirmwareStack): boolean {
+  return ARCOS_STACKS.has(stack);
 }
 
 export function isFcStack(stack: FirmwareStack): boolean {
@@ -79,10 +79,10 @@ export const FC_CHECKLIST_ITEMS: readonly ChecklistItem[] = [
   { key: "batteryOff", label: "Flight battery is disconnected (USB power only)" },
 ];
 
-export const ADOS_CHECKLIST_ITEMS: readonly ChecklistItem[] = [
-  { key: "adosDataLoss", label: "Data on the board's storage will be erased", labelKey: "checklist.dataLoss" },
-  { key: "adosUsbPower", label: "Board is powered via USB only (no external supply)", labelKey: "checklist.usbPower" },
-  { key: "adosBackup", label: "I have backed up any user data on the board", labelKey: "checklist.backup" },
+export const ARCOS_CHECKLIST_ITEMS: readonly ChecklistItem[] = [
+  { key: "arcosDataLoss", label: "Data on the board's storage will be erased", labelKey: "checklist.dataLoss" },
+  { key: "arcosUsbPower", label: "Board is powered via USB only (no external supply)", labelKey: "checklist.usbPower" },
+  { key: "arcosBackup", label: "I have backed up any user data on the board", labelKey: "checklist.backup" },
 ];
 
 export const AP_PERIPH_CHECKLIST_ITEMS: readonly ChecklistItem[] = [
@@ -96,8 +96,8 @@ export const CHECKLIST_ITEMS_BY_STACK: Record<FirmwareStack, readonly ChecklistI
   betaflight: FC_CHECKLIST_ITEMS,
   px4: FC_CHECKLIST_ITEMS,
   "ap-periph": AP_PERIPH_CHECKLIST_ITEMS,
-  "ados-drone-agent": ADOS_CHECKLIST_ITEMS,
-  "ados-ground-agent": ADOS_CHECKLIST_ITEMS,
+  "arcos-drone-agent": ARCOS_CHECKLIST_ITEMS,
+  "arcos-ground-agent": ARCOS_CHECKLIST_ITEMS,
 };
 
 export function versionLabel(v: string): string {

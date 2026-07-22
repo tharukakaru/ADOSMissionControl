@@ -20,7 +20,7 @@ import {
 } from "@/lib/plugins/capability-token-claims";
 
 const HKDF_SALT_BYTES = new TextEncoder().encode(
-  "ados/plugin-capability-token/v1",
+  "arcos/plugin-capability-token/v1",
 );
 
 function urlsafeB64NoPad(bytes: Uint8Array): string {

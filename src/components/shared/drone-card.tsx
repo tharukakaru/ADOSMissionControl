@@ -194,7 +194,7 @@ export function DroneCard({ drone, selected, onClick }: DroneCardProps) {
           )}
           {drone.cameraState === "error" && (
             <span
-              title="Air-side camera HAL probe failed. Check ados-video journal."
+              title="Air-side camera HAL probe failed. Check arcos-video journal."
               className="inline-flex"
             >
               <Badge variant="error" className="text-[10px]">

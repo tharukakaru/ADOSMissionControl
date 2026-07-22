@@ -2,7 +2,7 @@
 
 /**
  * @module AgentConnectPanel
- * @description The ADOS Drone Agent pairing body, without modal chrome, so it
+ * @description The ARCOS Drone Agent pairing body, without modal chrome, so it
  * can be embedded as the "Companion Computer" column of the unified Connect
  * dialog AND reused inside the standalone PairingDialog. Hosts the
  * Add-a-drone ⇄ Generate-code tabs; the lifecycle state machine lives in

@@ -63,7 +63,7 @@ afterEach(() => {
   usePairingStore.setState({ pairedDrones: [] });
 });
 
-function fakeFile(name = "foo.adosplug", size = 256): File {
+function fakeFile(name = "foo.arcosplug", size = 256): File {
   return new File([new Uint8Array(size)], name, {
     type: "application/zip",
   });
@@ -194,7 +194,7 @@ describe("installLanDirect", () => {
 
     expect(capturedUrl).toBe("http://drone.local:8080/api/plugins/install");
     expect(capturedMethod).toBe("POST");
-    expect(capturedHeaders?.get("X-ADOS-Key")).toBe("k1");
+    expect(capturedHeaders?.get("X-ARCOS-Key")).toBe("k1");
     expect(result.transport).toBe("lan");
     expect(result.jobId).toBe("job-xyz");
   });

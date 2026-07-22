@@ -6,7 +6,7 @@
  * pick screen, the single-page review surface, and the install
  * kickoff. Two install sources flow through the same orchestrator:
  *
- *   - `kind: "file"` — operator drag-dropped a `.adosplug` archive. The
+ *   - `kind: "file"` — operator drag-dropped a `.arcosplug` archive. The
  *     dialog parses it client-side and the cloud-relay path uploads
  *     it via Convex storage. LAN-direct uses the multipart
  *     `/api/plugins/install` endpoint.

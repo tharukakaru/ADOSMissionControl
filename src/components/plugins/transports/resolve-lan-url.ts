@@ -12,7 +12,7 @@
  * fetch" against a doomed direct call.
  *
  * Also returns the paired API key so the dialog can stamp the
- * `X-ADOS-Key` header without prompting.
+ * `X-ARCOS-Key` header without prompting.
  *
  * @license GPL-3.0-only
  */

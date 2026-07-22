@@ -57,7 +57,7 @@ describe("LoggingService.pushWindow", () => {
     expect(url).toBe("http://skynode.local:8080/api/logs/push");
     expect(init.method).toBe("POST");
     const headers = init.headers as Record<string, string>;
-    expect(headers["X-ADOS-Key"]).toBe("secret-key");
+    expect(headers["X-ARCOS-Key"]).toBe("secret-key");
     expect(headers["Content-Type"]).toBe("application/json");
     const body = JSON.parse(init.body as string);
     expect(body.session).toBe("7");
@@ -92,7 +92,7 @@ describe("LoggingService.pushWindow", () => {
     expect(result.deduped).toBe(true);
     // No key configured: the header must be absent.
     const headers = init.headers as Record<string, string>;
-    expect(headers["X-ADOS-Key"]).toBeUndefined();
+    expect(headers["X-ARCOS-Key"]).toBeUndefined();
   });
 
   it("derives the FastAPI port even when the base url uses a different port", async () => {

@@ -111,9 +111,9 @@ export function DemoProvider() {
           fcPort: agent.fcConnected ? "/dev/ttyACM0" : "",
           fcBaud: agent.fcConnected ? 115200 : 0,
           services: [
-            { name: "ados-api", status: index === 3 ? "stopped" : "running" },
-            { name: "ados-mavlink", status: agent.fcConnected ? "running" : "stopped" },
-            { name: "ados-video", status: index < 2 ? "stopped" : "stopped" },
+            { name: "arcos-api", status: index === 3 ? "stopped" : "running" },
+            { name: "arcos-mavlink", status: agent.fcConnected ? "running" : "stopped" },
+            { name: "arcos-video", status: index < 2 ? "stopped" : "stopped" },
           ],
           lastIp: agent.lastIp,
           videoState: "stopped",

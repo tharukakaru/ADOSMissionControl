@@ -73,7 +73,7 @@ export async function loadDistributedRx(
     const { message, status } = errorMessage(err);
     const friendly =
       status === 503
-        ? "WFB receiver cannot bind to UDP 5801 on bat0. Confirm `bat0` is up (ados gs mesh health) and no other process is holding the port."
+        ? "WFB receiver cannot bind to UDP 5801 on bat0. Confirm `bat0` is up (arcos gs mesh health) and no other process is holding the port."
         : message;
     set({
       distributedRx: {

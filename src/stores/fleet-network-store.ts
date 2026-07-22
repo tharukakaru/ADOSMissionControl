@@ -1,6 +1,6 @@
 /**
  * @module FleetNetworkStore
- * @description Zustand store for ADOS Drone Agent fleet network state
+ * @description Zustand store for ARCOS Drone Agent fleet network state
  * (MeshNet enrollment and mesh peers).
  * @license GPL-3.0-only
  */

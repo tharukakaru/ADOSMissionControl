@@ -8,7 +8,7 @@
  * `drone.detail.tab` slot, and returns a stable sorted array.
  *
  * Sort order matches the slot 13 contract in
- * `product/specs/ados-plugin-system/08-ui-extension-points.md` Section
+ * `product/specs/arcos-plugin-system/08-ui-extension-points.md` Section
  * 3.13: by manifest `order` (default 60), ties broken by `pluginId`
  * lexicographically.
  *

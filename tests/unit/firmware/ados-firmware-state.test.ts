@@ -1,7 +1,7 @@
 /**
  * Verifies the stack-aware checklist logic in useFirmwareState. Switching
  * the firmware stack between flight-controller stacks (ArduPilot, etc.)
- * and the ADOS agent stacks must surface the correct safety items, and
+ * and the ARCOS agent stacks must surface the correct safety items, and
  * `allChecked` must reset across the boundary because the item keys
  * diverge between the two checklists.
  *
@@ -42,8 +42,8 @@ vi.mock("@/lib/protocol/firmware/px4-manifest", () => ({
   },
 }));
 
-vi.mock("@/lib/protocol/firmware/ados-agent-manifest", () => ({
-  AdosAgentManifest: class {
+vi.mock("@/lib/protocol/firmware/arcos-agent-manifest", () => ({
+  ArcOsAgentManifest: class {
     async getManifest() {
       return {
         schemaVersion: 1,
@@ -118,26 +118,26 @@ describe("useFirmwareState — stack-aware checklist", () => {
     expect(keys).toEqual(["batteryOff", "paramBackup", "propsRemoved"]);
   });
 
-  it("swaps to ADOS items when the stack switches to ados-drone-agent", () => {
+  it("swaps to ARCOS items when the stack switches to arcos-drone-agent", () => {
     const { result } = renderHook(() => useFirmwareState());
 
     act(() => {
-      result.current.setFirmwareStack("ados-drone-agent");
+      result.current.setFirmwareStack("arcos-drone-agent");
     });
 
     const keys = result.current.checklistItems.map((c) => c.key).sort();
-    expect(keys).toEqual(["adosBackup", "adosDataLoss", "adosUsbPower"]);
+    expect(keys).toEqual(["arcosBackup", "arcosDataLoss", "arcosUsbPower"]);
   });
 
-  it("uses the ADOS items for the ground-agent stack as well", () => {
+  it("uses the ARCOS items for the ground-agent stack as well", () => {
     const { result } = renderHook(() => useFirmwareState());
 
     act(() => {
-      result.current.setFirmwareStack("ados-ground-agent");
+      result.current.setFirmwareStack("arcos-ground-agent");
     });
 
     const keys = result.current.checklistItems.map((c) => c.key).sort();
-    expect(keys).toEqual(["adosBackup", "adosDataLoss", "adosUsbPower"]);
+    expect(keys).toEqual(["arcosBackup", "arcosDataLoss", "arcosUsbPower"]);
   });
 
   it("reports allChecked=false when no items are checked", () => {
@@ -161,7 +161,7 @@ describe("useFirmwareState — stack-aware checklist", () => {
     expect(result.current.allChecked).toBe(true);
   });
 
-  it("resets allChecked to false when the stack moves from FC to ADOS", () => {
+  it("resets allChecked to false when the stack moves from FC to ARCOS", () => {
     const { result } = renderHook(() => useFirmwareState());
 
     act(() => {
@@ -176,28 +176,28 @@ describe("useFirmwareState — stack-aware checklist", () => {
     expect(result.current.allChecked).toBe(true);
 
     act(() => {
-      result.current.setFirmwareStack("ados-drone-agent");
+      result.current.setFirmwareStack("arcos-drone-agent");
     });
 
-    // ADOS items aren't checked; allChecked must drop back to false even
+    // ARCOS items aren't checked; allChecked must drop back to false even
     // though every FC item is still flagged in the checked map.
     expect(result.current.allChecked).toBe(false);
   });
 
-  it("reaches allChecked=true on the ADOS stack after flagging the ADOS items", () => {
+  it("reaches allChecked=true on the ARCOS stack after flagging the ARCOS items", () => {
     const { result } = renderHook(() => useFirmwareState());
 
     act(() => {
-      result.current.setFirmwareStack("ados-drone-agent");
+      result.current.setFirmwareStack("arcos-drone-agent");
     });
     act(() => {
-      result.current.setChecked("adosDataLoss", true);
+      result.current.setChecked("arcosDataLoss", true);
     });
     act(() => {
-      result.current.setChecked("adosUsbPower", true);
+      result.current.setChecked("arcosUsbPower", true);
     });
     act(() => {
-      result.current.setChecked("adosBackup", true);
+      result.current.setChecked("arcosBackup", true);
     });
 
     expect(result.current.allChecked).toBe(true);

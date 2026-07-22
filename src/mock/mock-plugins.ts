@@ -52,7 +52,7 @@ const DEMO_PLUGIN_INSTALLS: DemoPluginInstall[] = [
     installId: "demo-install-001",
     agentId: "demo-drone-1",
     pluginId: "com.altnautica.vision-nav",
-    name: "ADOS Vision Nav (OpenVINS)",
+    name: "ARCOS Vision Nav (OpenVINS)",
     version: "0.1.0",
     risk: "critical",
     status: "running",

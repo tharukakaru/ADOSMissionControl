@@ -80,7 +80,7 @@ The GCS uses [Convex](https://convex.dev) for auth, fleet data, and cloud comman
 
 **Option A: Convex Cloud (easiest)**
 ```bash
-cd ADOSMissionControl
+cd ArcOS
 npx convex init
 npx @convex-dev/auth          # generates JWT keys
 npx convex dev                # starts dev backend
@@ -108,14 +108,14 @@ The MQTT relay gives you 2Hz+ telemetry updates (vs 5s baseline polling through 
 ### 2a. Configure
 
 ```bash
-cd ADOSMissionControl/tools/mqtt-bridge/deploy
+cd ArcOS/tools/mqtt-bridge/deploy
 cp .env.example .env
 ```
 
 Edit `.env`:
 ```env
 MQTT_BROKER_URL=mqtt://mosquitto:1883
-MQTT_USERNAME=ados
+MQTT_USERNAME=arcos
 MQTT_PASSWORD=<your-password>
 CONVEX_URL=https://convex.your.domain
 CLOUDFLARE_TUNNEL_TOKEN=<your-token>    # optional, skip if using port forwarding
@@ -125,7 +125,7 @@ CLOUDFLARE_TUNNEL_TOKEN=<your-token>    # optional, skip if using port forwardin
 
 ```bash
 docker compose up -d mosquitto
-docker exec -it deploy-mosquitto-1 mosquitto_passwd -c /mosquitto/config/passwd ados
+docker exec -it deploy-mosquitto-1 mosquitto_passwd -c /mosquitto/config/passwd arcos
 # Enter your password when prompted
 docker compose down
 ```
@@ -161,7 +161,7 @@ The video relay converts RTSP from the drone agent into fragmented MP4 over WebS
 ### 3a. Configure
 
 ```bash
-cd ADOSMissionControl/tools/video-relay/deploy
+cd ArcOS/tools/video-relay/deploy
 cp .env.example .env
 ```
 
@@ -221,11 +221,11 @@ curl https://convex.your.domain/
 Use any MQTT client to test pub/sub:
 ```bash
 # In one terminal, subscribe
-npx mqtt sub -t 'ados/+/status' -h mqtt.your.domain -p 9001 -l ws -u ados -P <password>
+npx mqtt sub -t 'arcos/+/status' -h mqtt.your.domain -p 9001 -l ws -u arcos -P <password>
 
 # In another, publish
-npx mqtt pub -t 'ados/test-device/status' -m '{"version":"1.0.0"}' \
-  -h mqtt.your.domain -p 9001 -l ws -u ados -P <password>
+npx mqtt pub -t 'arcos/test-device/status' -m '{"version":"1.0.0"}' \
+  -h mqtt.your.domain -p 9001 -l ws -u arcos -P <password>
 ```
 
 ### Video
@@ -266,7 +266,7 @@ services:
       - mosquitto
     environment:
       - MQTT_BROKER_URL=mqtt://mosquitto:1883
-      - MQTT_USERNAME=ados
+      - MQTT_USERNAME=arcos
       - MQTT_PASSWORD=${MQTT_PASSWORD}
       - CONVEX_URL=${CONVEX_URL}
 

@@ -16,7 +16,7 @@
 
 import { createStore, get, set, del } from "idb-keyval";
 
-const STORE_DB = "ados-signing-prefs";
+const STORE_DB = "arcos-signing-prefs";
 const STORE_NAME = "signing-prefs-v1";
 
 let _storePromise: ReturnType<typeof createStore> | null = null;

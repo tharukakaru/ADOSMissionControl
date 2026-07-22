@@ -138,7 +138,7 @@ function buildResult(r: NominatimResponse): ReverseGeocodeResult {
 // ── Fetch ────────────────────────────────────────────────────
 
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/reverse";
-const USER_AGENT = "Altnautica Mission Control (https://github.com/altnautica/ADOSMissionControl)";
+const USER_AGENT = "Altnautica Mission Control (https://github.com/altnautica/ArcOS)";
 
 async function fetchNominatim(lat: number, lon: number): Promise<ReverseGeocodeResult | undefined> {
   try {

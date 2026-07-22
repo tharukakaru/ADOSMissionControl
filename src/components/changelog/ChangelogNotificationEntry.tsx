@@ -24,7 +24,7 @@ interface ChangelogNotificationEntryProps {
 
 function repoLabel(repo: string): string {
   const labels: Record<string, string> = {
-    ADOSMissionControl: "Mission Control",
+    ArcOS: "Mission Control",
   };
   return labels[repo] ?? repo;
 }

@@ -17,7 +17,7 @@
     },
     "intro": {
       "tagline": "软件定义无人机的地面控制。",
-      "description": "配置、规划任务并飞行任何 ArduPilot、PX4 或 Betaflight 无人机。搭配 ADOS Drone Agent 在边缘端运行智能。开源，在浏览器中运行。",
+      "description": "配置、规划任务并飞行任何 ArduPilot、PX4 或 Betaflight 无人机。搭配 ARCOS Drone Agent 在边缘端运行智能。开源，在浏览器中运行。",
       "openBeta": "公测版",
       "freeForever": "永久免费",
       "openSource": "GPL-3.0 开源",
@@ -27,7 +27,7 @@
     },
     "disclaimer": {
       "title": "飞行前须知",
-      "subtitle": "ADOS Mission Control 可以控制真实飞行器。请阅读并接受以下内容。",
+      "subtitle": "ARCOS Mission Control 可以控制真实飞行器。请阅读并接受以下内容。",
       "lawfulUse": {
         "heading": "仅限合法使用",
         "body": "您同意仅将本软件用于合法目的。您不得将其用于监视、骚扰他人、侵犯隐私，或支持您所在国家或地区法律禁止的任何活动。"
@@ -56,7 +56,7 @@
       },
       "openSource": {
         "heading": "开源许可证",
-        "body": "ADOS Mission Control 采用 GNU General Public License v3.0 许可。您可在该许可证条款下自由使用、修改和分发本软件。",
+        "body": "ARCOS Mission Control 采用 GNU General Public License v3.0 许可。您可在该许可证条款下自由使用、修改和分发本软件。",
         "link": "阅读完整 GPL-3.0 许可证"
       },
       "acceptCheckbox": "我已阅读并接受上述条款。我理解我作为飞行指挥责任人，对安全且合法的运行承担全部责任。",
@@ -87,7 +87,7 @@
       "docsDescription": "Guides, API reference, and tutorials to get your drone flying.",
       "browseDocs": "Browse docs",
       "communityHeading": "Built in the open",
-      "communityDescription": "ADOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
+      "communityDescription": "ARCOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
       "discordHeading": "Talk to us",
       "discordDescription": "Ask questions, share your setup, report bugs, or just hang out with other pilots and developers.",
       "githubHeading": "Help the project grow",
@@ -310,7 +310,7 @@
     "badges": {
       "categories": {
         "command": "控制",
-        "ados": "ADOS",
+        "arcos": "ARCOS",
         "website": "网站",
         "general": "常规"
       },
@@ -603,7 +603,7 @@
   },
   "emptyState": {
     "title": "未连接无人机",
-    "description": "通过 USB 或网络连接飞控，开始使用 ADOS 任务控制。",
+    "description": "通过 USB 或网络连接飞控，开始使用 ARCOS 任务控制。",
     "connectDrone": "连接无人机",
     "commandPaletteHint": "打开命令面板"
   },
@@ -638,7 +638,7 @@
     "fcStackTitle": "Flight Controller",
     "fcStackDesc": "Direct MAVLink — USB, WebSocket, Bluetooth",
     "agentStackTitle": "Companion Computer",
-    "agentStackDesc": "ADOS Agent — software-defined",
+    "agentStackDesc": "ARCOS Agent — software-defined",
     "agentStackBadge": "Full features"
   },
   "droneDetail": {
@@ -828,7 +828,7 @@
     "subtitle": "Extensions installed on this drone. Each plugin runs sandboxed and only does what its granted permissions allow.",
     "installOnThisDrone": "Install plugin on this drone",
     "emptyStateTitle": "No plugins installed on this drone yet.",
-    "emptyStateBody": "Plugins extend ADOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
+    "emptyStateBody": "Plugins extend ARCOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
     "loading": "Loading...",
     "droneNotFound": "Drone \"{id}\" not found.",
     "notConnectedTitle": "Connect to a drone to manage its plugins.",
@@ -866,7 +866,7 @@
     },
     "installFromFile": "Install from file",
     "installedSectionTitle": "Installed on this drone",
-    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .adosplug file."
+    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .arcosplug file."
   },
   "droneRadio": {
     "airSideBadge": "Air side",
@@ -894,7 +894,7 @@
     "directConnection": "直连",
     "enterPairingCode": "Enter pairing code from your node agent",
     "pairingCode": "配对码",
-    "pairingInstructions": "Run 'ados pair' on your node to get a pairing code",
+    "pairingInstructions": "Run 'arcos pair' on your node to get a pairing code",
     "paired": "已配对",
     "lastSeen": "最后在线",
     "neverConnected": "从未连接",
@@ -938,7 +938,7 @@
     "pairedCount": "{count} paired",
     "addNode": {
       "title": "添加节点",
-      "subtitle": "通过局域网直接配对任意 ADOS 节点（无人机、地面站或未来的计算节点）。",
+      "subtitle": "通过局域网直接配对任意 ARCOS 节点（无人机、地面站或未来的计算节点）。",
       "pairOnLan": "在局域网上配对节点",
       "noAccountRequired": "无需账户。完全离线可用。",
       "hostnamePlaceholder": "skynode.local  或  http://192.168.1.42:8080",
@@ -984,11 +984,11 @@
       "addNodeTitle": "Add a drone or ground station",
       "addNodeSubtitle": "No account required. Works fully offline.",
       "addNodePlaceholder": "skynode.local  or  9TW85C",
-      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `ados status`? Type that.",
+      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `arcos status`? Type that.",
       "codeTryHostnameTip": "Tip: if the agent is on your network, enter its hostname or IP instead (for example my-drone.local).",
       "pairButton": "Pair",
       "codeNoHostError": "Pair code is valid but the agent hasn't advertised a network address yet. Wait a few seconds and try again.",
-      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `ados status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
+      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `arcos status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
       "badCodeError": "Pair code must be six characters (letters and digits).",
       "signInBody": "Cloud relay routes your drone's telemetry and video through Convex over HTTPS, so Mission Control reaches the agent even when your phone or laptop is on a different network. Optional, never blocking — LAN-direct pairing works without it.",
       "signInButton": "Sign in",
@@ -1052,7 +1052,7 @@
       },
       "enterCodeTitle": "Pair with a code from your drone",
       "enterCodeSubtitle": "Works over HTTPS. No LAN access required.",
-      "enterCodeHint": "Run `ados status` on your drone to see its current code, or copy it from the install banner.",
+      "enterCodeHint": "Run `arcos status` on your drone to see its current code, or copy it from the install banner.",
       "pair": "Pair",
       "pairing": "Pairing"
     },
@@ -1155,7 +1155,7 @@
     "latency": "延迟",
     "packetsLost": "丢包数",
     "networkTopology": "网络拓扑",
-    "adosPeers": "ADOS Peers",
+    "arcosPeers": "ARCOS Peers",
     "battery": "电池",
     "broker": "Broker",
     "connected": "已连接",
@@ -1750,7 +1750,7 @@
     "importLogs": "导入日志",
     "importTitle": "导入飞行日志",
     "importDrop": "将日志文件拖放至此处，或点击浏览",
-    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ADOS .json",
+    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ARCOS .json",
     "importComplete": "导入完成。",
     "importImporting": "正在导入…",
     "importUnknownFormat": "未知格式",
@@ -2496,9 +2496,9 @@
       "capabilities": "功能"
     },
     "androidRc": {
-      "title": "ADOS 安卓 RC 控制器",
+      "title": "ARCOS 安卓 RC 控制器",
       "stubHeading": "产品开发中",
-      "stubBody": "ADOS 安卓 RC 手持控制器正在积极开发中。产品发布后此面板将可用。",
+      "stubBody": "ARCOS 安卓 RC 手持控制器正在积极开发中。产品发布后此面板将可用。",
       "stubBadge": "Roadmap"
     },
     "tabs": {
@@ -2660,7 +2660,7 @@
       "rowFecRecovered": "FEC recovered",
       "rowFecLost": "FEC lost",
       "noAgentTitle": "No ground station connected",
-      "noAgentBody": "Connect to an ADOS ground station agent to manage hardware, radios, and peripherals.",
+      "noAgentBody": "Connect to an ARCOS ground station agent to manage hardware, radios, and peripherals.",
       "openSetup": "Open setup",
       "connectGroundStation": "Connect ground station"
     },
@@ -3074,7 +3074,7 @@
     "slotDroppedToast": "{name} cannot render in {slot} (missing permission)",
     "browse": {
       "title": "Browse plugins",
-      "subtitle": "Discover signed extensions for the ADOS platform.",
+      "subtitle": "Discover signed extensions for the ARCOS platform.",
       "searchPlaceholder": "Search by name or description",
       "signedOnly": "Signed only",
       "verifiedOnly": "Verified publisher",
@@ -3182,7 +3182,7 @@
         "currentVersion": "Current version",
         "latestAvailable": "Latest available",
         "autoUpdateLabel": "Auto-update this plugin",
-        "autoUpdateHint": "Edit via the ados plugin auto-update CLI on the drone.",
+        "autoUpdateHint": "Edit via the arcos plugin auto-update CLI on the drone.",
         "pinnedVersionLabel": "Pin to version",
         "pinnedVersionAuto": "Auto (latest)",
         "lastChecked": "Last checked {time}",
@@ -3250,11 +3250,11 @@
     "link": "Link"
   },
   "flashTool": {
-    "ados": {
-      "subtitle": "Install the ADOS agent on a companion computer",
+    "arcos": {
+      "subtitle": "Install the ARCOS agent on a companion computer",
       "stack": {
-        "drone": "ADOS Drone Agent",
-        "ground": "ADOS Ground Agent"
+        "drone": "ARCOS Drone Agent",
+        "ground": "ARCOS Ground Agent"
       },
       "common": {
         "copy": "Copy",
@@ -4183,7 +4183,7 @@
     },
     "locked": {
       "title": "添加机载电脑以解锁{surface}",
-      "body": "此无人机仅通过飞控连接。配对一台机载电脑（一块运行 ADOS 代理的小型主板，例如 Raspberry Pi），即可推流 HD 视频、运行脚本、添加插件并通过 4G 连接无人机。"
+      "body": "此无人机仅通过飞控连接。配对一台机载电脑（一块运行 ARCOS 代理的小型主板，例如 Raspberry Pi），即可推流 HD 视频、运行脚本、添加插件并通过 4G 连接无人机。"
     },
     "no-fc-direct": {
       "title": "飞控未连接",
@@ -4256,10 +4256,10 @@
       "chip": "数据已暂停",
       "tooltip": "已暂停于上次读数 {ago}。心跳恢复后数值将继续更新。"
     },
-    "disambiguation": "连接飞控通过 USB 或网络直接与飞控通信。配对机载电脑则添加一块运行 ADOS 代理的主板，用于视频、脚本和 4G。"
+    "disambiguation": "连接飞控通过 USB 或网络直接与飞控通信。配对机载电脑则添加一块运行 ARCOS 代理的主板，用于视频、脚本和 4G。"
   },
   "blackbox": {
-    "title": "ADOS Black Box",
+    "title": "ARCOS Black Box",
     "session": "Session",
     "allSessions": "All sessions",
     "open": "open",

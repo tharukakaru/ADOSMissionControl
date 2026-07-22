@@ -13,7 +13,7 @@ function generateMockLogs(): LogEntry[] {
   const now = new Date();
   const entries: LogEntry[] = [];
   const bootMessages: [string, string, LogEntry["level"]][] = [
-    ["agent", "ADOS Drone Agent v0.1.0 starting", "info"],
+    ["agent", "ARCOS Drone Agent v0.1.0 starting", "info"],
     ["agent", "Board: Raspberry Pi CM4 (4GB)", "info"],
     ["agent", "OS: Raspberry Pi OS Lite (Bookworm)", "info"],
     ["mavlink-proxy", "Connecting to FC on /dev/ttyAMA0 @ 921600", "info"],

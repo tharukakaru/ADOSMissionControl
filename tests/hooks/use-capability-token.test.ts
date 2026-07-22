@@ -1,6 +1,6 @@
 /**
  * Tests for `useCapabilityToken`. Covers:
- *   - LAN mint via fetch with X-ADOS-Key
+ *   - LAN mint via fetch with X-ARCOS-Key
  *   - Cloud mint via Convex action
  *   - Auto-refresh 60s before expiry
  *   - Dedupe across two hook instances sharing the same key
@@ -123,7 +123,7 @@ describe("useCapabilityToken", () => {
     vi.unstubAllGlobals();
   });
 
-  it("mints a LAN token via fetch with X-ADOS-Key", async () => {
+  it("mints a LAN token via fetch with X-ARCOS-Key", async () => {
     const token = await buildToken({
       pluginId: "com.example.basic",
       agentId: DEVICE_ID,
@@ -147,7 +147,7 @@ describe("useCapabilityToken", () => {
       "http://skynode.local:8080/api/plugins/capability-token",
     );
     const headers = callInit?.headers as Record<string, string>;
-    expect(headers["X-ADOS-Key"]).toBe("test-api-key");
+    expect(headers["X-ARCOS-Key"]).toBe("test-api-key");
   });
 
   it("mints a cloud token via Convex action", async () => {

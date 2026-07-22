@@ -2,7 +2,7 @@
 
 /**
  * @module fc/firmware/agent-stages/TargetBoardCard
- * @description Top card of the ADOS Agent flash flow. Shows the board
+ * @description Top card of the ARCOS Agent flash flow. Shows the board
  * picker (filtered to boards that ship the chosen stack), an offline
  * catalog pill when the manifest came from the embedded fallback,
  * and a per-board SoC + arch summary line.
@@ -12,10 +12,10 @@
 import { HardDrive, RefreshCw } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Select } from "@/components/ui/select";
-import type { AdosAgentBoard } from "@/lib/protocol/firmware/ados-agent-manifest";
+import type { ArcOsAgentBoard } from "@/lib/protocol/firmware/arcos-agent-manifest";
 
 export interface TargetBoardCardProps {
-  boards: AdosAgentBoard[];
+  boards: ArcOsAgentBoard[];
   selectedBoardId: string;
   onSelectBoardId: (id: string) => void;
   loading: boolean;
@@ -37,7 +37,7 @@ export function TargetBoardCard({
   manifestSource,
   stackLabel,
 }: TargetBoardCardProps) {
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
   const selectedBoard = boards.find((b) => b.id === selectedBoardId) ?? null;
   return (
     <div className="bg-bg-secondary border border-border-default p-4 space-y-3">

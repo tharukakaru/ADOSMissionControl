@@ -61,7 +61,7 @@ function start(): void {
 
   client.on("connect", () => {
     console.log("Connected to MQTT broker");
-    client.subscribe(["ados/+/status", "ados/+/telemetry"], (err, granted) => {
+    client.subscribe(["arcos/+/status", "arcos/+/telemetry"], (err, granted) => {
       if (err) {
         console.error("Subscribe error:", err);
         return;

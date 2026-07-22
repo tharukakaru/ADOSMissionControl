@@ -15,7 +15,7 @@ export type ItemStatus =
   | "released"
   | "wont_do";
 
-export type ItemCategory = "command" | "ados" | "website" | "general";
+export type ItemCategory = "command" | "arcos" | "website" | "general";
 
 export type ItemPriority = "low" | "medium" | "high" | "critical";
 

@@ -1,5 +1,5 @@
 /**
- * Unit tests for the ADOS Agent firmware manifest client. Verifies the
+ * Unit tests for the ARCOS Agent firmware manifest client. Verifies the
  * 1-hour cache, per-stack board filtering, board lookup, install
  * resolution, and error propagation when the proxy fails.
  *
@@ -8,11 +8,11 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import {
-  AdosAgentManifest,
-  type AdosAgentManifestData,
-} from "@/lib/protocol/firmware/ados-agent-manifest";
+  ArcOsAgentManifest,
+  type ArcOsAgentManifestData,
+} from "@/lib/protocol/firmware/arcos-agent-manifest";
 
-function buildManifest(): AdosAgentManifestData {
+function buildManifest(): ArcOsAgentManifestData {
   return {
     schemaVersion: 1,
     agentVersion: "lite-v0.1.3",
@@ -23,9 +23,9 @@ function buildManifest(): AdosAgentManifestData {
         label: "Luckfox Pico Zero",
         soc: "RV1106G3",
         arch: "armv7-musl",
-        stacks: ["ados-drone-agent"],
+        stacks: ["arcos-drone-agent"],
         installs: {
-          "ados-drone-agent": {
+          "arcos-drone-agent": {
             method: "web-flash",
             imageUrl: "https://example.org/lite.img.gz",
             sha256: "deadbeef",
@@ -41,13 +41,13 @@ function buildManifest(): AdosAgentManifestData {
         label: "Raspberry Pi 4 Model B",
         soc: "BCM2711",
         arch: "aarch64-glibc",
-        stacks: ["ados-drone-agent", "ados-ground-agent"],
+        stacks: ["arcos-drone-agent", "arcos-ground-agent"],
         installs: {
-          "ados-drone-agent": {
+          "arcos-drone-agent": {
             method: "curl",
             command: "curl -sSL https://example.org/install.sh | sudo bash",
           },
-          "ados-ground-agent": {
+          "arcos-ground-agent": {
             method: "curl",
             command:
               "curl -sSL https://example.org/install.sh | sudo bash -s -- --profile ground-station",
@@ -60,9 +60,9 @@ function buildManifest(): AdosAgentManifestData {
         label: "Raspberry Pi Zero 2 W",
         soc: "BCM2710A1",
         arch: "aarch64-musl",
-        stacks: ["ados-drone-agent"],
+        stacks: ["arcos-drone-agent"],
         installs: {
-          "ados-drone-agent": {
+          "arcos-drone-agent": {
             method: "curl",
             command: "curl -sSL https://example.org/install-lite.sh | sudo bash",
           },
@@ -82,7 +82,7 @@ function jsonResponse(body: unknown, init: { ok?: boolean; status?: number } = {
   } as Response;
 }
 
-describe("AdosAgentManifest", () => {
+describe("ArcOsAgentManifest", () => {
   let mockFetch: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
@@ -95,20 +95,20 @@ describe("AdosAgentManifest", () => {
   });
 
   describe("getManifest", () => {
-    it("fetches the manifest from /api/ados-manifest", async () => {
+    it("fetches the manifest from /api/arcos-manifest", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const result = await client.getManifest();
 
       expect(mockFetch).toHaveBeenCalledTimes(1);
-      expect(mockFetch).toHaveBeenCalledWith("/api/ados-manifest");
+      expect(mockFetch).toHaveBeenCalledWith("/api/arcos-manifest");
       expect(result.agentVersion).toBe("lite-v0.1.3");
       expect(result.boards).toHaveLength(3);
     });
 
     it("caches the manifest for 1 hour and skips re-fetching", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       await client.getManifest();
       await client.getManifest();
       await client.getManifest();
@@ -119,7 +119,7 @@ describe("AdosAgentManifest", () => {
     it("re-fetches after the cache TTL has elapsed", async () => {
       vi.useFakeTimers();
       mockFetch.mockResolvedValue(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       await client.getManifest();
       // Advance past the 1-hour TTL.
       vi.advanceTimersByTime(60 * 60 * 1000 + 1);
@@ -131,10 +131,10 @@ describe("AdosAgentManifest", () => {
   });
 
   describe("getBoardsForStack", () => {
-    it("returns boards whose stacks array includes ados-drone-agent", async () => {
+    it("returns boards whose stacks array includes arcos-drone-agent", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
-      const boards = await client.getBoardsForStack("ados-drone-agent");
+      const client = new ArcOsAgentManifest();
+      const boards = await client.getBoardsForStack("arcos-drone-agent");
       expect(boards.map((b) => b.id).sort()).toEqual([
         "luckfox-pico-zero",
         "pi-zero-2w",
@@ -142,10 +142,10 @@ describe("AdosAgentManifest", () => {
       ]);
     });
 
-    it("returns only ground-eligible boards for ados-ground-agent", async () => {
+    it("returns only ground-eligible boards for arcos-ground-agent", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
-      const boards = await client.getBoardsForStack("ados-ground-agent");
+      const client = new ArcOsAgentManifest();
+      const boards = await client.getBoardsForStack("arcos-ground-agent");
       expect(boards.map((b) => b.id)).toEqual(["rpi4b"]);
     });
   });
@@ -153,7 +153,7 @@ describe("AdosAgentManifest", () => {
   describe("getBoardById", () => {
     it("returns the matching board", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const board = await client.getBoardById("luckfox-pico-zero");
       expect(board).not.toBeNull();
       expect(board?.label).toBe("Luckfox Pico Zero");
@@ -162,7 +162,7 @@ describe("AdosAgentManifest", () => {
 
     it("returns null when no board matches the id", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const board = await client.getBoardById("does-not-exist");
       expect(board).toBeNull();
     });
@@ -171,8 +171,8 @@ describe("AdosAgentManifest", () => {
   describe("getInstall", () => {
     it("returns the per-stack install config when present", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
-      const install = await client.getInstall("rpi4b", "ados-ground-agent");
+      const client = new ArcOsAgentManifest();
+      const install = await client.getInstall("rpi4b", "arcos-ground-agent");
       expect(install).not.toBeNull();
       expect(install?.method).toBe("curl");
       if (install?.method === "curl") {
@@ -182,17 +182,17 @@ describe("AdosAgentManifest", () => {
 
     it("returns null when the board does not exist", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
-      const install = await client.getInstall("nope", "ados-drone-agent");
+      const client = new ArcOsAgentManifest();
+      const install = await client.getInstall("nope", "arcos-drone-agent");
       expect(install).toBeNull();
     });
 
     it("returns null when the board exists but lacks the requested stack", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const install = await client.getInstall(
         "luckfox-pico-zero",
-        "ados-ground-agent",
+        "arcos-ground-agent",
       );
       expect(install).toBeNull();
     });
@@ -201,7 +201,7 @@ describe("AdosAgentManifest", () => {
   describe("getAgentVersion", () => {
     it("returns the manifest agentVersion field", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const version = await client.getAgentVersion();
       expect(version).toBe("lite-v0.1.3");
     });
@@ -210,7 +210,7 @@ describe("AdosAgentManifest", () => {
   describe("clearCache", () => {
     it("forces the next getManifest call to re-fetch", async () => {
       mockFetch.mockResolvedValue(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       await client.getManifest();
       expect(mockFetch).toHaveBeenCalledTimes(1);
 
@@ -227,7 +227,7 @@ describe("AdosAgentManifest", () => {
         status: 500,
         json: async () => ({}),
       } as Response);
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       await expect(client.getManifest()).rejects.toThrow(/500/);
     });
 
@@ -237,7 +237,7 @@ describe("AdosAgentManifest", () => {
         status: 502,
         json: async () => ({ error: "upstream unavailable" }),
       } as Response);
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       await expect(client.getManifest()).rejects.toThrow("upstream unavailable");
     });
 
@@ -245,7 +245,7 @@ describe("AdosAgentManifest", () => {
       mockFetch.mockResolvedValueOnce(
         jsonResponse({ error: "manifest not generated yet" }),
       );
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       await expect(client.getManifest()).rejects.toThrow(
         "manifest not generated yet",
       );
@@ -254,7 +254,7 @@ describe("AdosAgentManifest", () => {
     it("rejects manifests whose schemaVersion is newer than this build supports", async () => {
       const fromTheFuture = { ...buildManifest(), schemaVersion: 2 };
       mockFetch.mockResolvedValueOnce(jsonResponse(fromTheFuture));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       await expect(client.getManifest()).rejects.toThrow(
         /schema version 2 is newer/i,
       );
@@ -262,7 +262,7 @@ describe("AdosAgentManifest", () => {
 
     it("accepts manifests at the current schemaVersion", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const result = await client.getManifest();
       expect(result.schemaVersion).toBe(1);
     });
@@ -273,7 +273,7 @@ describe("AdosAgentManifest", () => {
       mockFetch.mockResolvedValueOnce(
         jsonResponse({ ...buildManifest(), source: "github" }),
       );
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const source = await client.getSource();
       expect(source).toBe("github");
     });
@@ -282,14 +282,14 @@ describe("AdosAgentManifest", () => {
       mockFetch.mockResolvedValueOnce(
         jsonResponse({ ...buildManifest(), source: "fallback" }),
       );
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const source = await client.getSource();
       expect(source).toBe("fallback");
     });
 
     it("returns null from getSource() when the proxy omits the field", async () => {
       mockFetch.mockResolvedValueOnce(jsonResponse(buildManifest()));
-      const client = new AdosAgentManifest();
+      const client = new ArcOsAgentManifest();
       const source = await client.getSource();
       expect(source).toBeNull();
     });

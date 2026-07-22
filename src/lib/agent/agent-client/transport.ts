@@ -1,7 +1,7 @@
 /**
  * @module agent/agent-client/transport
  * @description Shared fetch wrapper for the agent REST surface. Adds
- * the X-ADOS-Key header, applies an optional Zod schema with a
+ * the X-ARCOS-Key header, applies an optional Zod schema with a
  * dev-mode-only fallback when the agent's response shape drifts ahead
  * of the client.
  * @license GPL-3.0-only
@@ -42,7 +42,7 @@ export async function agentRequest<T>(
     ...(fetchInit?.headers as Record<string, string>),
   };
   if (ctx.apiKey) {
-    headers["X-ADOS-Key"] = ctx.apiKey;
+    headers["X-ARCOS-Key"] = ctx.apiKey;
   }
   // A half-open socket would otherwise hang this fetch for the browser
   // default (~minutes), which freezes the poll loop and defeats the

@@ -109,7 +109,7 @@ fullName: v.optional(v.string()),
     ),
     category: v.union(
       v.literal("command"),
-      v.literal("ados"),
+      v.literal("arcos"),
       v.literal("website"),
       v.literal("general"),
     ),
@@ -536,7 +536,7 @@ fullName: v.optional(v.string()),
     usedAt: v.number(),
   }).index("by_userId_feature", ["userId", "feature"]),
 
-  // ── ADOS Pairing tables (cmd_ prefix) ──────────────────────
+  // ── ARCOS Pairing tables (cmd_ prefix) ──────────────────────
 
   cmd_drones: defineTable({
     userId: v.string(),
@@ -821,7 +821,7 @@ fullName: v.optional(v.string()),
     // How the agent landed on its current profile. One of "detected"
     // (auto-detected by hardware fingerprint), "tiebreaker" (auto with
     // ambiguous signals), "default" (no detect signals, fell back),
-    // "override" (forced via /etc/ados/board_override), or "user"
+    // "override" (forced via /etc/arcos/board_override), or "user"
     // (operator picked in the setup webapp).
     profileSource: v.optional(v.string()),
     // Top-level mirror of the selected WFB radio adapter (also nested
@@ -1328,7 +1328,7 @@ fullName: v.optional(v.string()),
     .index("by_install_type", ["pluginInstallId", "type"])
     .index("by_user_created", ["userId", "createdAt"]),
 
-  // Uploaded .adosplug archive blobs keyed by (userId, sha256). One
+  // Uploaded .arcosplug archive blobs keyed by (userId, sha256). One
   // row per uploaded archive; reused across drones via refCount so a
   // fleet-wide install does not re-upload the same payload. Manifest
   // hash, declared permissions, and signature travel with the row so

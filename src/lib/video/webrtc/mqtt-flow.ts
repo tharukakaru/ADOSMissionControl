@@ -2,9 +2,9 @@
  * @module video/webrtc/mqtt-flow
  * @description MQTT-relayed SDP signaling path. Used when the browser
  * cannot reach the agent's local WHEP endpoint directly. The SDP
- * offer is published to `ados/{deviceId}/webrtc/offer`; the agent's
+ * offer is published to `arcos/{deviceId}/webrtc/offer`; the agent's
  * relay forwards it to local mediamtx and publishes the answer to
- * `ados/{deviceId}/webrtc/answer`. Media flows direct peer-to-peer
+ * `arcos/{deviceId}/webrtc/answer`. Media flows direct peer-to-peer
  * via STUN-punched ICE candidates after the handshake.
  * @license GPL-3.0-only
  */
@@ -145,8 +145,8 @@ export async function startStreamViaMqttSignaling(
       throw new Error("mqtt.connect not found in module");
     }
 
-    const topicOffer = `ados/${deviceId}/webrtc/offer`;
-    const topicAnswer = `ados/${deviceId}/webrtc/answer`;
+    const topicOffer = `arcos/${deviceId}/webrtc/offer`;
+    const topicAnswer = `arcos/${deviceId}/webrtc/answer`;
 
     const mqttConnectOptions: Record<string, unknown> = {
       protocolVersion: 5,

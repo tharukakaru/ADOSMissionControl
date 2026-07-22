@@ -3,7 +3,7 @@
 /**
  * @module FleetNetworkPanel
  * @description Mesh enrollment, MQTT broker status and config form, mesh radio
- * stub status, and discovered ADOS peer roster with on-demand scan.
+ * stub status, and discovered ARCOS peer roster with on-demand scan.
  * @license GPL-3.0-only
  */
 
@@ -129,7 +129,7 @@ export function FleetNetworkPanel() {
                       type="text"
                       value={mqtt.config.username}
                       onChange={(e) => mqtt.setUsername(e.target.value)}
-                      placeholder="ados"
+                      placeholder="arcos"
                       className="w-full mt-1 px-2.5 py-1.5 text-xs font-mono bg-bg-primary border border-border-default rounded text-text-primary placeholder:text-text-tertiary outline-none focus:border-accent-primary"
                     />
                   </div>
@@ -191,7 +191,7 @@ export function FleetNetworkPanel() {
       <div className="border border-border-default rounded-lg p-4 bg-bg-secondary">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-text-secondary">
-            {t("adosPeers")}
+            {t("arcosPeers")}
           </h3>
           <div className="flex items-center gap-2">
             {lastPeerScan && (

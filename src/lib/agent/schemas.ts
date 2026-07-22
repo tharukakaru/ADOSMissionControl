@@ -1,6 +1,6 @@
 /**
  * @module AgentSchemas
- * @description zod schemas for the ADOS Drone Agent REST API boundary.
+ * @description zod schemas for the ARCOS Drone Agent REST API boundary.
  * Used as optional runtime validators on client.request() calls so the
  * GCS catches shape drift instead of crashing deep inside a store.
  *

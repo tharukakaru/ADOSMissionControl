@@ -1,6 +1,6 @@
 /**
  * @module BlackBoxStore
- * @description Zustand store backing the ADOS Black Box view. Reads the
+ * @description Zustand store backing the ARCOS Black Box view. Reads the
  * durable on-device store through `client.logging`: the session list, a
  * keyset-paged filtered log table, time-aligned telemetry aggregates, and
  * the daemon health/sync badge. All reads degrade gracefully — an older
@@ -250,7 +250,7 @@ export const useBlackBoxStore = create<BlackBoxStore>((set, get) => ({
       const label = selectedSessionId ? `-${selectedSessionId}` : "";
       const ext = format === "jsonl.zst" ? "jsonl.zst" : "jsonl";
       set({ exporting: false });
-      return { filename: `ados-blackbox${label}-${stamp}.${ext}`, blob };
+      return { filename: `arcos-blackbox${label}-${stamp}.${ext}`, blob };
     } catch {
       set({ exporting: false });
       return null;

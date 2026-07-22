@@ -15,7 +15,7 @@ import type { FullStatusResponse } from "@/lib/agent/types";
 
 const node = {
   deviceId: "dev-1",
-  mdnsHost: "ados-dev-1.local",
+  mdnsHost: "arcos-dev-1.local",
   lastIp: "192.168.1.40",
   name: "Dev 1",
 };

@@ -29,7 +29,7 @@ function useClientId(): string {
     ref.current = "gcs-ssr";
     return ref.current;
   }
-  const key = "ados.gcs.clientId";
+  const key = "arcos.gcs.clientId";
   let id = window.sessionStorage.getItem(key);
   if (!id) {
     id = "gcs-" + randomId();

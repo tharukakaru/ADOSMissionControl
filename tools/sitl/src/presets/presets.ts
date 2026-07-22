@@ -328,11 +328,11 @@ const PRESETS: BuildPreset[] = [
     },
   },
 
-  // ── 7" ADOS Reference ────────────────────────────────────────
+  // ── 7" ARCOS Reference ────────────────────────────────────────
   {
-    id: "7in-ados-reference",
-    name: '7" ADOS Reference',
-    description: "Altnautica reference build. CM4 companion computer, full sensor suite, rangefinder, WFB-ng video, 4G telemetry. The ADOS platform drone.",
+    id: "7in-arcos-reference",
+    name: '7" ARCOS Reference',
+    description: "Altnautica reference build. CM4 companion computer, full sensor suite, rangefinder, WFB-ng video, 4G telemetry. The ARCOS platform drone.",
     category: "reference",
     specs: {
       propSize: '7"',

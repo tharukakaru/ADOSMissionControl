@@ -2,7 +2,7 @@
 
 /**
  * @module FleetSidebar
- * @description Sidebar panel for managing paired ADOS drones.
+ * @description Sidebar panel for managing paired ARCOS drones.
  * Shows paired drones with online/offline status, provides pairing CTA,
  * and context menu for rename/unpair actions.
  * @license GPL-3.0-only

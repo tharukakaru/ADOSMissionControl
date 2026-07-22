@@ -17,7 +17,7 @@
     },
     "intro": {
       "tagline": "Contrôle au sol pour drones définis par logiciel.",
-      "description": "Configure, planifie des missions et pilote n'importe quel drone ArduPilot, PX4 ou Betaflight. Associe avec ADOS Drone Agent pour exécuter l'intelligence embarquée. Open source. Fonctionne dans ton navigateur.",
+      "description": "Configure, planifie des missions et pilote n'importe quel drone ArduPilot, PX4 ou Betaflight. Associe avec ARCOS Drone Agent pour exécuter l'intelligence embarquée. Open source. Fonctionne dans ton navigateur.",
       "openBeta": "Bêta ouverte",
       "freeForever": "Gratuit pour toujours",
       "openSource": "GPL-3.0 Open Source",
@@ -27,7 +27,7 @@
     },
     "disclaimer": {
       "title": "Avant de voler",
-      "subtitle": "ADOS Mission Control peut contrôler de vrais aéronefs. Veuillez lire et accepter ce qui suit.",
+      "subtitle": "ARCOS Mission Control peut contrôler de vrais aéronefs. Veuillez lire et accepter ce qui suit.",
       "lawfulUse": {
         "heading": "Utilisation légale uniquement",
         "body": "Vous acceptez d'utiliser ce logiciel uniquement à des fins légales. Vous ne l'utiliserez pas pour effectuer de la surveillance, harceler des personnes, violer la vie privée ou soutenir une activité interdite par la loi dans votre pays ou votre région."
@@ -56,7 +56,7 @@
       },
       "openSource": {
         "heading": "Licence open source",
-        "body": "ADOS Mission Control est sous licence GNU General Public License v3.0. Vous êtes libre d'utiliser, de modifier et de distribuer ce logiciel selon les termes de cette licence.",
+        "body": "ARCOS Mission Control est sous licence GNU General Public License v3.0. Vous êtes libre d'utiliser, de modifier et de distribuer ce logiciel selon les termes de cette licence.",
         "link": "Lire la licence GPL-3.0 complète"
       },
       "acceptCheckbox": "J'ai lu et j'accepte les conditions ci-dessus. Je comprends que je suis le pilote commandant de bord et que j'assume l'entière responsabilité d'une exploitation sûre et légale.",
@@ -87,7 +87,7 @@
       "docsDescription": "Guides, API reference, and tutorials to get your drone flying.",
       "browseDocs": "Browse docs",
       "communityHeading": "Built in the open",
-      "communityDescription": "ADOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
+      "communityDescription": "ARCOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
       "discordHeading": "Talk to us",
       "discordDescription": "Ask questions, share your setup, report bugs, or just hang out with other pilots and developers.",
       "githubHeading": "Help the project grow",
@@ -310,7 +310,7 @@
     "badges": {
       "categories": {
         "command": "Commande",
-        "ados": "ADOS",
+        "arcos": "ARCOS",
         "website": "Site web",
         "general": "Général"
       },
@@ -603,7 +603,7 @@
   },
   "emptyState": {
     "title": "Aucun drone connecté",
-    "description": "Connecte un contrôleur de vol via USB ou réseau pour commencer avec ADOS Mission Control.",
+    "description": "Connecte un contrôleur de vol via USB ou réseau pour commencer avec ARCOS Mission Control.",
     "connectDrone": "Connecter un drone",
     "commandPaletteHint": "pour ouvrir la palette de commandes"
   },
@@ -638,7 +638,7 @@
     "fcStackTitle": "Flight Controller",
     "fcStackDesc": "Direct MAVLink — USB, WebSocket, Bluetooth",
     "agentStackTitle": "Companion Computer",
-    "agentStackDesc": "ADOS Agent — software-defined",
+    "agentStackDesc": "ARCOS Agent — software-defined",
     "agentStackBadge": "Full features"
   },
   "droneDetail": {
@@ -828,7 +828,7 @@
     "subtitle": "Extensions installed on this drone. Each plugin runs sandboxed and only does what its granted permissions allow.",
     "installOnThisDrone": "Install plugin on this drone",
     "emptyStateTitle": "No plugins installed on this drone yet.",
-    "emptyStateBody": "Plugins extend ADOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
+    "emptyStateBody": "Plugins extend ARCOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
     "loading": "Loading...",
     "droneNotFound": "Drone \"{id}\" not found.",
     "notConnectedTitle": "Connect to a drone to manage its plugins.",
@@ -866,7 +866,7 @@
     },
     "installFromFile": "Install from file",
     "installedSectionTitle": "Installed on this drone",
-    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .adosplug file."
+    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .arcosplug file."
   },
   "droneRadio": {
     "airSideBadge": "Air side",
@@ -894,7 +894,7 @@
     "directConnection": "Connexion directe",
     "enterPairingCode": "Enter pairing code from your node agent",
     "pairingCode": "Code d'appairage",
-    "pairingInstructions": "Run 'ados pair' on your node to get a pairing code",
+    "pairingInstructions": "Run 'arcos pair' on your node to get a pairing code",
     "paired": "Appairé",
     "lastSeen": "Vu pour la dernière fois",
     "neverConnected": "Jamais connecté",
@@ -938,7 +938,7 @@
     "pairedCount": "{count} paired",
     "addNode": {
       "title": "Ajouter un nœud",
-      "subtitle": "Appairez n'importe quel nœud ADOS (drone, station sol ou futur module de calcul) directement via votre réseau local.",
+      "subtitle": "Appairez n'importe quel nœud ARCOS (drone, station sol ou futur module de calcul) directement via votre réseau local.",
       "pairOnLan": "Appairer un nœud sur votre réseau local",
       "noAccountRequired": "Aucun compte requis. Fonctionne entièrement hors ligne.",
       "hostnamePlaceholder": "skynode.local  or  http://192.168.1.42:8080",
@@ -984,11 +984,11 @@
       "addNodeTitle": "Add a drone or ground station",
       "addNodeSubtitle": "No account required. Works fully offline.",
       "addNodePlaceholder": "skynode.local  or  9TW85C",
-      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `ados status`? Type that.",
+      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `arcos status`? Type that.",
       "codeTryHostnameTip": "Tip: if the agent is on your network, enter its hostname or IP instead (for example my-drone.local).",
       "pairButton": "Pair",
       "codeNoHostError": "Pair code is valid but the agent hasn't advertised a network address yet. Wait a few seconds and try again.",
-      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `ados status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
+      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `arcos status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
       "badCodeError": "Pair code must be six characters (letters and digits).",
       "signInBody": "Cloud relay routes your drone's telemetry and video through Convex over HTTPS, so Mission Control reaches the agent even when your phone or laptop is on a different network. Optional, never blocking — LAN-direct pairing works without it.",
       "signInButton": "Sign in",
@@ -1052,7 +1052,7 @@
       },
       "enterCodeTitle": "Pair with a code from your drone",
       "enterCodeSubtitle": "Works over HTTPS. No LAN access required.",
-      "enterCodeHint": "Run `ados status` on your drone to see its current code, or copy it from the install banner.",
+      "enterCodeHint": "Run `arcos status` on your drone to see its current code, or copy it from the install banner.",
       "pair": "Pair",
       "pairing": "Pairing"
     },
@@ -1155,7 +1155,7 @@
     "latency": "Latence",
     "packetsLost": "Paquets perdus",
     "networkTopology": "Topologie du réseau",
-    "adosPeers": "ADOS Peers",
+    "arcosPeers": "ARCOS Peers",
     "battery": "Batterie",
     "broker": "Broker",
     "connected": "Connecté",
@@ -1750,7 +1750,7 @@
     "importLogs": "Importer des journaux",
     "importTitle": "Importer des journaux de vol",
     "importDrop": "Glissez des fichiers de journal ici, ou cliquez pour parcourir",
-    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ADOS .json",
+    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ARCOS .json",
     "importComplete": "Importation terminée.",
     "importImporting": "Importation…",
     "importUnknownFormat": "Format inconnu",
@@ -2496,9 +2496,9 @@
       "capabilities": "Capacités"
     },
     "androidRc": {
-      "title": "Contrôleur RC Android ADOS",
+      "title": "Contrôleur RC Android ARCOS",
       "stubHeading": "Produit en développement",
-      "stubBody": "Le contrôleur portable Android RC ADOS est en développement actif. Ce panneau s'activera à la sortie du produit.",
+      "stubBody": "Le contrôleur portable Android RC ARCOS est en développement actif. Ce panneau s'activera à la sortie du produit.",
       "stubBadge": "Roadmap"
     },
     "tabs": {
@@ -2660,7 +2660,7 @@
       "rowFecRecovered": "FEC recovered",
       "rowFecLost": "FEC lost",
       "noAgentTitle": "No ground station connected",
-      "noAgentBody": "Connect to an ADOS ground station agent to manage hardware, radios, and peripherals.",
+      "noAgentBody": "Connect to an ARCOS ground station agent to manage hardware, radios, and peripherals.",
       "openSetup": "Open setup",
       "connectGroundStation": "Connect ground station"
     },
@@ -3074,7 +3074,7 @@
     "slotDroppedToast": "{name} cannot render in {slot} (missing permission)",
     "browse": {
       "title": "Browse plugins",
-      "subtitle": "Discover signed extensions for the ADOS platform.",
+      "subtitle": "Discover signed extensions for the ARCOS platform.",
       "searchPlaceholder": "Search by name or description",
       "signedOnly": "Signed only",
       "verifiedOnly": "Verified publisher",
@@ -3182,7 +3182,7 @@
         "currentVersion": "Current version",
         "latestAvailable": "Latest available",
         "autoUpdateLabel": "Auto-update this plugin",
-        "autoUpdateHint": "Edit via the ados plugin auto-update CLI on the drone.",
+        "autoUpdateHint": "Edit via the arcos plugin auto-update CLI on the drone.",
         "pinnedVersionLabel": "Pin to version",
         "pinnedVersionAuto": "Auto (latest)",
         "lastChecked": "Last checked {time}",
@@ -3250,11 +3250,11 @@
     "link": "Link"
   },
   "flashTool": {
-    "ados": {
-      "subtitle": "Install the ADOS agent on a companion computer",
+    "arcos": {
+      "subtitle": "Install the ARCOS agent on a companion computer",
       "stack": {
-        "drone": "ADOS Drone Agent",
-        "ground": "ADOS Ground Agent"
+        "drone": "ARCOS Drone Agent",
+        "ground": "ARCOS Ground Agent"
       },
       "common": {
         "copy": "Copy",
@@ -4183,7 +4183,7 @@
     },
     "locked": {
       "title": "Ajoutez un ordinateur compagnon pour débloquer {surface}",
-      "body": "Ce drone est connecté par contrôleur de vol uniquement. Appairez un ordinateur compagnon, une petite carte comme un Raspberry Pi exécutant l'agent ADOS, pour diffuser de la vidéo HD, exécuter des scripts, ajouter des plugins et atteindre le drone via la 4G."
+      "body": "Ce drone est connecté par contrôleur de vol uniquement. Appairez un ordinateur compagnon, une petite carte comme un Raspberry Pi exécutant l'agent ARCOS, pour diffuser de la vidéo HD, exécuter des scripts, ajouter des plugins et atteindre le drone via la 4G."
     },
     "no-fc-direct": {
       "title": "Contrôleur de vol non connecté",
@@ -4256,10 +4256,10 @@
       "chip": "Données en pause",
       "tooltip": "En pause à la dernière mesure {ago}. Les valeurs reprennent au retour du battement."
     },
-    "disambiguation": "Connecter le contrôleur de vol communique directement avec l'autopilote via USB ou votre réseau. Appairer un ordinateur compagnon ajoute une carte exécutant l'agent ADOS pour la vidéo, les scripts et la 4G."
+    "disambiguation": "Connecter le contrôleur de vol communique directement avec l'autopilote via USB ou votre réseau. Appairer un ordinateur compagnon ajoute une carte exécutant l'agent ARCOS pour la vidéo, les scripts et la 4G."
   },
   "blackbox": {
-    "title": "ADOS Black Box",
+    "title": "ARCOS Black Box",
     "session": "Session",
     "allSessions": "All sessions",
     "open": "open",

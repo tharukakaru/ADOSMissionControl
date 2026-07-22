@@ -18,7 +18,7 @@ export interface PoiMarker {
   createdAt: number;
 }
 
-const STORAGE_KEY = "ados-poi-markers";
+const STORAGE_KEY = "arcos-poi-markers";
 
 const loadFromStorage = (): PoiMarker[] =>
   safeLocalRead<PoiMarker[]>(STORAGE_KEY, []);

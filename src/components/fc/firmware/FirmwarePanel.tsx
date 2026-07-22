@@ -6,22 +6,22 @@ import { useTranslations } from "next-intl";
 import { useFirmwareState } from "./useFirmwareState";
 import { FirmwareFcWizard } from "./FirmwareFcWizard";
 import { FirmwareFlashProgress } from "./FirmwareFlashProgress";
-import { AdosAgentSection } from "./AdosAgentSection";
+import { ArcOsAgentSection } from "./ArcOsAgentSection";
 import { FirmwareApPeriphSection } from "./FirmwareApPeriphSection";
 import { flashApPeriph } from "./flashApPeriph";
 import { ApPeriphManifest } from "@/lib/protocol/firmware/ap-periph-manifest";
 import { useDroneManager } from "@/stores/drone-manager";
 import { useToast } from "@/components/ui/toast";
 import { FirmwareStackSelector, PreFlashChecklist } from "./FirmwareCommonSections";
-import { isAdosStack, isPeripheralStack, isFcStack } from "./firmware-constants";
-import type { AdosAgentStack } from "@/lib/protocol/firmware/ados-agent-manifest";
+import { isArcOsStack, isPeripheralStack, isFcStack } from "./firmware-constants";
+import type { ArcOsAgentStack } from "@/lib/protocol/firmware/arcos-agent-manifest";
 
 export function FirmwarePanel() {
   const fw = useFirmwareState();
   const isFc = isFcStack(fw.firmwareStack);
-  const isAdos = isAdosStack(fw.firmwareStack);
+  const isArcOs = isArcOsStack(fw.firmwareStack);
   const isPeripheral = isPeripheralStack(fw.firmwareStack);
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
   const { toast } = useToast();
   const getSelectedProtocol = useDroneManager((s) => s.getSelectedProtocol);
   const apPeriphManifestRef = useRef(new ApPeriphManifest());
@@ -75,7 +75,7 @@ export function FirmwarePanel() {
           <div>
             <h1 className="text-lg font-semibold text-text-primary">Flash Tool</h1>
             <p className="text-xs text-text-tertiary">
-              {isAdos ? t("subtitle") : "Flash firmware via USB DFU or serial bootloader"}
+              {isArcOs ? t("subtitle") : "Flash firmware via USB DFU or serial bootloader"}
             </p>
           </div>
         </div>
@@ -89,8 +89,8 @@ export function FirmwarePanel() {
         {/* Flight-controller stacks: stepped Connect -> Select -> Confirm -> Flash wizard */}
         {isFc && <FirmwareFcWizard fw={fw} />}
 
-        {/* ADOS companion-computer stacks */}
-        {isAdos && (
+        {/* ARCOS companion-computer stacks */}
+        {isArcOs && (
           <>
             <details className="bg-bg-secondary border border-border-default">
               <summary className="px-4 py-2.5 text-xs text-text-secondary cursor-pointer hover:text-text-primary transition-colors">
@@ -119,23 +119,23 @@ export function FirmwarePanel() {
               </div>
             </details>
 
-            {fw.adosInstallMethod === "web-flash" && !fw.usbSupported && (
+            {fw.arcosInstallMethod === "web-flash" && !fw.usbSupported && (
               <div className="bg-status-danger/10 border border-status-danger/30 p-4">
                 <p className="text-xs text-status-danger font-semibold">{t("webusbWarning.title")}</p>
                 <p className="text-[10px] text-text-tertiary mt-1">{t("webusbWarning.body")}</p>
               </div>
             )}
 
-            <AdosAgentSection
-              stack={fw.firmwareStack as AdosAgentStack}
-              boards={fw.adosBoards}
-              loading={fw.adosLoading}
-              error={fw.adosError}
-              agentVersion={fw.adosAgentVersion}
-              manifestSource={fw.adosManifestSource}
-              selectedBoardId={fw.selectedAdosBoardId}
-              setSelectedBoardId={fw.setSelectedAdosBoardId}
-              onRetry={fw.loadAdosManifestRetry}
+            <ArcOsAgentSection
+              stack={fw.firmwareStack as ArcOsAgentStack}
+              boards={fw.arcosBoards}
+              loading={fw.arcosLoading}
+              error={fw.arcosError}
+              agentVersion={fw.arcosAgentVersion}
+              manifestSource={fw.arcosManifestSource}
+              selectedBoardId={fw.selectedArcOsBoardId}
+              setSelectedBoardId={fw.setSelectedArcOsBoardId}
+              onRetry={fw.loadArcOsManifestRetry}
               allChecked={fw.allChecked}
               usbSupported={fw.usbSupported}
             />

@@ -310,7 +310,7 @@ export interface AgentCapabilities {
   /** How the agent landed on its current profile. One of "detected"
    * (auto-detected by hardware fingerprint), "tiebreaker" (auto with
    * ambiguous signals), "default" (no detect signals, fell back),
-   * "override" (forced via /etc/ados/board_override), or "user"
+   * "override" (forced via /etc/arcos/board_override), or "user"
    * (operator picked in the setup webapp). Undefined for legacy
    * heartbeats that predate this field. */
   profileSource?: string;

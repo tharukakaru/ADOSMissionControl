@@ -26,7 +26,7 @@ import {
 // Dedicated IndexedDB database + object store for signing keys. Kept
 // separate from the default keyval store so a wipe of signing keys
 // does not touch unrelated persisted data.
-const SIGNING_DB_NAME = "ados-signing-keys";
+const SIGNING_DB_NAME = "arcos-signing-keys";
 const SIGNING_STORE_NAME = "signing-keys-v1";
 
 // Private cache of the createStore() result. Instantiated lazily because
@@ -198,7 +198,7 @@ export async function purgeForUser(currentUserId: string | null): Promise<number
 // without a second IndexedDB plumbing pass.
 // ──────────────────────────────────────────────────────────────
 
-const TIMESTAMP_DB_NAME = "ados-signing-timestamps";
+const TIMESTAMP_DB_NAME = "arcos-signing-timestamps";
 const TIMESTAMP_STORE_NAME = "signing-timestamps-v1";
 let _tsStorePromise: ReturnType<typeof createStore> | null = null;
 function timestampStore() {

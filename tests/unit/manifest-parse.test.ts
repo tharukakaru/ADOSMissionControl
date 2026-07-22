@@ -21,14 +21,14 @@ import {
 const REPO_ROOT = path.resolve(__dirname, "..", "..", "..");
 const VISION_NAV_MANIFEST = path.join(
   REPO_ROOT,
-  "ADOSExtensions",
+  "ARCOSExtensions",
   "extensions",
   "vision-nav",
   "manifest.yaml",
 );
 
 const BASE = `id: com.altnautica.vision-nav
-name: ADOS Vision Navigation
+name: ARCOS Vision Navigation
 version: 0.2.3
 description: Short summary
 risk: high
@@ -180,11 +180,11 @@ permissions:
 });
 
 // Slice of the real v0.2.3 manifest at
-// `ADOSExtensions/extensions/vision-nav/manifest.yaml`. Exercises the
+// `ARCOSExtensions/extensions/vision-nav/manifest.yaml`. Exercises the
 // nested `agent.permissions` + `gcs.permissions` shape the parser must
 // walk so the install modal renders a non-zero permissions count.
 const NESTED = `id: com.altnautica.vision-nav
-name: ADOS Vision Navigation
+name: ARCOS Vision Navigation
 version: 0.2.3
 risk: high
 description: Short summary
@@ -304,8 +304,8 @@ agent:
     - id: mavlink.read
     - id: estimator.pose.inject
   subprocess_spawn:
-    - ados_openvins_shim
-    - ados_vins_fusion_shim
+    - arcos_openvins_shim
+    - arcos_vins_fusion_shim
   target_profiles:
     - drone
   vendor_attribution:
@@ -334,8 +334,8 @@ gcs:
       "telemetry.subscribe",
     ]);
     // Guard against the historical leakage modes.
-    expect(ids).not.toContain("ados_openvins_shim");
-    expect(ids).not.toContain("ados_vins_fusion_shim");
+    expect(ids).not.toContain("arcos_openvins_shim");
+    expect(ids).not.toContain("arcos_vins_fusion_shim");
     expect(ids).not.toContain("drone");
     expect(ids.some((id) => /license/.test(id))).toBe(false);
   });
@@ -352,7 +352,7 @@ gcs:
       expect(parsed.permissions).toHaveLength(17);
       const ids = parsed.permissions.map((p) => p.id);
       // Spurious ids that used to leak through must be absent.
-      expect(ids.some((id) => /^ados_.*_shim$/.test(id))).toBe(false);
+      expect(ids.some((id) => /^arcos_.*_shim$/.test(id))).toBe(false);
       expect(ids).not.toContain("drone");
       expect(ids.some((id) => /license/.test(id))).toBe(false);
       // Every id must look like a dotted capability id. Hyphens are
@@ -411,7 +411,7 @@ describe("parseManifestYaml — PyYAML-emitted Convex fixture", () => {
   // crashed the previous regex parser.
   const CONVEX_FIXTURE = path.join(
     REPO_ROOT,
-    "ADOSMissionControl",
+    "ArcOS",
     "tests",
     "fixtures",
     "vision-nav-v0.2.5-convex.yaml",
@@ -427,8 +427,8 @@ describe("parseManifestYaml — PyYAML-emitted Convex fixture", () => {
     // No spurious entries like subprocess_spawn / target_profiles /
     // vendor_attribution.license / mavlink_components.component_id.
     const ids = parsed.permissions.map((p) => p.id);
-    expect(ids).not.toContain("ados_openvins_shim");
-    expect(ids).not.toContain("ados_vins_fusion_shim");
+    expect(ids).not.toContain("arcos_openvins_shim");
+    expect(ids).not.toContain("arcos_vins_fusion_shim");
     expect(ids).not.toContain("drone");
     expect(ids.some((id) => id.startsWith("license"))).toBe(false);
   });

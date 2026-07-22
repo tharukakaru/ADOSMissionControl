@@ -59,7 +59,7 @@ export async function importBackup(file: File): Promise<ImportResult> {
   // Validate manifest
   const manifestFile = zip.file("manifest.json");
   if (!manifestFile) {
-    result.errors.push("Missing manifest.json — not a valid ADOS backup.");
+    result.errors.push("Missing manifest.json — not a valid ARCOS backup.");
     return result;
   }
 

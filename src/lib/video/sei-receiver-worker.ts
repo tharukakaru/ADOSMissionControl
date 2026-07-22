@@ -7,7 +7,7 @@
  * The transform NEVER modifies frames — every encoded frame is
  * enqueued back into the writable side untouched. The only side
  * effect is a postMessage carrying `{ rtpTimestamp, seiNs, recvMs }`
- * back to the main thread when an ADOS SEI is present.
+ * back to the main thread when an ARCOS SEI is present.
  *
  * Wired up from `webrtc-client.ts` in the form:
  *
@@ -15,15 +15,15 @@
  *     new URL("./sei-receiver-worker.ts", import.meta.url),
  *     { type: "module" },
  *   );
- *   receiver.transform = new RTCRtpScriptTransform(worker, { name: "ados-sei" });
+ *   receiver.transform = new RTCRtpScriptTransform(worker, { name: "arcos-sei" });
  *
  * Bundlers (webpack, turbopack, vite) inline this file as a worker
  * chunk when they see the `new Worker(new URL(...), ...)` form.
  */
 
-import { findAdosSeiTimestampNs } from "./sei-parser";
+import { findArcOsSeiTimestampNs } from "./sei-parser";
 
-interface AdosSeiSample {
+interface ArcOsSeiSample {
   // The RTP timestamp on the encoded frame, 90 kHz clock as published
   // by RTCEncodedVideoFrame.timestamp. Matches the timestamp the
   // <video> element's requestVideoFrameCallback metadata reports.
@@ -57,9 +57,9 @@ self.addEventListener("rtctransform", (event) => {
         transform(frame, controller) {
           try {
             const buf = new Uint8Array(frame.data);
-            const seiNs = findAdosSeiTimestampNs(buf);
+            const seiNs = findArcOsSeiTimestampNs(buf);
             if (seiNs !== null) {
-              const sample: AdosSeiSample = {
+              const sample: ArcOsSeiSample = {
                 rtpTimestamp: (frame as unknown as { timestamp: number })
                   .timestamp,
                 // Down-shift from BigInt nanoseconds to a regular ms

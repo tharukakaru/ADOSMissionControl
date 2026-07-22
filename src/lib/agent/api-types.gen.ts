@@ -61,8 +61,8 @@ export interface paths {
          * @description Update a config value (dot-separated key path).
          *
          *     Mutates the in-memory Pydantic model AND persists to
-         *     `/etc/ados/config.yaml` via `app.save_config()`. Without the disk
-         *     write, the next `systemctl restart ados-*` reloads defaults and
+         *     `/etc/arcos/config.yaml` via `app.save_config()`. Without the disk
+         *     write, the next `systemctl restart arcos-*` reloads defaults and
          *     silently undoes the update.
          *
          *     Rejects writes targeting redacted secret paths when the caller
@@ -165,7 +165,7 @@ export interface paths {
          *
          *     Concurrent client cap (``_SSE_MAX_CLIENTS``) prevents a LAN
          *     attacker pre-pairing from pinning the board by opening hundreds
-         *     of connections. Configurable via the ``ADOS_SSE_MAX_CLIENTS``
+         *     of connections. Configurable via the ``ARCOS_SSE_MAX_CLIENTS``
          *     environment variable.
          */
         get: operations["stream_logs_api_logs_stream_get"];
@@ -661,7 +661,7 @@ export interface paths {
         put?: never;
         /**
          * Install Plugin
-         * @description Multipart upload of a ``.adosplug`` archive.
+         * @description Multipart upload of a ``.arcosplug`` archive.
          *
          *     The archive is read into a temp file (to keep the supervisor's
          *     on-disk pathing intact), parsed, signature-verified, and the
@@ -669,7 +669,7 @@ export interface paths {
          *     subsequent ``/grant`` call from the install dialog.
          *
          *     Optional ``job_id`` lets the LAN-direct path write the same
-         *     ``/run/ados/plugin_install_<jobId>.json`` sidecar the cloud-relay
+         *     ``/run/arcos/plugin_install_<jobId>.json`` sidecar the cloud-relay
          *     receiver writes, so the WebSocket progress route serves both
          *     transports the same way. Optional comma-separated
          *     ``requested_permissions`` triggers immediate grants on the freshly
@@ -694,7 +694,7 @@ export interface paths {
         put?: never;
         /**
          * Install Plugin From Url
-         * @description Download a ``.adosplug`` archive from an allowlisted URL and install it.
+         * @description Download a ``.arcosplug`` archive from an allowlisted URL and install it.
          *
          *     Companion to the multipart ``/install`` endpoint. Used by the GCS
          *     Plugins page when the plugin is a registry entry whose canonical
@@ -726,13 +726,13 @@ export interface paths {
          * Mint Install Job Ticket
          * @description Issue a one-shot ticket the GCS uses to open the progress WS.
          *
-         *     Browsers cannot set ``X-ADOS-Key`` on a WebSocket handshake, so
+         *     Browsers cannot set ``X-ARCOS-Key`` on a WebSocket handshake, so
          *     the previous design fell back to ``?api_key=<pairing_key>`` in
          *     the URL — which leaks into DevTools, HAR exports, and any
          *     reverse-proxy access log. This route lets the GCS exchange its
          *     pairing key (enforced on the REST middleware) for a short-lived
          *     random ticket and hand the ticket to ``new WebSocket(url,
-         *     ["ados-job-ticket", ticket])``. The agent validates and consumes
+         *     ["arcos-job-ticket", ticket])``. The agent validates and consumes
          *     the ticket on the WebSocket handshake.
          *
          *     Ticket lifetime: 30 s. One-shot: the second connect with the
@@ -756,7 +756,7 @@ export interface paths {
         put?: never;
         /**
          * Parse Plugin Archive
-         * @description Validate a ``.adosplug`` archive without committing the install.
+         * @description Validate a ``.arcosplug`` archive without committing the install.
          *
          *     Used by the two-stage install dialog: the GCS uploads, the agent
          *     parses + signature-checks + returns the manifest summary; the
@@ -1028,7 +1028,7 @@ export interface paths {
          *     so the asyncio task list and ServiceTracker on this process only
          *     report API-process work. When the tracker has no actionable entries
          *     (empty or all stopped) the route falls back to systemd's view of
-         *     every ``ados-*`` unit so Diagnostics shows the real fleet of agent
+         *     every ``arcos-*`` unit so Diagnostics shows the real fleet of agent
          *     services without the supervisor injecting per-unit state into the
          *     API process.
          */
@@ -1081,12 +1081,12 @@ export interface paths {
          * @description Agent status: version, uptime, board, FC connection state.
          *
          *     Under the multi-process supervisor (the normal production path), the
-         *     API service is a separate process from ados-mavlink and has no direct
+         *     API service is a separate process from arcos-mavlink and has no direct
          *     access to the FC connection. The `_StandaloneAgent` shim in
          *     services/api/__main__.py keeps `_fc_connection` as None, so the
          *     endpoint reads the StateIPC client instead (the mavlink service
          *     publishes `fc_connected`, `fc_port`, `fc_baud`, and `service_uptime`
-         *     alongside the vehicle state dict at 10Hz on `/run/ados/state.sock`).
+         *     alongside the vehicle state dict at 10Hz on `/run/arcos/state.sock`).
          */
         get: operations["get_status_api_status_get"];
         put?: never;
@@ -1313,7 +1313,7 @@ export interface paths {
          *
          *     Gated on the AP subnet (192.168.4.0/24). Hosts connecting over any
          *     other interface get 403. The token is attached by the webapp as
-         *     `X-ADOS-Captive-Key` on destructive operations.
+         *     `X-ARCOS-Captive-Key` on destructive operations.
          */
         get: operations["get_captive_token_api_v1_ground_station_captive_token_get"];
         put?: never;
@@ -1463,7 +1463,7 @@ export interface paths {
          * Put Gateway Preference
          * @description Pin a gateway, let batman auto-pick, or disable client mode.
          *
-         *     Persists the preference to `/etc/ados/mesh/gateway.json` so a pin
+         *     Persists the preference to `/etc/arcos/mesh/gateway.json` so a pin
          *     survives agent and mesh restarts. `mesh_manager` re-applies the
          *     pin at setup time. Direct exec also happens here as a convenience
          *     so operators see immediate feedback without waiting for a restart.
@@ -1761,8 +1761,8 @@ export interface paths {
          * Post Pair Accept
          * @description Open the Accept window on a receiver. Idempotent during open window.
          *
-         *     Routes through `pairing_facade()` so when `ADOS_PAIRING_VIA_DAEMON=1`
-         *     the call lands in `ados-mesh-pairing.service` and the UDP bind
+         *     Routes through `pairing_facade()` so when `ARCOS_PAIRING_VIA_DAEMON=1`
+         *     the call lands in `arcos-mesh-pairing.service` and the UDP bind
          *     survives a REST restart.
          */
         post: operations["post_pair_accept_api_v1_ground_station_pair_accept_post"];
@@ -1786,8 +1786,8 @@ export interface paths {
          * @description Approve a pending relay. Encrypts + returns the invite blob.
          *
          *     The actual blob transmission is done by the pairing UDP listener
-         *     (either in-process via `ados-api` or out-of-process via
-         *     `ados-mesh-pairing.service` when `ADOS_PAIRING_VIA_DAEMON=1`).
+         *     (either in-process via `arcos-api` or out-of-process via
+         *     `arcos-mesh-pairing.service` when `ARCOS_PAIRING_VIA_DAEMON=1`).
          *     This handler is a control-plane shortcut for operators using REST
          *     directly; the field-only OLED flow works without hitting REST.
          */
@@ -2374,7 +2374,7 @@ export interface paths {
          * @description Persist a config blob for the given peripheral.
          *
          *     Wave 3 behavior: validate against the manifest's ``config_schema``
-         *     if one is declared, then write ``/etc/ados/peripherals/<id>.config.json``
+         *     if one is declared, then write ``/etc/arcos/peripherals/<id>.config.json``
          *     atomically. Plugin-side consumption of this file arrives with
          *     Track B.
          */
@@ -2425,7 +2425,7 @@ export interface paths {
         put?: never;
         /**
          * Post Restart Supervisor
-         * @description Trigger ``systemctl restart ados-supervisor``.
+         * @description Trigger ``systemctl restart arcos-supervisor``.
          *
          *     The supervisor unit owns the agent process tree, so a restart
          *     here brings every child (api, video, wfb, ...) back through the
@@ -2460,7 +2460,7 @@ export interface paths {
          * Get Air Pipeline Status
          * @description Return the air-side GStreamer pipeline's live stats snapshot.
          *
-         *     Reads the same ``/run/ados/air-pipeline.json`` the heartbeat
+         *     Reads the same ``/run/arcos/air-pipeline.json`` the heartbeat
          *     enricher reads. Returns 204 when the air pipeline is not in use
          *     (legacy bash air pipeline owns the stream).
          */
@@ -2579,7 +2579,7 @@ export interface paths {
          * @description Live snapshot of the adaptive bitrate + FEC + radio config.
          *
          *     Combines the static wfb config (channel, mcs, fec_k/fec_n
-         *     persisted to /etc/ados/config.yaml) with the dynamic ladder
+         *     persisted to /etc/arcos/config.yaml) with the dynamic ladder
          *     state from the BitrateController. Shape is stable enough that
          *     the GCS Video Link panel can render its sparklines without a
          *     schema migration when an additional metric is added.
@@ -2902,8 +2902,8 @@ export interface paths {
          * Get Failover Status
          * @description Return the current local-bind to cloud-relay failover state.
          *
-         *     Reads the sidecar at ``/run/ados/wfb_failover.json`` written by the
-         *     auto_pair supervisor in the ados-cloud process. Default is ``local``
+         *     Reads the sidecar at ``/run/arcos/wfb_failover.json`` written by the
+         *     auto_pair supervisor in the arcos-cloud process. Default is ``local``
          *     when the sidecar is missing or unreadable, which matches the
          *     supervisor's startup state.
          */
@@ -2991,7 +2991,7 @@ export interface paths {
          *         * Refuses values above the configured `tx_power_max_dbm` ceiling.
          *
          *     On accept the running manager applies the value via the kernel,
-         *     persists `video.wfb.tx_power_dbm` to /etc/ados/config.yaml, and
+         *     persists `video.wfb.tx_power_dbm` to /etc/arcos/config.yaml, and
          *     returns the requested + effective dBm reported by the driver.
          */
         put: operations["set_wfb_tx_power_api_wfb_tx_power_put"];
@@ -3556,7 +3556,7 @@ export interface components {
          *
          *     The driver applies the value via `iw dev <iface> set txpower fixed`.
          *     Operators override the boot default at runtime; the new value is
-         *     persisted to /etc/ados/config.yaml so it survives a service restart.
+         *     persisted to /etc/arcos/config.yaml so it survives a service restart.
          */
         TxPowerRequest: {
             /**

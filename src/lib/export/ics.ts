@@ -15,10 +15,10 @@ export function buildIcsCalendar(records: FlightRecord[]): string {
   const lines: string[] = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Altnautica//ADOS Mission Control//EN",
+    "PRODID:-//Altnautica//ARCOS Mission Control//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
-    "X-WR-CALNAME:ADOS Flight Log",
+    "X-WR-CALNAME:ARCOS Flight Log",
   ];
 
   for (const r of records) {
@@ -39,7 +39,7 @@ export function buildIcsCalendar(records: FlightRecord[]): string {
     if (r.notes) descParts.push(`Notes: ${r.notes.slice(0, 200)}`);
 
     lines.push("BEGIN:VEVENT");
-    lines.push(`UID:${r.id}@ados.altnautica.com`);
+    lines.push(`UID:${r.id}@arcos.altnautica.com`);
     lines.push(`DTSTART:${toIcsDate(start)}`);
     lines.push(`DTEND:${toIcsDate(end)}`);
     lines.push(`SUMMARY:${escapeIcs(title)}`);
@@ -66,7 +66,7 @@ export function exportFlightsAsIcs(records: FlightRecord[], filename?: string): 
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = filename ?? `ados-flights-${new Date().toISOString().slice(0, 10)}.ics`;
+  a.download = filename ?? `arcos-flights-${new Date().toISOString().slice(0, 10)}.ics`;
   a.click();
   URL.revokeObjectURL(url);
 }

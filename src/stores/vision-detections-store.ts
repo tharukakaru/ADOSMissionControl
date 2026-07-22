@@ -18,7 +18,7 @@
  *   paired drone, maps each batch onto the shape below, and calls
  *   `setBatch()`. A demo/test injector can also call `setBatch()` directly.
  *   The cloud-relay path for a remote drone (a vision/detection MQTT topic
- *   via `ados-cloud`) is a documented follow-up; it feeds the same
+ *   via `arcos-cloud`) is a documented follow-up; it feeds the same
  *   `setBatch()`, so adding it stays purely additive.
  *
  * @license GPL-3.0-only

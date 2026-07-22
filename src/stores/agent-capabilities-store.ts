@@ -1,6 +1,6 @@
 /**
  * @module AgentCapabilitiesStore
- * @description Zustand store for ADOS agent capabilities: compute, vision,
+ * @description Zustand store for ARCOS agent capabilities: compute, vision,
  * features, models, plus radio + heartbeat health surfaces.
  *
  * This file is a thin barrel. The state shape lives in

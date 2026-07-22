@@ -1,6 +1,6 @@
 /**
  * @module fc/firmware/agent-stages/utils
- * @description Pure helpers used by the ADOS agent flash flow:
+ * @description Pure helpers used by the ARCOS agent flash flow:
  * byte-array concatenation, SHA-256 hex digest, and hex formatting.
  * Kept separate so they're easy to test without spinning up the
  * Web Flash card.

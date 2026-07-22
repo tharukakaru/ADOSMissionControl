@@ -41,7 +41,7 @@ describe("setTxPower", () => {
 
     const headers = init.headers as Record<string, string>;
     expect(headers["Content-Type"]).toBe("application/json");
-    expect(headers["X-ADOS-Key"]).toBe("test-key");
+    expect(headers["X-ARCOS-Key"]).toBe("test-key");
 
     expect(result).toEqual({
       requested_dbm: 22,
@@ -95,7 +95,7 @@ describe("setTxPower", () => {
     );
   });
 
-  it("omits the X-ADOS-Key header when no api key is provided", async () => {
+  it("omits the X-ARCOS-Key header when no api key is provided", async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -112,6 +112,6 @@ describe("setTxPower", () => {
 
     const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
     const headers = init.headers as Record<string, string>;
-    expect(headers["X-ADOS-Key"]).toBeUndefined();
+    expect(headers["X-ARCOS-Key"]).toBeUndefined();
   });
 });

@@ -68,7 +68,7 @@ export function FirmwareStackSelector({
   setUseCustom: (v: boolean) => void;
   droneType?: string;
 }) {
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
   return (
     <div className="bg-bg-secondary border border-border-default p-4 space-y-3">
       <h2 className="text-xs font-semibold text-text-primary">Firmware Stack</h2>
@@ -158,7 +158,7 @@ export function PreFlashChecklist({
   setChecked: (key: string, value: boolean) => void;
   intro?: string;
 }) {
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
   return (
     <div className="bg-bg-secondary border border-status-warning/30 p-4 space-y-3">
       <h2 className="text-xs font-semibold text-status-warning flex items-center gap-2">

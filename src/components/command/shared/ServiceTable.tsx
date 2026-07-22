@@ -139,7 +139,7 @@ export function ServiceTable({ services, onRestart, onRestartAll, processCpu, pr
                       </span>
                     )}
                     {svc.name}
-                    {svc.name === "ados-video" &&
+                    {svc.name === "arcos-video" &&
                       (svc.status === "error" || svc.status === "stopped") &&
                       agentDependencies && (() => {
                         const missing = Object.entries(agentDependencies)

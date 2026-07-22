@@ -95,7 +95,7 @@ export function attachSeiTransform(target: RTCPeerConnection): void {
     };
     // The transform property is not in lib.dom yet; widen.
     (videoReceiver as unknown as { transform: unknown }).transform =
-      new Ctor(seiWorker, { name: "ados-sei" });
+      new Ctor(seiWorker, { name: "arcos-sei" });
   } catch (err) {
     console.warn(
       "[webrtc-client] attachSeiTransform failed; true glass-to-glass disabled",

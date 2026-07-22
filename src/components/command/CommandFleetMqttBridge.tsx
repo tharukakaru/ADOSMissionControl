@@ -70,7 +70,7 @@ export function CommandFleetMqttBridge({
         client.on("connect", () => {
           if (cancelled) return;
           for (const deviceId of deviceIds) {
-            client.subscribe(`ados/${deviceId}/telemetry`, (err) => {
+            client.subscribe(`arcos/${deviceId}/telemetry`, (err) => {
               if (err) {
                 console.warn("[CommandFleetMqttBridge] subscribe failed:", err.message);
               }
@@ -80,7 +80,7 @@ export function CommandFleetMqttBridge({
 
         client.on("message", (topic, payload) => {
           if (cancelled) return;
-          const match = topic.match(/^ados\/([^/]+)\/telemetry$/);
+          const match = topic.match(/^arcos\/([^/]+)\/telemetry$/);
           if (!match) return;
           try {
             const parsed = JSON.parse(payload.toString()) as CommandTelemetrySnapshot;

@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * @module AdosAgentSection
- * @description ADOS Agent flash flow section. Composes the target-board
+ * @module ArcOsAgentSection
+ * @description ARCOS Agent flash flow section. Composes the target-board
  * picker with either the curl install card or the WebUSB flash card,
  * depending on the manifest entry the selected board carries.
  * @license GPL-3.0-only
@@ -11,10 +11,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import type {
-  AdosAgentBoard,
-  AdosAgentStack,
-  AdosAgentWebFlashInstall,
-} from "@/lib/protocol/firmware/ados-agent-manifest";
+  ArcOsAgentBoard,
+  ArcOsAgentStack,
+  ArcOsAgentWebFlashInstall,
+} from "@/lib/protocol/firmware/arcos-agent-manifest";
 import { RockchipBootromFlasher } from "@/lib/protocol/firmware/rockchip-bootrom";
 import { usbDeviceManager, type UsbDeviceInfo } from "@/lib/usb-device-manager";
 import { TargetBoardCard } from "./agent-stages/TargetBoardCard";
@@ -23,8 +23,8 @@ import { WebFlashCard } from "./agent-stages/WebFlashCard";
 import { useRockchipFlash } from "./agent-stages/use-rockchip-flash";
 
 interface Props {
-  stack: AdosAgentStack;
-  boards: AdosAgentBoard[];
+  stack: ArcOsAgentStack;
+  boards: ArcOsAgentBoard[];
   loading: boolean;
   error: string;
   agentVersion: string;
@@ -48,13 +48,13 @@ interface Props {
   manifestSource?: string;
 }
 
-export function AdosAgentSection({
+export function ArcOsAgentSection({
   stack, boards, loading, error, agentVersion,
   selectedBoardId, setSelectedBoardId, onRetry,
   allChecked = false, usbSupported = false,
   manifestSource,
 }: Props) {
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
 
   // Rockchip bootrom devices currently visible to the browser. Updated
   // on mount via getKnownDevices() and live via hot-plug listeners.
@@ -73,7 +73,7 @@ export function AdosAgentSection({
   const install = selectedBoard?.installs[stack] ?? null;
   const webFlashInstall =
     install && install.method === "web-flash"
-      ? (install as AdosAgentWebFlashInstall)
+      ? (install as ArcOsAgentWebFlashInstall)
       : null;
 
   // Subscribe to USB hot-plug for Rockchip devices. Mirrors the DFU
@@ -133,7 +133,7 @@ export function AdosAgentSection({
     }
   }, [flash, t]);
 
-  const stackLabel = stack === "ados-drone-agent" ? t("stack.drone") : t("stack.ground");
+  const stackLabel = stack === "arcos-drone-agent" ? t("stack.drone") : t("stack.ground");
 
   return (
     <>

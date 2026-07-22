@@ -12,7 +12,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useToast } from "@/components/ui/toast";
-import type { AdosAgentWebFlashInstall } from "@/lib/protocol/firmware/ados-agent-manifest";
+import type { ArcOsAgentWebFlashInstall } from "@/lib/protocol/firmware/arcos-agent-manifest";
 import type { FlashProgress } from "@/lib/protocol/firmware/types";
 import { RockchipBootromFlasher } from "@/lib/protocol/firmware/rockchip-bootrom";
 import { verifyLiteAgentImageSignature } from "@/lib/protocol/firmware/minisign-public-key";
@@ -20,7 +20,7 @@ import type { UsbDeviceInfo } from "@/lib/usb-device-manager";
 import { concatBytes, sha256Hex } from "./utils";
 
 export interface UseRockchipFlashArgs {
-  webFlashInstall: AdosAgentWebFlashInstall | null;
+  webFlashInstall: ArcOsAgentWebFlashInstall | null;
   rockchipDevices: UsbDeviceInfo[];
 }
 
@@ -42,7 +42,7 @@ export function useRockchipFlash({
   webFlashInstall,
   rockchipDevices,
 }: UseRockchipFlashArgs): UseRockchipFlashApi {
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
   const { toast } = useToast();
 
   // Flash lifecycle state. Local to the agent flash flow so the FC

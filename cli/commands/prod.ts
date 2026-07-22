@@ -162,8 +162,8 @@ export async function prodCommand(): Promise<void> {
     });
     if (!p.isCancel(brokerUrl)) mqttValues['MQTT_BROKER_URL'] = (brokerUrl as string) || 'mqtt://mosquitto:1883';
 
-    const mqttUser = await p.text({ message: 'MQTT username:', initialValue: 'ados' });
-    if (!p.isCancel(mqttUser)) mqttValues['MQTT_USERNAME'] = (mqttUser as string) || 'ados';
+    const mqttUser = await p.text({ message: 'MQTT username:', initialValue: 'arcos' });
+    if (!p.isCancel(mqttUser)) mqttValues['MQTT_USERNAME'] = (mqttUser as string) || 'arcos';
 
     const mqttPass = await p.password({ message: 'MQTT password (leave blank to skip):' });
     if (!p.isCancel(mqttPass) && mqttPass) mqttValues['MQTT_PASSWORD'] = mqttPass as string;

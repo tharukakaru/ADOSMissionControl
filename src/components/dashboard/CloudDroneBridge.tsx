@@ -2,7 +2,7 @@
 
 /**
  * @module CloudDroneBridge
- * @description Bridges cloud-paired ADOS agents into the Dashboard fleet store.
+ * @description Bridges cloud-paired ARCOS agents into the Dashboard fleet store.
  * Queries Convex for paired drones and their cloud status, then adds them
  * as FleetDrone entries with source="cloud". Handles staleness detection
  * to remove offline agents from the fleet view.

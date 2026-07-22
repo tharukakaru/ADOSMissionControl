@@ -31,7 +31,7 @@ interface ActionDialogsProps {
 
 function recordSafetyOverride(action: string, reason: string): void {
   try {
-    const key = "ados:flight-safety-overrides";
+    const key = "arcos:flight-safety-overrides";
     const existing = JSON.parse(localStorage.getItem(key) ?? "[]") as unknown;
     const rows = Array.isArray(existing) ? existing : [];
     rows.push({ action, reason, at: new Date().toISOString() });

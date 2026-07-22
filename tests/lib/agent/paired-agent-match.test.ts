@@ -34,9 +34,9 @@ describe("pairedAgentDeviceIdForUrl", () => {
 
   it("matches against the node's mDNS host", () => {
     withNodes([
-      node({ hostname: "http://10.0.0.5:8080", mdnsHost: "ados-abc.local" }),
+      node({ hostname: "http://10.0.0.5:8080", mdnsHost: "arcos-abc.local" }),
     ]);
-    expect(pairedAgentDeviceIdForUrl("ws://ados-abc.local:8765/")).toBe("dev-1");
+    expect(pairedAgentDeviceIdForUrl("ws://arcos-abc.local:8765/")).toBe("dev-1");
   });
 
   it("matches against the node's captured IPv4", () => {

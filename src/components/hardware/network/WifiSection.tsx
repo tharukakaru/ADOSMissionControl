@@ -79,7 +79,7 @@ export function WifiSection({
               label="SSID"
               value={form.ssid}
               onChange={(e) => setSsid(e.target.value)}
-              placeholder="ADOS-GS"
+              placeholder="ARCOS-GS"
               spellCheck={false}
               autoComplete="off"
             />

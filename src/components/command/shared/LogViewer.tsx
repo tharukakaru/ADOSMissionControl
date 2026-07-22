@@ -34,8 +34,8 @@ const NOISY_PATTERNS: ReadonlyArray<readonly [string, string]> = [
   ["hal.usb", "usb_scan_complete"],
   ["hal.hotplug", "usb_device_added"],
   ["hal.hotplug", "usb_device_removed"],
-  ["ados.core.supervisor", "hotplug_event_pre_gate"],
-  ["ados.core.supervisor", "hotplug_event_debounced"],
+  ["arcos.core.supervisor", "hotplug_event_pre_gate"],
+  ["arcos.core.supervisor", "hotplug_event_debounced"],
   ["mavlink.streams", "stream_request"],
 ];
 

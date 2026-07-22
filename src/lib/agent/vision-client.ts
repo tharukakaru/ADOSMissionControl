@@ -5,7 +5,7 @@
  * kicks off a model download, and polls per-model download progress.
  *
  * Mirrors the LAN-direct REST pattern: a base URL + optional API key
- * (sent as `X-ADOS-Key`). All responses are coerced defensively so a
+ * (sent as `X-ARCOS-Key`). All responses are coerced defensively so a
  * future agent that adds fields, or an older agent that omits them,
  * round-trips into a stable GCS-side shape.
  *
@@ -153,7 +153,7 @@ export class VisionAgentClient {
   }
 
   private headers(): Record<string, string> {
-    return this.apiKey ? { "X-ADOS-Key": this.apiKey } : {};
+    return this.apiKey ? { "X-ARCOS-Key": this.apiKey } : {};
   }
 
   /** List registry + installed models + cache usage. */

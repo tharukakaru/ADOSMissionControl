@@ -2,7 +2,7 @@
  * @module LanDirectTransport
  * @description Local-first install path. Posts the archive multipart to
  * the paired agent's `POST /api/plugins/install` endpoint over the LAN
- * with the `X-ADOS-Key` pairing key. Returns a job id the progress
+ * with the `X-ARCOS-Key` pairing key. Returns a job id the progress
  * toast can subscribe to over `ws://<agent>/api/plugins/jobs/<jobId>`.
  *
  * Failover triggers (callers decide whether to fall through to
@@ -91,7 +91,7 @@ export async function installLanDirect(
   try {
     response = await fetch(`${inputs.agentUrl}/api/plugins/install`, {
       method: "POST",
-      headers: { "X-ADOS-Key": inputs.pairingKey },
+      headers: { "X-ARCOS-Key": inputs.pairingKey },
       body: form,
       signal: controller.signal,
     });

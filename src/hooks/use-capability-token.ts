@@ -8,7 +8,7 @@
  * one drone, choosing the issuer based on the active transport:
  *
  *   * `transport = "lan"`   - mint via `POST /api/plugins/capability-token`
- *                              on the agent (`X-ADOS-Key` auth). Token
+ *                              on the agent (`X-ARCOS-Key` auth). Token
  *                              `iss = "agent:<deviceId>"`, signed with
  *                              the per-pairing HKDF-derived HMAC secret.
  *   * `transport = "cloud"` - mint via Convex action

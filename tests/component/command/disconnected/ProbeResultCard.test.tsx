@@ -88,7 +88,7 @@ function probe(overrides: Partial<ProbeResult> = {}): ProbeResult {
     board: "Raspberry Pi 4B",
     paired: false,
     pairingCode: "TEST12",
-    mdnsHost: "ados-abc123.local",
+    mdnsHost: "arcos-abc123.local",
     profile: "drone",
     role: null,
     hostname: "http://skynode.local:8080",
@@ -118,10 +118,10 @@ describe("ProbeResultCard", () => {
 
   it("happy path: pairs locally, persists the node, then calls onPaired", async () => {
     pairLocallyMock.mockResolvedValueOnce({
-      apiKey: "ados_k",
+      apiKey: "arcos_k",
       deviceId: "abc123",
       name: "skynode",
-      mdnsHost: "ados-abc123.local",
+      mdnsHost: "arcos-abc123.local",
       hostname: "http://skynode.local:8080",
     });
     connectMock.mockResolvedValueOnce(undefined);
@@ -138,15 +138,15 @@ describe("ProbeResultCard", () => {
       expect(onPaired).toHaveBeenCalledWith("abc123");
     });
     expect(addNodeMock).toHaveBeenCalledTimes(1);
-    expect(addNodeMock.mock.calls[0][0].apiKey).toBe("ados_k");
+    expect(addNodeMock.mock.calls[0][0].apiKey).toBe("arcos_k");
   });
 
   it("addNode runs BEFORE connect — node persists even when connect fails", async () => {
     pairLocallyMock.mockResolvedValueOnce({
-      apiKey: "ados_k",
+      apiKey: "arcos_k",
       deviceId: "abc123",
       name: "skynode",
-      mdnsHost: "ados-abc123.local",
+      mdnsHost: "arcos-abc123.local",
       hostname: "http://skynode.local:8080",
     });
     connectMock.mockRejectedValueOnce(new Error("ECONNREFUSED"));

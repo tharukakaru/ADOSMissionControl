@@ -8,7 +8,7 @@ import type {
 } from "@/lib/protocol/firmware/types";
 import { useFlashLogStore, type FlashLogSource } from "@/stores/flash-log-store";
 import { categorize, mapError } from "./flash-error-map";
-import { isAdosStack } from "./firmware-constants";
+import { isArcOsStack } from "./firmware-constants";
 import { FlashManager } from "@/lib/protocol/firmware/flash-manager";
 import { parseApjFile } from "@/lib/protocol/firmware/apj-parser";
 import { parseHexFile } from "@/lib/protocol/firmware/hex-parser";
@@ -20,12 +20,12 @@ import { apManifest, bfManifest, px4Manifest } from "./firmware-state/manifests"
 import { useArduPilotFirmware } from "./firmware-state/use-ardupilot-firmware";
 import { useBetaflightFirmware } from "./firmware-state/use-betaflight-firmware";
 import { usePx4Firmware } from "./firmware-state/use-px4-firmware";
-import { useAdosAgentFirmware } from "./firmware-state/use-ados-agent-firmware";
+import { useArcOsAgentFirmware } from "./firmware-state/use-arcos-agent-firmware";
 import { useFlashCore } from "./firmware-state/use-flash-core";
 
 /**
  * Composes the per-stack firmware hooks (ArduPilot / Betaflight / PX4 /
- * ADOS agent) and the shared flash core into the single flat state
+ * ARCOS agent) and the shared flash core into the single flat state
  * object the firmware panel consumes. The aggregator owns the truly
  * cross-stack concerns: the active stack selector, the auto-detect from
  * the connected drone, the per-stack load dispatch on a stack change,
@@ -43,7 +43,7 @@ export function useFirmwareState() {
   const ap = useArduPilotFirmware(firmwareStack, drone);
   const bf = useBetaflightFirmware(firmwareStack, toast);
   const px4 = usePx4Firmware();
-  const ados = useAdosAgentFirmware(firmwareStack);
+  const arcos = useArcOsAgentFirmware(firmwareStack);
   const core = useFlashCore(firmwareStack);
 
   // Auto-detect firmware stack from connected drone
@@ -62,7 +62,7 @@ export function useFirmwareState() {
     if (firmwareStack === "ardupilot" && ap.apBoards.length === 0) ap.loadApManifest();
     else if (firmwareStack === "betaflight" && bf.bfTargets.length === 0) bf.loadBfTargets();
     else if (firmwareStack === "px4" && px4.px4Releases.length === 0) px4.loadPx4Releases();
-    else if (isAdosStack(firmwareStack) && ados.adosBoards.length === 0) ados.loadAdosManifest();
+    else if (isArcOsStack(firmwareStack) && arcos.arcosBoards.length === 0) arcos.loadArcOsManifest();
     core.setFlashMethod("auto");
   }, [firmwareStack]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -180,13 +180,13 @@ export function useFirmwareState() {
     selectedPx4Board: px4.selectedPx4Board, setSelectedPx4Board: px4.setSelectedPx4Board,
     px4Boards: px4.px4Boards,
     loadPx4ReleasesRetry: px4.loadPx4ReleasesRetry,
-    // ADOS
-    adosBoards: ados.adosBoards, adosLoading: ados.adosLoading, adosError: ados.adosError,
-    adosAgentVersion: ados.adosAgentVersion,
-    adosManifestSource: ados.adosManifestSource,
-    selectedAdosBoardId: ados.selectedAdosBoardId, setSelectedAdosBoardId: ados.setSelectedAdosBoardId,
-    adosInstallMethod: ados.adosInstallMethod,
-    loadAdosManifestRetry: ados.loadAdosManifestRetry,
+    // ARCOS
+    arcosBoards: arcos.arcosBoards, arcosLoading: arcos.arcosLoading, arcosError: arcos.arcosError,
+    arcosAgentVersion: arcos.arcosAgentVersion,
+    arcosManifestSource: arcos.arcosManifestSource,
+    selectedArcOsBoardId: arcos.selectedArcOsBoardId, setSelectedArcOsBoardId: arcos.setSelectedArcOsBoardId,
+    arcosInstallMethod: arcos.arcosInstallMethod,
+    loadArcOsManifestRetry: arcos.loadArcOsManifestRetry,
     // Common
     flashMethod: core.flashMethod, setFlashMethod: core.setFlashMethod,
     dfuDevices: core.dfuDevices, customFile: core.customFile, useCustom: core.useCustom, setUseCustom: core.setUseCustom,

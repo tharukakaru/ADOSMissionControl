@@ -1,6 +1,6 @@
 # MQTT relay deployment
 
-Reference deployment for the ADOS cloud relay stack: a Mosquitto MQTT broker
+Reference deployment for the ARCOS cloud relay stack: a Mosquitto MQTT broker
 plus a Node bridge that forwards agent heartbeats to Convex. Designed to run
 behind a Cloudflare Tunnel on a small VM or LXC container.
 
@@ -8,7 +8,7 @@ behind a Cloudflare Tunnel on a small VM or LXC container.
 agent (drone)  ─MQTT(S)─►  mosquitto  ─►  mqtt-bridge  ─►  Convex
                               ▲
                               │
-GCS browser  ─MQTT/WSS─────────┘  (also subscribes to ados/<device>/*)
+GCS browser  ─MQTT/WSS─────────┘  (also subscribes to arcos/<device>/*)
 ```
 
 This README covers the production deployment with per-device auth. For a
@@ -21,9 +21,9 @@ Three principal types connect to the broker:
 
 | Principal | Username | Password source | Permissions |
 |---|---|---|---|
-| Drone agent | `<device_id>` (current firmware) or `ados-<device_id>` (legacy firmware; transitional) | `cmd_drones.apiKey` from Convex; same value the agent uses for HTTP `X-ADOS-Key` | `readwrite ados/<device_id>/#` |
-| Bridge service account | `ados` | `MQTT_PASSWORD` env var on the broker host | `read ados/#` |
-| GCS browser session | `gcs-viewer` | `MQTT_VIEWER_PASSWORD` published via Convex `clientConfig.getClientConfig` query | `read ados/+/#` |
+| Drone agent | `<device_id>` (current firmware) or `arcos-<device_id>` (legacy firmware; transitional) | `cmd_drones.apiKey` from Convex; same value the agent uses for HTTP `X-ARCOS-Key` | `readwrite arcos/<device_id>/#` |
+| Bridge service account | `arcos` | `MQTT_PASSWORD` env var on the broker host | `read arcos/#` |
+| GCS browser session | `gcs-viewer` | `MQTT_VIEWER_PASSWORD` published via Convex `clientConfig.getClientConfig` query | `read arcos/+/#` |
 
 The ACL is generated alongside the passwd file from the device list in
 Convex; both files are atomic-swapped into place on every regen.
@@ -55,7 +55,7 @@ it** — see `.gitignore` in this directory.
 
 1. Pick a strong password for the bridge service account. Add it to your
    broker host's `/opt/relay/.env` as `MQTT_PASSWORD=<value>` (the bridge
-   container already reads this via `MQTT_USERNAME=ados` /
+   container already reads this via `MQTT_USERNAME=arcos` /
    `MQTT_PASSWORD=${MQTT_PASSWORD}`).
 2. Pick a strong relay secret (`openssl rand -hex 32`). Set it as
    `MQTT_AUTH_RELAY_SECRET` BOTH on the Convex deployment AND in
@@ -65,7 +65,7 @@ it** — see `.gitignore` in this directory.
    `MQTT_VIEWER_PASSWORD` on the Convex deployment AND in `/opt/relay/.env`
    on the broker host. The Convex `clientConfig.getClientConfig` query
    publishes it to every browser session; the broker's ACL gives this
-   user read-only access on `ados/+/#`.
+   user read-only access on `arcos/+/#`.
 4. Deploy the Convex functions (`npx convex deploy`) so the
    `clientConfig`, `cmdPairing.listMqttAuthEntries`, and
    `/admin/mqtt-auth-entries` paths are live.
@@ -151,7 +151,7 @@ mosquitto_passwd -c /opt/relay/mosquitto/passwd <device_id>
 # Subsequent entries append:
 mosquitto_passwd /opt/relay/mosquitto/passwd <another_device_id>
 # Add the bridge service account last:
-mosquitto_passwd /opt/relay/mosquitto/passwd ados
+mosquitto_passwd /opt/relay/mosquitto/passwd arcos
 # Reload the broker:
 docker exec relay-mosquitto-1 kill -HUP 1
 ```
@@ -190,26 +190,26 @@ docker exec -it relay-mosquitto-1 sh
 # 1. Device can publish to its own subtree.
 mosquitto_pub -h localhost -p 1883 \
   -u <device_id> -P <api_key> \
-  -t "ados/<device_id>/test" -m "hello"
+  -t "arcos/<device_id>/test" -m "hello"
 # Should succeed.
 
 # 2. Device CANNOT publish to another device's subtree.
 mosquitto_pub -h localhost -p 1883 \
   -u <device_id> -P <api_key> \
-  -t "ados/<other_device>/test" -m "should fail"
+  -t "arcos/<other_device>/test" -m "should fail"
 # Should be silently dropped by the ACL (return code 0 but no message
 # delivered). Confirm by watching the broker logs for "Denied".
 
 # 3. GCS viewer can subscribe to any device's status topic.
 mosquitto_sub -h localhost -p 1883 \
   -u gcs-viewer -P <MQTT_VIEWER_PASSWORD> \
-  -t "ados/+/status" -C 1 -W 5
+  -t "arcos/+/status" -C 1 -W 5
 # Should print one status message OR time out cleanly (return 27).
 
 # 4. GCS viewer CANNOT publish.
 mosquitto_pub -h localhost -p 1883 \
   -u gcs-viewer -P <MQTT_VIEWER_PASSWORD> \
-  -t "ados/<device_id>/command" -m "should fail"
+  -t "arcos/<device_id>/command" -m "should fail"
 # Should be denied by the ACL.
 ```
 

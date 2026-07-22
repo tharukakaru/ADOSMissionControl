@@ -37,7 +37,7 @@ const LOGD_ROW = {
   id: "row-1",
   level: "info",
   message: "video started",
-  source: "ados-video",
+  source: "arcos-video",
 };
 
 describe("LoggingService transport resolution", () => {
@@ -65,7 +65,7 @@ describe("LoggingService transport resolution", () => {
     expect(url).toContain(":8090/v1/query");
     // Auth header carried.
     const init = fetchMock.mock.calls[0][1] as RequestInit;
-    expect((init.headers as Record<string, string>)["X-ADOS-Key"]).toBe("test-key");
+    expect((init.headers as Record<string, string>)["X-ARCOS-Key"]).toBe("test-key");
   });
 
   it("falls back to the proxy tier on a 404 from direct", async () => {

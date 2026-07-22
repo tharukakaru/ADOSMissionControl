@@ -1,7 +1,7 @@
 /**
- * Parity check between the ADOS Agent firmware emitter and the embedded
+ * Parity check between the ARCOS Agent firmware emitter and the embedded
  * fallback baked into the Next.js proxy route. The emitter (in the agent
- * repo) produces the canonical catalog from src/ados/hal/boards/*.yaml.
+ * repo) produces the canonical catalog from src/arcos/hal/boards/*.yaml.
  * The Mission Control proxy carries an embedded fallback so the Flash
  * Tool stays usable when the GitHub release is unreachable.
  *
@@ -10,7 +10,7 @@
  * release manifest finally lands, no fallback-only stubs are silently
  * shadowed.
  *
- * The fixture at tests/fixtures/ados-agent-manifest.fixture.json carries
+ * The fixture at tests/fixtures/arcos-agent-manifest.fixture.json carries
  * the snapshot of board ids the emitter currently produces. Update it by
  * hand when the agent repo's HAL board set changes. The fixture's
  * leading "_comment" field documents the procedure.
@@ -19,10 +19,10 @@
  */
 
 import { describe, it, expect } from "vitest";
-import fixture from "../../fixtures/ados-agent-manifest.fixture.json";
-import { EMBEDDED_FALLBACK } from "@/app/api/ados-manifest/fallback";
+import fixture from "../../fixtures/arcos-agent-manifest.fixture.json";
+import { EMBEDDED_FALLBACK } from "@/app/api/arcos-manifest/fallback";
 
-describe("ADOS manifest embedded-fallback parity", () => {
+describe("ARCOS manifest embedded-fallback parity", () => {
   it("the fixture has at least one board id (sanity check)", () => {
     expect(fixture.boardIds.length).toBeGreaterThan(0);
   });
@@ -36,7 +36,7 @@ describe("ADOS manifest embedded-fallback parity", () => {
   });
 
   it("embedded fallback only declares known stacks", () => {
-    const allowed = new Set(["ados-drone-agent", "ados-ground-agent"]);
+    const allowed = new Set(["arcos-drone-agent", "arcos-ground-agent"]);
     for (const board of EMBEDDED_FALLBACK.boards) {
       for (const stack of board.stacks) {
         expect(allowed.has(stack)).toBe(true);

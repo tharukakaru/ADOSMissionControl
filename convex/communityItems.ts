@@ -13,7 +13,7 @@ const statusValidator = v.union(
 );
 const categoryValidator = v.union(
   v.literal("command"),
-  v.literal("ados"),
+  v.literal("arcos"),
   v.literal("website"),
   v.literal("general"),
 );

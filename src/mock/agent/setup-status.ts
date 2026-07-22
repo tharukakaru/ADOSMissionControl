@@ -55,7 +55,7 @@ export function buildMockSetupStatus(ctx: MockSetupContext): SetupStatus {
     ],
     network: {
       hostname: "demo-drone",
-      mdns_host: "ados-demo-0001.local",
+      mdns_host: "arcos-demo-0001.local",
       api_port: 8080,
       hotspot_enabled: false,
       hotspot_ssid: "",

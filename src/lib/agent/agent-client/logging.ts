@@ -41,7 +41,7 @@ export interface LoggingRow {
   id: string;
   level: LogLevel;
   message: string;
-  /** Producer source (e.g. `ados-video`, `api`). */
+  /** Producer source (e.g. `arcos-video`, `api`). */
   source: string;
   /** Owning session id, when the row was captured inside one. */
   session?: string;
@@ -480,7 +480,7 @@ export class LoggingService {
         : `${origin}${prefix}${path}${query ? `?${query}` : ""}`;
 
     const headers: Record<string, string> = {};
-    if (this.ctx.apiKey) headers["X-ADOS-Key"] = this.ctx.apiKey;
+    if (this.ctx.apiKey) headers["X-ARCOS-Key"] = this.ctx.apiKey;
 
     let res: Response;
     try {
@@ -686,7 +686,7 @@ export class LoggingService {
       }
       const url = `${origin}${prefix}/export?${query}`;
       const headers: Record<string, string> = {};
-      if (this.ctx.apiKey) headers["X-ADOS-Key"] = this.ctx.apiKey;
+      if (this.ctx.apiKey) headers["X-ARCOS-Key"] = this.ctx.apiKey;
       try {
         // Bound the connection so a hung tier cascades to the next one. A
         // generous ceiling (vs the read default) leaves room for a real
@@ -737,7 +737,7 @@ export class LoggingService {
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     };
-    if (this.ctx.apiKey) headers["X-ADOS-Key"] = this.ctx.apiKey;
+    if (this.ctx.apiKey) headers["X-ARCOS-Key"] = this.ctx.apiKey;
     const body = JSON.stringify({
       from: params.from,
       to: params.to,

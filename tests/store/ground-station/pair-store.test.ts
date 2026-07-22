@@ -49,7 +49,7 @@ describe("ground-station pair slice", () => {
 
   it("resetAll restores every pair-related field", () => {
     useGroundStationStore.setState({
-      ap: { ssid: "ados-test", channel: 36 } as never,
+      ap: { ssid: "arcos-test", channel: 36 } as never,
       ui: { oled_enabled: true } as never,
       pair: {
         loading: false,

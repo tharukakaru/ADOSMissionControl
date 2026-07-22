@@ -29,7 +29,7 @@ export type PluginSource =
 /**
  * The well-known UI slots a plugin can mount into. The 13 slots mirror
  * the canonical list in
- * `product/specs/ados-plugin-system/08-ui-extension-points.md`.
+ * `product/specs/arcos-plugin-system/08-ui-extension-points.md`.
  * The first 12 are fleet-scoped; the last (`drone.detail.tab`) is
  * per-drone scoped and follows the pause/resume + LRU lifecycle
  * described in that spec's Section 4.1.

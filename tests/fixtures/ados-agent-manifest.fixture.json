@@ -1,5 +1,5 @@
 {
-  "_comment": "Snapshot of the board ids emitted by the ADOS Drone Agent's scripts/emit_ados_agent_manifest.py for the canonical HAL set under src/ados/hal/boards/. Used by tests/unit/firmware/ados-manifest-fallback.test.ts to assert that EMBEDDED_FALLBACK in src/app/api/ados-manifest/route.ts is a subset of the upstream catalog. Update procedure: from the agent repo run `python3 scripts/emit_ados_agent_manifest.py /tmp/manifest.json` and copy the sorted board ids into the boardIds array below. This fixture lives in the GCS repo (not the agent repo) so the parity test is self-contained.",
+  "_comment": "Snapshot of the board ids emitted by the ARCOS Drone Agent's scripts/emit_arcos_agent_manifest.py for the canonical HAL set under src/arcos/hal/boards/. Used by tests/unit/firmware/arcos-manifest-fallback.test.ts to assert that EMBEDDED_FALLBACK in src/app/api/arcos-manifest/route.ts is a subset of the upstream catalog. Update procedure: from the agent repo run `python3 scripts/emit_arcos_agent_manifest.py /tmp/manifest.json` and copy the sorted board ids into the boardIds array below. This fixture lives in the GCS repo (not the agent repo) so the parity test is self-contained.",
   "boardIds": [
     "cm4",
     "cm5",

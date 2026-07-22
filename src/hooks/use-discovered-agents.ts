@@ -1,6 +1,6 @@
 /**
  * @module useDiscoveredAgents
- * @description Polls the LAN for unpaired ADOS agents and populates
+ * @description Polls the LAN for unpaired ARCOS agents and populates
  * ``pairing-store.discoveredAgents``. Discovery runs server-side via
  * ``/api/lan-pair/discover`` (Node mDNS over ``bonjour-service``), and
  * each candidate host is probed through ``/api/lan-pair/probe`` for its
@@ -98,7 +98,7 @@ async function discoverUnpaired(
     if (byDeviceId.has(info.device_id)) continue;
     byDeviceId.set(info.device_id, {
       deviceId: info.device_id,
-      name: info.name || "ADOS Agent",
+      name: info.name || "ARCOS Agent",
       board: info.board || "unknown",
       version: info.version || "",
       pairingCode: info.pairing_code || "",

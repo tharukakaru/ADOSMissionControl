@@ -46,7 +46,7 @@ export function RequirementsFooter() {
       {/* GitHub link */}
       <div className="text-center pb-6">
         <a
-          href="https://github.com/altnautica/ADOSDroneAgent"
+          href="https://github.com/altnautica/ARCOSDroneAgent"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-primary bg-bg-tertiary border border-border-default rounded hover:bg-bg-secondary transition-colors"

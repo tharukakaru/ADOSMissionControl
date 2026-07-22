@@ -1,5 +1,5 @@
 /**
- * Canonical capability catalog for ADOS plugin GCS halves.
+ * Canonical capability catalog for ARCOS plugin GCS halves.
  *
  * Authoritative list of named capabilities the GCS half of a plugin
  * manifest may declare. The install dialog surfaces these in the
@@ -9,7 +9,7 @@
  * time, with runtime gates landing per surface as it ships.
  *
  * The id list (`GCS_CAPABILITIES`) and the metadata (`CAPABILITY_CATALOG`)
- * are generated from `capabilities.toml` by `ados-capabilities-codegen`,
+ * are generated from `capabilities.toml` by `arcos-capabilities-codegen`,
  * which emits the same catalog for Python, Rust, and TypeScript so the three
  * cannot drift. The generated data lives in `./gcs-capabilities.generated`;
  * this module re-exports it and adds the types, the consistency check, and the

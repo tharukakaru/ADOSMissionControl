@@ -1,6 +1,6 @@
 /**
  * @module cmdPluginArchives
- * @description Uploaded `.adosplug` archive registry. One row per
+ * @description Uploaded `.arcosplug` archive registry. One row per
  * (user, sha256) so a fleet-wide install does not re-upload the same
  * payload. Backs the per-drone plugin install flow:
  *
@@ -56,7 +56,7 @@ const declaredPermissionValidator = v.object({
 
 /**
  * Returns a one-time upload URL the client uses to PUT the
- * `.adosplug` archive blob into Convex storage. Caller is expected
+ * `.arcosplug` archive blob into Convex storage. Caller is expected
  * to follow up with `verifyArchive` (in `cmdPluginArchivesVerify.ts`)
  * once the upload completes.
  */

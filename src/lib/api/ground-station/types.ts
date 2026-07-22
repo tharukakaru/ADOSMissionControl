@@ -1,5 +1,5 @@
 /**
- * Typed shapes for the ADOS Ground Agent REST surface.
+ * Typed shapes for the ARCOS Ground Agent REST surface.
  *
  * This file is a thin barrel. The per-domain types live under
  * `types/` (status, radio, network, peripherals, pairing, ui, pic, mesh).

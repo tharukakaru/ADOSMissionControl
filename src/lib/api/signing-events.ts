@@ -76,7 +76,7 @@ export async function emitSigningEvent(
  * Short fingerprint of the stable per-browser device id. 12 hex chars is
  * enough to group same-device events in the audit log without leaking
  * the full random UUID. Stable across page reloads because the source
- * id is persisted to localStorage under `ados-device-id`.
+ * id is persisted to localStorage under `arcos-device-id`.
  */
 function shortFingerprint(tabId: string): string {
   // Simple polynomial hash → 12 hex chars. Not cryptographic; the goal

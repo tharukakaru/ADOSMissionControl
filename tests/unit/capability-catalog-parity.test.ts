@@ -3,7 +3,7 @@
  * @description Parity test that the GCS-side capability catalog mirrors
  * every permission id surfaced by the bundled vision-nav manifest.
  *
- * Reads the real manifest at `ADOSExtensions/extensions/vision-nav/
+ * Reads the real manifest at `ARCOSExtensions/extensions/vision-nav/
  * manifest.yaml`, runs it through the client-side parser, then asserts
  * every emitted permission resolves to a known catalog entry with a
  * non-empty label and description. When the agent grows a new
@@ -22,12 +22,12 @@ import { describe, expect, it } from "vitest";
 import { parseManifestYaml } from "@/components/plugins/transports/manifest-parse";
 import { getMergedCapabilityMeta } from "@/lib/plugins/capabilities";
 
-// `ADOSMissionControl/` is a sibling of `ADOSExtensions/` inside the
+// `ArcOS/` is a sibling of `ARCOSExtensions/` inside the
 // private monorepo. Resolve from the GCS package root.
 const REPO_ROOT = path.resolve(__dirname, "..", "..", "..");
 const VISION_NAV_MANIFEST = path.join(
   REPO_ROOT,
-  "ADOSExtensions",
+  "ARCOSExtensions",
   "extensions",
   "vision-nav",
   "manifest.yaml",

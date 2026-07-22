@@ -1,10 +1,10 @@
 // WebSocket subscription helper with exponential-backoff reconnect, used by event streams.
 //
-// Browsers cannot set ``X-ADOS-Key`` on a WebSocket handshake, so the
+// Browsers cannot set ``X-ARCOS-Key`` on a WebSocket handshake, so the
 // pairing key cannot ride a request header here. Instead we exchange
-// the pairing key (via the normal ``X-ADOS-Key`` REST middleware) for
+// the pairing key (via the normal ``X-ARCOS-Key`` REST middleware) for
 // a one-shot ticket at ``POST /api/_ws/ticket`` and hand the ticket to
-// ``new WebSocket(url, ["ados-ws-ticket", ticket])`` so it rides the
+// ``new WebSocket(url, ["arcos-ws-ticket", ticket])`` so it rides the
 // subprotocol header instead of the URL. URLs end up in DevTools, HAR
 // exports, and reverse-proxy access logs; the ticket does not.
 
@@ -13,11 +13,11 @@ import type { RequestContext } from "./request";
 /** Subprotocol marker the agent expects as the first entry when a
  *  browser presents a one-shot ticket. The agent echoes this exact
  *  value back in ``websocket.accept(subprotocol=...)`` per RFC 6455. */
-const WS_TICKET_PROTOCOL = "ados-ws-ticket";
+const WS_TICKET_PROTOCOL = "arcos-ws-ticket";
 
 /** Scope strings the agent accepts at the ticket-mint endpoint. Keep
  *  in sync with ``ALLOWED_SCOPES`` in
- *  ``ADOSDroneAgent/src/ados/api/routes/ws_tickets.py``. */
+ *  ``ARCOSDroneAgent/src/arcos/api/routes/ws_tickets.py``. */
 export type WsAuthScope =
   | "setup.cloudflare_logs"
   | "gs.pic_events"
@@ -58,7 +58,7 @@ async function mintWsTicket(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-ADOS-Key": ctx.apiKey,
+      "X-ARCOS-Key": ctx.apiKey,
     },
     body: JSON.stringify({ scope }),
     signal,

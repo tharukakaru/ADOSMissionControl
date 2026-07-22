@@ -72,7 +72,7 @@ export function ComputeOverview() {
           <ServiceTable
             services={services}
             onRestart={restartService}
-            onRestartAll={() => restartService("ados-supervisor")}
+            onRestartAll={() => restartService("arcos-supervisor")}
             processCpu={processCpu}
             processMemoryMb={processMemMb}
           />

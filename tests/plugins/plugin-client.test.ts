@@ -28,7 +28,7 @@ describe("PluginAgentClient", () => {
       return new Response(JSON.stringify({ installs: [] }), { status: 200 });
     });
     await client.list();
-    expect(captured?.get("X-ADOS-Key")).toBe("k1");
+    expect(captured?.get("X-ARCOS-Key")).toBe("k1");
   });
 
   it("uploads as multipart on install", async () => {
@@ -50,7 +50,7 @@ describe("PluginAgentClient", () => {
         { status: 200 },
       );
     });
-    const file = new File([new Uint8Array([0x50, 0x4b, 0x03, 0x04])], "x.adosplug");
+    const file = new File([new Uint8Array([0x50, 0x4b, 0x03, 0x04])], "x.arcosplug");
     const result = await client.install(file);
     expect(methodSeen).toBe("POST");
     expect(bodyType).toBe("FormData");

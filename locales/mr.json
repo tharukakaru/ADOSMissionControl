@@ -17,7 +17,7 @@
     },
     "intro": {
       "tagline": "सॉफ्टवेअर-डिफाइंड ड्रोनसाठी ग्राउंड कंट्रोल.",
-      "description": "कोणत्याही ArduPilot, PX4 किंवा Betaflight ड्रोनचे कॉन्फिगरेशन करा, मोहिमा नियोजित करा आणि उड्डाण करा. ADOS Drone Agent सोबत जोडून एज वर इंटेलिजन्स चालवा. ओपन सोर्स. तुमच्या ब्राउझरमध्ये चालते.",
+      "description": "कोणत्याही ArduPilot, PX4 किंवा Betaflight ड्रोनचे कॉन्फिगरेशन करा, मोहिमा नियोजित करा आणि उड्डाण करा. ARCOS Drone Agent सोबत जोडून एज वर इंटेलिजन्स चालवा. ओपन सोर्स. तुमच्या ब्राउझरमध्ये चालते.",
       "openBeta": "ओपन बीटा",
       "freeForever": "सदैव मोफत",
       "openSource": "GPL-3.0 ओपन सोर्स",
@@ -27,7 +27,7 @@
     },
     "disclaimer": {
       "title": "उड्डाण करण्यापूर्वी",
-      "subtitle": "ADOS Mission Control खऱ्या विमानांना नियंत्रित करू शकते. कृपया खालील अटी वाचा आणि स्वीकारा.",
+      "subtitle": "ARCOS Mission Control खऱ्या विमानांना नियंत्रित करू शकते. कृपया खालील अटी वाचा आणि स्वीकारा.",
       "lawfulUse": {
         "heading": "केवळ कायदेशीर वापर",
         "body": "तुम्ही हे सॉफ्टवेअर केवळ कायदेशीर उद्देशांसाठी वापरण्यास सहमत आहात. पाळत ठेवणे, व्यक्तींना त्रास देणे, गोपनीयतेचे उल्लंघन करणे किंवा तुमच्या देशातील किंवा प्रदेशातील कायद्याने प्रतिबंधित कोणत्याही कृतीस समर्थन देण्यासाठी तुम्ही हे वापरणार नाही."
@@ -56,7 +56,7 @@
       },
       "openSource": {
         "heading": "ओपन सोर्स परवाना",
-        "body": "ADOS Mission Control GNU General Public License v3.0 अंतर्गत परवानाकृत आहे. तुम्ही त्या परवान्याच्या अटींनुसार हे सॉफ्टवेअर वापरण्यास, सुधारण्यास आणि वितरित करण्यास मुक्त आहात.",
+        "body": "ARCOS Mission Control GNU General Public License v3.0 अंतर्गत परवानाकृत आहे. तुम्ही त्या परवान्याच्या अटींनुसार हे सॉफ्टवेअर वापरण्यास, सुधारण्यास आणि वितरित करण्यास मुक्त आहात.",
         "link": "संपूर्ण GPL-3.0 परवाना वाचा"
       },
       "acceptCheckbox": "मी वरील अटी वाचल्या आहेत आणि स्वीकारतो. मला समजते की मी कमांडमधील पायलट आहे आणि सुरक्षित व कायदेशीर कारवाईची सर्व जबाबदारी स्वीकारतो.",
@@ -87,7 +87,7 @@
       "docsDescription": "Guides, API reference, and tutorials to get your drone flying.",
       "browseDocs": "Browse docs",
       "communityHeading": "Built in the open",
-      "communityDescription": "ADOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
+      "communityDescription": "ARCOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
       "discordHeading": "Talk to us",
       "discordDescription": "Ask questions, share your setup, report bugs, or just hang out with other pilots and developers.",
       "githubHeading": "Help the project grow",
@@ -325,7 +325,7 @@
     "badges": {
       "categories": {
         "command": "कमांड",
-        "ados": "ADOS",
+        "arcos": "ARCOS",
         "website": "वेबसाइट",
         "general": "सामान्य"
       },
@@ -618,7 +618,7 @@
   },
   "emptyState": {
     "title": "कोणतेही ड्रोन जोडलेले नाहीत",
-    "description": "ADOS Mission Control सुरू करण्यासाठी USB किंवा नेटवर्कद्वारे फ्लाइट कंट्रोलर जोडा.",
+    "description": "ARCOS Mission Control सुरू करण्यासाठी USB किंवा नेटवर्कद्वारे फ्लाइट कंट्रोलर जोडा.",
     "connectDrone": "ड्रोन जोडा",
     "commandPaletteHint": "कमांड पॅलेट उघडण्यासाठी"
   },
@@ -653,7 +653,7 @@
     "fcStackTitle": "Flight Controller",
     "fcStackDesc": "Direct MAVLink — USB, WebSocket, Bluetooth",
     "agentStackTitle": "Companion Computer",
-    "agentStackDesc": "ADOS Agent — software-defined",
+    "agentStackDesc": "ARCOS Agent — software-defined",
     "agentStackBadge": "Full features"
   },
   "droneDetail": {
@@ -843,7 +843,7 @@
     "subtitle": "Extensions installed on this drone. Each plugin runs sandboxed and only does what its granted permissions allow.",
     "installOnThisDrone": "Install plugin on this drone",
     "emptyStateTitle": "No plugins installed on this drone yet.",
-    "emptyStateBody": "Plugins extend ADOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
+    "emptyStateBody": "Plugins extend ARCOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
     "loading": "Loading...",
     "droneNotFound": "Drone \"{id}\" not found.",
     "notConnectedTitle": "Connect to a drone to manage its plugins.",
@@ -881,7 +881,7 @@
     },
     "installFromFile": "Install from file",
     "installedSectionTitle": "Installed on this drone",
-    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .adosplug file."
+    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .arcosplug file."
   },
   "droneRadio": {
     "airSideBadge": "Air side",
@@ -909,7 +909,7 @@
     "directConnection": "थेट जोडणी",
     "enterPairingCode": "Enter pairing code from your node agent",
     "pairingCode": "पेअरिंग कोड",
-    "pairingInstructions": "Run 'ados pair' on your node to get a pairing code",
+    "pairingInstructions": "Run 'arcos pair' on your node to get a pairing code",
     "paired": "जोडलेला",
     "lastSeen": "शेवटचे पाहिले",
     "neverConnected": "कधीही जोडलेला नाही",
@@ -953,7 +953,7 @@
     "pairedCount": "{count} paired",
     "addNode": {
       "title": "नोड जोडा",
-      "subtitle": "कोणतेही ADOS नोड (ड्रोन, ग्राउंड स्टेशन किंवा भविष्यातील कंप्यूट नोड) तुमच्या LAN वर थेट जोडा.",
+      "subtitle": "कोणतेही ARCOS नोड (ड्रोन, ग्राउंड स्टेशन किंवा भविष्यातील कंप्यूट नोड) तुमच्या LAN वर थेट जोडा.",
       "pairOnLan": "आपल्या LAN वर नोड पेअर करा",
       "noAccountRequired": "खात्याची आवश्यकता नाही. पूर्णपणे ऑफलाइन काम करते.",
       "hostnamePlaceholder": "skynode.local  किंवा  http://192.168.1.42:8080",
@@ -999,11 +999,11 @@
       "addNodeTitle": "Add a drone or ground station",
       "addNodeSubtitle": "No account required. Works fully offline.",
       "addNodePlaceholder": "skynode.local  or  9TW85C",
-      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `ados status`? Type that.",
+      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `arcos status`? Type that.",
       "codeTryHostnameTip": "Tip: if the agent is on your network, enter its hostname or IP instead (for example my-drone.local).",
       "pairButton": "Pair",
       "codeNoHostError": "Pair code is valid but the agent hasn't advertised a network address yet. Wait a few seconds and try again.",
-      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `ados status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
+      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `arcos status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
       "badCodeError": "Pair code must be six characters (letters and digits).",
       "signInBody": "Cloud relay routes your drone's telemetry and video through Convex over HTTPS, so Mission Control reaches the agent even when your phone or laptop is on a different network. Optional, never blocking — LAN-direct pairing works without it.",
       "signInButton": "Sign in",
@@ -1067,7 +1067,7 @@
       },
       "enterCodeTitle": "Pair with a code from your drone",
       "enterCodeSubtitle": "Works over HTTPS. No LAN access required.",
-      "enterCodeHint": "Run `ados status` on your drone to see its current code, or copy it from the install banner.",
+      "enterCodeHint": "Run `arcos status` on your drone to see its current code, or copy it from the install banner.",
       "pair": "Pair",
       "pairing": "Pairing"
     },
@@ -1179,7 +1179,7 @@
     "notInstalled": "इन्स्टॉल नाही",
     "wifiDirect": "WiFi Direct",
     "disabled": "अक्षम",
-    "adosPeers": "ADOS पिअर्स",
+    "arcosPeers": "ARCOS पिअर्स",
     "lastScan": "शेवटचे स्कॅन: {time}",
     "scan": "स्कॅन",
     "noPeersDiscovered": "कोणतेही पिअर्स सापडले नाहीत",
@@ -1765,7 +1765,7 @@
     "importLogs": "लॉग आयात करा",
     "importTitle": "उड्डाण लॉग आयात करा",
     "importDrop": "लॉग फाइल इथे टाका, किंवा ब्राउझ करण्यासाठी क्लिक करा",
-    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ADOS .json",
+    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ARCOS .json",
     "importComplete": "आयात पूर्ण.",
     "importImporting": "आयात होत आहे…",
     "importUnknownFormat": "अज्ञात फॉर्मॅट",
@@ -2496,9 +2496,9 @@
       "capabilities": "क्षमताएं"
     },
     "androidRc": {
-      "title": "ADOS Android RC कंट्रोलर",
+      "title": "ARCOS Android RC कंट्रोलर",
       "stubHeading": "उत्पाद विकास में",
-      "stubBody": "ADOS Android RC हँडहेल्ड कंट्रोलर सक्रिय विकासात आहे. उत्पादन रिलीझ झाल्यावर हे पॅनेल सक्रिय होईल.",
+      "stubBody": "ARCOS Android RC हँडहेल्ड कंट्रोलर सक्रिय विकासात आहे. उत्पादन रिलीझ झाल्यावर हे पॅनेल सक्रिय होईल.",
       "stubBadge": "Roadmap"
     },
     "tabs": {
@@ -2660,7 +2660,7 @@
       "rowFecRecovered": "FEC recovered",
       "rowFecLost": "FEC lost",
       "noAgentTitle": "No ground station connected",
-      "noAgentBody": "Connect to an ADOS ground station agent to manage hardware, radios, and peripherals.",
+      "noAgentBody": "Connect to an ARCOS ground station agent to manage hardware, radios, and peripherals.",
       "openSetup": "Open setup",
       "connectGroundStation": "Connect ground station"
     },
@@ -3074,7 +3074,7 @@
     "slotDroppedToast": "{name} cannot render in {slot} (missing permission)",
     "browse": {
       "title": "Browse plugins",
-      "subtitle": "Discover signed extensions for the ADOS platform.",
+      "subtitle": "Discover signed extensions for the ARCOS platform.",
       "searchPlaceholder": "Search by name or description",
       "signedOnly": "Signed only",
       "verifiedOnly": "Verified publisher",
@@ -3182,7 +3182,7 @@
         "currentVersion": "Current version",
         "latestAvailable": "Latest available",
         "autoUpdateLabel": "Auto-update this plugin",
-        "autoUpdateHint": "Edit via the ados plugin auto-update CLI on the drone.",
+        "autoUpdateHint": "Edit via the arcos plugin auto-update CLI on the drone.",
         "pinnedVersionLabel": "Pin to version",
         "pinnedVersionAuto": "Auto (latest)",
         "lastChecked": "Last checked {time}",
@@ -3250,11 +3250,11 @@
     "link": "Link"
   },
   "flashTool": {
-    "ados": {
-      "subtitle": "Install the ADOS agent on a companion computer",
+    "arcos": {
+      "subtitle": "Install the ARCOS agent on a companion computer",
       "stack": {
-        "drone": "ADOS Drone Agent",
-        "ground": "ADOS Ground Agent"
+        "drone": "ARCOS Drone Agent",
+        "ground": "ARCOS Ground Agent"
       },
       "common": {
         "copy": "Copy",
@@ -4183,7 +4183,7 @@
     },
     "locked": {
       "title": "{surface} अनलॉक करण्यासाठी कंपॅनियन कॉम्प्युटर जोडा",
-      "body": "हा ड्रोन फक्त फ्लाइट कंट्रोलरने जोडलेला आहे. HD व्हिडिओ स्ट्रीम करण्यासाठी, स्क्रिप्ट्स चालवण्यासाठी, प्लगइन्स जोडण्यासाठी आणि 4G वर ड्रोनपर्यंत पोहोचण्यासाठी ADOS एजंट चालवणारा एक छोटा बोर्ड, जसे की Raspberry Pi, असा कंपॅनियन कॉम्प्युटर पेअर करा."
+      "body": "हा ड्रोन फक्त फ्लाइट कंट्रोलरने जोडलेला आहे. HD व्हिडिओ स्ट्रीम करण्यासाठी, स्क्रिप्ट्स चालवण्यासाठी, प्लगइन्स जोडण्यासाठी आणि 4G वर ड्रोनपर्यंत पोहोचण्यासाठी ARCOS एजंट चालवणारा एक छोटा बोर्ड, जसे की Raspberry Pi, असा कंपॅनियन कॉम्प्युटर पेअर करा."
     },
     "no-fc-direct": {
       "title": "फ्लाइट कंट्रोलर जोडलेला नाही",
@@ -4256,10 +4256,10 @@
       "chip": "डेटा थांबवला",
       "tooltip": "शेवटच्या रीडिंगवर {ago} थांबवले. हार्टबीट परत आल्यावर मूल्ये पुन्हा सुरू होतात."
     },
-    "disambiguation": "फ्लाइट कंट्रोलर जोडा हे USB वर किंवा तुमच्या नेटवर्कवर थेट ऑटोपायलटशी संपर्क करते. कंपॅनियन कॉम्प्युटर पेअर करा हे व्हिडिओ, स्क्रिप्ट्स आणि 4G साठी ADOS एजंट चालवणारा बोर्ड जोडते."
+    "disambiguation": "फ्लाइट कंट्रोलर जोडा हे USB वर किंवा तुमच्या नेटवर्कवर थेट ऑटोपायलटशी संपर्क करते. कंपॅनियन कॉम्प्युटर पेअर करा हे व्हिडिओ, स्क्रिप्ट्स आणि 4G साठी ARCOS एजंट चालवणारा बोर्ड जोडते."
   },
   "blackbox": {
-    "title": "ADOS Black Box",
+    "title": "ARCOS Black Box",
     "session": "Session",
     "allSessions": "All sessions",
     "open": "open",

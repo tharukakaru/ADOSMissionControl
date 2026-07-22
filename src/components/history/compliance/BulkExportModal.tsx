@@ -85,7 +85,7 @@ export function BulkExportModal({ open, records, onClose }: BulkExportModalProps
       });
       const today = new Date().toISOString().slice(0, 10);
       const ext = format === "pdf" ? "pdf" : format === "csv" ? "csv" : "json";
-      downloadBlob(blob, `ados-${jurisdiction.toLowerCase()}-logbook-${today}.${ext}`);
+      downloadBlob(blob, `arcos-${jurisdiction.toLowerCase()}-logbook-${today}.${ext}`);
       onClose();
     } catch (err) {
       console.error("[BulkExportModal] export failed", err);

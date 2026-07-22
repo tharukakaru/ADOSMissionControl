@@ -1,7 +1,7 @@
 /**
  * @license GPL-3.0-only
  *
- * Wire-contract tests for the `ados/{deviceId}/plugin/update_available`
+ * Wire-contract tests for the `arcos/{deviceId}/plugin/update_available`
  * MQTT message shape. The agent's auto-update loop emits a JSON payload
  * that the GCS bridge (MqttBridge.tsx) parses and dispatches into the
  * plugin update store. These tests pin the contract: snake_case field

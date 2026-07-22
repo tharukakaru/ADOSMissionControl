@@ -362,7 +362,7 @@ function DropdownPanel(props: DropdownProps) {
             <div className="font-semibold mb-0.5">⚠ Agent video stopped</div>
             <div className="text-text-tertiary">
               The agent&apos;s video service is not running. Check
-              <code className="px-1">ados-video</code> on the SBC.
+              <code className="px-1">arcos-video</code> on the SBC.
             </div>
           </div>
         </>

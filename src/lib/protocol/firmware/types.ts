@@ -75,8 +75,8 @@ export type FirmwareStack =
   | "betaflight"
   | "px4"
   | "ap-periph"
-  | "ados-drone-agent"
-  | "ados-ground-agent";
+  | "arcos-drone-agent"
+  | "arcos-ground-agent";
 
 // ── Chip / STM32 ───────────────────────────────────────────
 

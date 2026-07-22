@@ -49,7 +49,7 @@ export function LanguageSection() {
       <p className="text-[10px] text-text-tertiary mt-3">
         {t("languageNote")} —{" "}
         <a
-          href="https://github.com/altnautica/ADOSMissionControl"
+          href="https://github.com/altnautica/ArcOS"
           target="_blank"
           rel="noopener noreferrer"
           className="text-accent-primary hover:underline"

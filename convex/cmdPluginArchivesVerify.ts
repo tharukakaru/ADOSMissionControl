@@ -3,7 +3,7 @@
 /**
  * @module cmdPluginArchivesVerify
  * @description Node-runtime action that revalidates a freshly uploaded
- * `.adosplug` archive against client-supplied integrity claims before
+ * `.arcosplug` archive against client-supplied integrity claims before
  * the row is recorded in `plugin_archives`. Lives in its own file so
  * the surrounding mutations and queries can stay on the V8 runtime;
  * the verify path needs Node's `zlib` to inflate `manifest.yaml` out
@@ -39,7 +39,7 @@ import type { Id } from "./_generated/dataModel";
 const ARCHIVE_MAX_BYTES = 32 * 1024 * 1024;
 
 // Filename the agent and the GCS both use for the canonical manifest
-// entry inside `.adosplug` archives.
+// entry inside `.arcosplug` archives.
 const MANIFEST_ENTRY_NAME = "manifest.yaml";
 
 const declaredPermissionValidator = v.object({

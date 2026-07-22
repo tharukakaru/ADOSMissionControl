@@ -17,7 +17,7 @@
     },
     "intro": {
       "tagline": "Kendali darat untuk drone berbasis perangkat lunak.",
-      "description": "Konfigurasi, rencanakan misi, dan terbangkan drone ArduPilot, PX4, atau Betaflight apa pun. Pasangkan dengan ADOS Drone Agent untuk menjalankan kecerdasan di edge. Open source. Berjalan di browser Anda.",
+      "description": "Konfigurasi, rencanakan misi, dan terbangkan drone ArduPilot, PX4, atau Betaflight apa pun. Pasangkan dengan ARCOS Drone Agent untuk menjalankan kecerdasan di edge. Open source. Berjalan di browser Anda.",
       "openBeta": "Open Beta",
       "freeForever": "Gratis Selamanya",
       "openSource": "Open Source GPL-3.0",
@@ -50,7 +50,7 @@
       "docsDescription": "Guides, API reference, and tutorials to get your drone flying.",
       "browseDocs": "Browse docs",
       "communityHeading": "Built in the open",
-      "communityDescription": "ADOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
+      "communityDescription": "ARCOS Mission Control is free, open-source, and community-driven. We build this in public and every contribution matters.",
       "discordHeading": "Talk to us",
       "discordDescription": "Ask questions, share your setup, report bugs, or just hang out with other pilots and developers.",
       "githubHeading": "Help the project grow",
@@ -66,7 +66,7 @@
     },
     "disclaimer": {
       "title": "Sebelum Terbang",
-      "subtitle": "ADOS Mission Control dapat mengendalikan pesawat sungguhan. Harap baca dan terima ketentuan berikut.",
+      "subtitle": "ARCOS Mission Control dapat mengendalikan pesawat sungguhan. Harap baca dan terima ketentuan berikut.",
       "lawfulUse": {
         "heading": "Hanya Penggunaan yang Sah",
         "body": "Anda setuju untuk menggunakan perangkat lunak ini hanya untuk tujuan yang sah. Anda tidak akan menggunakannya untuk melakukan pengawasan, melecehkan individu, melanggar privasi, atau mendukung aktivitas apa pun yang dilarang oleh hukum di negara atau wilayah Anda."
@@ -95,7 +95,7 @@
       },
       "openSource": {
         "heading": "Lisensi Open Source",
-        "body": "ADOS Mission Control dilisensikan di bawah GNU General Public License v3.0. Anda bebas menggunakan, memodifikasi, dan mendistribusikan perangkat lunak ini berdasarkan ketentuan lisensi tersebut.",
+        "body": "ARCOS Mission Control dilisensikan di bawah GNU General Public License v3.0. Anda bebas menggunakan, memodifikasi, dan mendistribusikan perangkat lunak ini berdasarkan ketentuan lisensi tersebut.",
         "link": "Baca lisensi GPL-3.0 lengkap"
       },
       "acceptCheckbox": "Saya telah membaca dan menerima ketentuan di atas. Saya memahami bahwa saya adalah pilot yang bertanggung jawab dan menanggung semua tanggung jawab untuk operasi yang aman dan sah.",
@@ -325,7 +325,7 @@
     "badges": {
       "categories": {
         "command": "Perintah",
-        "ados": "ADOS",
+        "arcos": "ARCOS",
         "website": "Situs web",
         "general": "Umum"
       },
@@ -618,7 +618,7 @@
   },
   "emptyState": {
     "title": "Tidak Ada Drone Terhubung",
-    "description": "Hubungkan flight controller melalui USB atau jaringan untuk memulai dengan ADOS Mission Control.",
+    "description": "Hubungkan flight controller melalui USB atau jaringan untuk memulai dengan ARCOS Mission Control.",
     "connectDrone": "Hubungkan Drone",
     "commandPaletteHint": "untuk membuka palet perintah"
   },
@@ -653,7 +653,7 @@
     "fcStackTitle": "Flight Controller",
     "fcStackDesc": "Direct MAVLink — USB, WebSocket, Bluetooth",
     "agentStackTitle": "Companion Computer",
-    "agentStackDesc": "ADOS Agent — software-defined",
+    "agentStackDesc": "ARCOS Agent — software-defined",
     "agentStackBadge": "Full features"
   },
   "droneDetail": {
@@ -843,7 +843,7 @@
     "subtitle": "Extensions installed on this drone. Each plugin runs sandboxed and only does what its granted permissions allow.",
     "installOnThisDrone": "Install plugin on this drone",
     "emptyStateTitle": "No plugins installed on this drone yet.",
-    "emptyStateBody": "Plugins extend ADOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
+    "emptyStateBody": "Plugins extend ARCOS with vendor cameras, gimbals, custom telemetry, vision algorithms, and more. Each runs only on the drone you install it to.",
     "loading": "Loading...",
     "droneNotFound": "Drone \"{id}\" not found.",
     "notConnectedTitle": "Connect to a drone to manage its plugins.",
@@ -881,7 +881,7 @@
     },
     "installFromFile": "Install from file",
     "installedSectionTitle": "Installed on this drone",
-    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .adosplug file."
+    "emptyInstalledHint": "Nothing installed yet. Browse available extensions below, or upload a .arcosplug file."
   },
   "droneRadio": {
     "airSideBadge": "Air side",
@@ -909,7 +909,7 @@
     "directConnection": "Koneksi Langsung",
     "enterPairingCode": "Enter pairing code from your node agent",
     "pairingCode": "Kode Pairing",
-    "pairingInstructions": "Run 'ados pair' on your node to get a pairing code",
+    "pairingInstructions": "Run 'arcos pair' on your node to get a pairing code",
     "paired": "Berpasangan",
     "lastSeen": "Terakhir terlihat",
     "neverConnected": "Belum pernah terhubung",
@@ -953,7 +953,7 @@
     "pairedCount": "{count} paired",
     "addNode": {
       "title": "Tambahkan node",
-      "subtitle": "Pasangkan node ADOS apa pun (drone, stasiun darat, atau unit komputasi mendatang) langsung melalui LAN Anda.",
+      "subtitle": "Pasangkan node ARCOS apa pun (drone, stasiun darat, atau unit komputasi mendatang) langsung melalui LAN Anda.",
       "pairOnLan": "Pasangkan node di LAN Anda",
       "noAccountRequired": "Tidak perlu akun. Berfungsi sepenuhnya offline.",
       "hostnamePlaceholder": "skynode.local  atau  http://192.168.1.42:8080",
@@ -999,11 +999,11 @@
       "addNodeTitle": "Add a drone or ground station",
       "addNodeSubtitle": "No account required. Works fully offline.",
       "addNodePlaceholder": "skynode.local  or  9TW85C",
-      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `ados status`? Type that.",
+      "addNodeHint": "Same Wi-Fi as the agent? Paste the hostname or IP. New agent showing a 6-character code in `arcos status`? Type that.",
       "codeTryHostnameTip": "Tip: if the agent is on your network, enter its hostname or IP instead (for example my-drone.local).",
       "pairButton": "Pair",
       "codeNoHostError": "Pair code is valid but the agent hasn't advertised a network address yet. Wait a few seconds and try again.",
-      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `ados status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
+      "codeNoLanMatchError": "No agent on this LAN is advertising that pair code. Make sure you're on the same Wi-Fi and `arcos status` on the agent shows this code, or add the agent by its hostname or IP instead.{hint}",
       "badCodeError": "Pair code must be six characters (letters and digits).",
       "signInBody": "Cloud relay routes your drone's telemetry and video through Convex over HTTPS, so Mission Control reaches the agent even when your phone or laptop is on a different network. Optional, never blocking — LAN-direct pairing works without it.",
       "signInButton": "Sign in",
@@ -1067,7 +1067,7 @@
       },
       "enterCodeTitle": "Pair with a code from your drone",
       "enterCodeSubtitle": "Works over HTTPS. No LAN access required.",
-      "enterCodeHint": "Run `ados status` on your drone to see its current code, or copy it from the install banner.",
+      "enterCodeHint": "Run `arcos status` on your drone to see its current code, or copy it from the install banner.",
       "pair": "Pair",
       "pairing": "Pairing"
     },
@@ -1179,7 +1179,7 @@
     "notInstalled": "Tidak terinstal",
     "wifiDirect": "WiFi Direct",
     "disabled": "Dinonaktifkan",
-    "adosPeers": "ADOS Peers",
+    "arcosPeers": "ARCOS Peers",
     "lastScan": "Pemindaian terakhir: {time}",
     "scan": "Pindai",
     "noPeersDiscovered": "Tidak ada peer ditemukan",
@@ -1765,7 +1765,7 @@
     "importLogs": "Impor log",
     "importTitle": "Impor log penerbangan",
     "importDrop": "Seret file log ke sini, atau klik untuk menelusuri",
-    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ADOS .json",
+    "importFormats": "ArduPilot .bin · PX4 .ulg · MAVLink .tlog · ARCOS .json",
     "importComplete": "Impor selesai.",
     "importImporting": "Mengimpor…",
     "importUnknownFormat": "Format tidak dikenal",
@@ -2496,9 +2496,9 @@
       "capabilities": "Kemampuan"
     },
     "androidRc": {
-      "title": "Pengontrol RC Android ADOS",
+      "title": "Pengontrol RC Android ARCOS",
       "stubHeading": "Produk sedang dikembangkan",
-      "stubBody": "Pengontrol genggam Android RC ADOS sedang dalam pengembangan aktif. Panel ini akan aktif saat produk dirilis.",
+      "stubBody": "Pengontrol genggam Android RC ARCOS sedang dalam pengembangan aktif. Panel ini akan aktif saat produk dirilis.",
       "stubBadge": "Roadmap"
     },
     "tabs": {
@@ -2660,7 +2660,7 @@
       "rowFecRecovered": "FEC recovered",
       "rowFecLost": "FEC lost",
       "noAgentTitle": "No ground station connected",
-      "noAgentBody": "Connect to an ADOS ground station agent to manage hardware, radios, and peripherals.",
+      "noAgentBody": "Connect to an ARCOS ground station agent to manage hardware, radios, and peripherals.",
       "openSetup": "Open setup",
       "connectGroundStation": "Connect ground station"
     },
@@ -3074,7 +3074,7 @@
     "slotDroppedToast": "{name} cannot render in {slot} (missing permission)",
     "browse": {
       "title": "Browse plugins",
-      "subtitle": "Discover signed extensions for the ADOS platform.",
+      "subtitle": "Discover signed extensions for the ARCOS platform.",
       "searchPlaceholder": "Search by name or description",
       "signedOnly": "Signed only",
       "verifiedOnly": "Verified publisher",
@@ -3182,7 +3182,7 @@
         "currentVersion": "Current version",
         "latestAvailable": "Latest available",
         "autoUpdateLabel": "Auto-update this plugin",
-        "autoUpdateHint": "Edit via the ados plugin auto-update CLI on the drone.",
+        "autoUpdateHint": "Edit via the arcos plugin auto-update CLI on the drone.",
         "pinnedVersionLabel": "Pin to version",
         "pinnedVersionAuto": "Auto (latest)",
         "lastChecked": "Last checked {time}",
@@ -3250,11 +3250,11 @@
     "link": "Link"
   },
   "flashTool": {
-    "ados": {
-      "subtitle": "Install the ADOS agent on a companion computer",
+    "arcos": {
+      "subtitle": "Install the ARCOS agent on a companion computer",
       "stack": {
-        "drone": "ADOS Drone Agent",
-        "ground": "ADOS Ground Agent"
+        "drone": "ARCOS Drone Agent",
+        "ground": "ARCOS Ground Agent"
       },
       "common": {
         "copy": "Copy",
@@ -4183,7 +4183,7 @@
     },
     "locked": {
       "title": "Tambahkan companion computer untuk membuka {surface}",
-      "body": "Drone ini terhubung hanya melalui flight controller. Pasangkan companion computer, papan kecil seperti Raspberry Pi yang menjalankan agen ADOS, untuk menyiarkan video HD, menjalankan skrip, menambahkan plugin, dan menjangkau drone melalui 4G."
+      "body": "Drone ini terhubung hanya melalui flight controller. Pasangkan companion computer, papan kecil seperti Raspberry Pi yang menjalankan agen ARCOS, untuk menyiarkan video HD, menjalankan skrip, menambahkan plugin, dan menjangkau drone melalui 4G."
     },
     "no-fc-direct": {
       "title": "Flight controller tidak terhubung",
@@ -4256,10 +4256,10 @@
       "chip": "Data dijeda",
       "tooltip": "Dijeda pada pembacaan terakhir {ago}. Nilai akan dilanjutkan saat heartbeat kembali."
     },
-    "disambiguation": "Hubungkan flight controller berkomunikasi langsung dengan autopilot melalui USB atau jaringan Anda. Pasangkan companion computer menambahkan papan yang menjalankan agen ADOS untuk video, skrip, dan 4G."
+    "disambiguation": "Hubungkan flight controller berkomunikasi langsung dengan autopilot melalui USB atau jaringan Anda. Pasangkan companion computer menambahkan papan yang menjalankan agen ARCOS untuk video, skrip, dan 4G."
   },
   "blackbox": {
-    "title": "ADOS Black Box",
+    "title": "ARCOS Black Box",
     "session": "Session",
     "allSessions": "All sessions",
     "open": "open",

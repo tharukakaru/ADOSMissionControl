@@ -1,6 +1,6 @@
 /**
  * @module cmdPairing
- * @description Convex functions for the ADOS drone pairing system.
+ * @description Convex functions for the ARCOS drone pairing system.
  * Supports two flows:
  * 1. Agent-initiated: agent generates code → user enters code in GCS
  * 2. User-initiated: user pre-generates code → agent uses it during install

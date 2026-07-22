@@ -1,6 +1,6 @@
 /**
  * @module PairingStore
- * @description Zustand store for ADOS agent pairing and discovery state.
+ * @description Zustand store for ARCOS agent pairing and discovery state.
  * Manages paired drones (persisted via Convex), discovered agents (mDNS/local),
  * and pairing flow state.
  * @license GPL-3.0-only

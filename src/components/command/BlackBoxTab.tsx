@@ -2,7 +2,7 @@
 
 /**
  * @module command/BlackBoxTab
- * @description The ADOS Black Box view: a durable, post-flight log +
+ * @description The ARCOS Black Box view: a durable, post-flight log +
  * telemetry review surface for a paired companion-computer agent. Reads
  * the on-device store through `client.logging` — a session picker, a
  * keyset-paged filtered log table, time-aligned telemetry charts, a

@@ -28,7 +28,7 @@ export function RockchipConnectionPanel({
   isFlashing,
   onScan,
 }: RockchipConnectionPanelProps) {
-  const t = useTranslations("flashTool.ados");
+  const t = useTranslations("flashTool.arcos");
   if (devices.length > 0) {
     return (
       <div

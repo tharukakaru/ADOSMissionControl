@@ -1,5 +1,5 @@
 /**
- * Component tests for AdosAgentSection. Covers loading + error states,
+ * Component tests for ArcOsAgentSection. Covers loading + error states,
  * the curl install panel (command rendering, copy-to-clipboard, setup
  * page hint), the web-flash install panel (image size + missing image
  * URL warning), notes rendering, and the copy-feedback reset on board
@@ -12,9 +12,9 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { screen, fireEvent, act } from "@testing-library/react";
 import { renderWithIntl } from "../../helpers/intl-wrapper";
 import type {
-  AdosAgentBoard,
-  AdosAgentInstall,
-} from "@/lib/protocol/firmware/ados-agent-manifest";
+  ArcOsAgentBoard,
+  ArcOsAgentInstall,
+} from "@/lib/protocol/firmware/arcos-agent-manifest";
 
 vi.mock("lucide-react", () => {
   const Stub = (name: string) => (props: Record<string, unknown>) =>
@@ -35,10 +35,10 @@ vi.mock("lucide-react", () => {
   };
 });
 
-import { AdosAgentSection } from "@/components/fc/firmware/AdosAgentSection";
+import { ArcOsAgentSection } from "@/components/fc/firmware/ArcOsAgentSection";
 
-function curlBoard(overrides: Partial<AdosAgentBoard> = {}): AdosAgentBoard {
-  const install: AdosAgentInstall = {
+function curlBoard(overrides: Partial<ArcOsAgentBoard> = {}): ArcOsAgentBoard {
+  const install: ArcOsAgentInstall = {
     method: "curl",
     command: "curl -sSL https://example.org/install.sh | sudo bash",
     notes: ["Run this on the Pi after first boot.", "Pi must be online first."],
@@ -48,35 +48,35 @@ function curlBoard(overrides: Partial<AdosAgentBoard> = {}): AdosAgentBoard {
     label: "Raspberry Pi 4 Model B",
     soc: "BCM2711",
     arch: "aarch64-glibc",
-    stacks: ["ados-drone-agent"],
-    installs: { "ados-drone-agent": install },
+    stacks: ["arcos-drone-agent"],
+    installs: { "arcos-drone-agent": install },
     ...overrides,
   };
 }
 
 function webFlashBoard(
-  overrides: Partial<AdosAgentInstall & { id?: string }> = {},
-): AdosAgentBoard {
-  const install: AdosAgentInstall = {
+  overrides: Partial<ArcOsAgentInstall & { id?: string }> = {},
+): ArcOsAgentBoard {
+  const install: ArcOsAgentInstall = {
     method: "web-flash",
     imageUrl: "https://example.org/lite.img.gz",
     sha256: "deadbeefcafe",
     minisignSignature: "AAAA",
     imageSizeBytes: 50 * 1024 * 1024,
     notes: ["Hold the BOOT button while plugging USB-C in."],
-    ...(overrides as Partial<AdosAgentInstall>),
-  } as AdosAgentInstall;
+    ...(overrides as Partial<ArcOsAgentInstall>),
+  } as ArcOsAgentInstall;
   return {
     id: "luckfox-pico-zero",
     label: "Luckfox Pico Zero",
     soc: "RV1106G3",
     arch: "armv7-musl",
-    stacks: ["ados-drone-agent"],
-    installs: { "ados-drone-agent": install },
+    stacks: ["arcos-drone-agent"],
+    installs: { "arcos-drone-agent": install },
   };
 }
 
-describe("AdosAgentSection", () => {
+describe("ArcOsAgentSection", () => {
   let writeText: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
@@ -89,8 +89,8 @@ describe("AdosAgentSection", () => {
 
   it("disables the board picker while loading", () => {
     renderWithIntl(
-      <AdosAgentSection
-        stack="ados-drone-agent"
+      <ArcOsAgentSection
+        stack="arcos-drone-agent"
         boards={[]}
         loading={true}
         error=""
@@ -108,8 +108,8 @@ describe("AdosAgentSection", () => {
 
   it("renders the agent version pill when provided", () => {
     renderWithIntl(
-      <AdosAgentSection
-        stack="ados-drone-agent"
+      <ArcOsAgentSection
+        stack="arcos-drone-agent"
         boards={[]}
         loading={false}
         error=""
@@ -125,11 +125,11 @@ describe("AdosAgentSection", () => {
   it("renders the error message and a Retry button when error is set", () => {
     const onRetry = vi.fn();
     renderWithIntl(
-      <AdosAgentSection
-        stack="ados-drone-agent"
+      <ArcOsAgentSection
+        stack="arcos-drone-agent"
         boards={[]}
         loading={false}
-        error="Failed to load ADOS manifest"
+        error="Failed to load ARCOS manifest"
         agentVersion=""
         selectedBoardId=""
         setSelectedBoardId={vi.fn()}
@@ -137,7 +137,7 @@ describe("AdosAgentSection", () => {
       />,
     );
 
-    expect(screen.getByText("Failed to load ADOS manifest")).toBeDefined();
+    expect(screen.getByText("Failed to load ARCOS manifest")).toBeDefined();
     const retry = screen.getByRole("button", { name: /retry/i });
     fireEvent.click(retry);
     expect(onRetry).toHaveBeenCalledTimes(1);
@@ -147,8 +147,8 @@ describe("AdosAgentSection", () => {
     it("renders the command in a pre block and the setup-page hint", () => {
       const board = curlBoard();
       renderWithIntl(
-        <AdosAgentSection
-          stack="ados-drone-agent"
+        <ArcOsAgentSection
+          stack="arcos-drone-agent"
           boards={[board]}
           loading={false}
           error=""
@@ -159,7 +159,7 @@ describe("AdosAgentSection", () => {
         />,
       );
 
-      const install = board.installs["ados-drone-agent"]!;
+      const install = board.installs["arcos-drone-agent"]!;
       if (install.method !== "curl") throw new Error("expected curl install");
       expect(screen.getByText(install.command)).toBeDefined();
       expect(screen.getByText(/setup page/i)).toBeDefined();
@@ -169,8 +169,8 @@ describe("AdosAgentSection", () => {
     it("renders all install notes as list items", () => {
       const board = curlBoard();
       renderWithIntl(
-        <AdosAgentSection
-          stack="ados-drone-agent"
+        <ArcOsAgentSection
+          stack="arcos-drone-agent"
           boards={[board]}
           loading={false}
           error=""
@@ -188,8 +188,8 @@ describe("AdosAgentSection", () => {
     it("copies the command via navigator.clipboard.writeText when the copy button is clicked", async () => {
       const board = curlBoard();
       renderWithIntl(
-        <AdosAgentSection
-          stack="ados-drone-agent"
+        <ArcOsAgentSection
+          stack="arcos-drone-agent"
           boards={[board]}
           loading={false}
           error=""
@@ -205,7 +205,7 @@ describe("AdosAgentSection", () => {
         fireEvent.click(copyButton);
       });
 
-      const install = board.installs["ados-drone-agent"]!;
+      const install = board.installs["arcos-drone-agent"]!;
       if (install.method !== "curl") throw new Error("expected curl install");
       expect(writeText).toHaveBeenCalledWith(install.command);
       expect(screen.getByRole("button", { name: /copied/i })).toBeDefined();
@@ -221,8 +221,8 @@ describe("AdosAgentSection", () => {
       });
 
       const { rerender } = renderWithIntl(
-        <AdosAgentSection
-          stack="ados-drone-agent"
+        <ArcOsAgentSection
+          stack="arcos-drone-agent"
           boards={[boardA, boardB]}
           loading={false}
           error=""
@@ -239,8 +239,8 @@ describe("AdosAgentSection", () => {
       expect(screen.getByRole("button", { name: /copied/i })).toBeDefined();
 
       rerender(
-        <AdosAgentSection
-          stack="ados-drone-agent"
+        <ArcOsAgentSection
+          stack="arcos-drone-agent"
           boards={[boardA, boardB]}
           loading={false}
           error=""
@@ -262,8 +262,8 @@ describe("AdosAgentSection", () => {
     it("shows the image size and sha256 when imageUrl is published", () => {
       const board = webFlashBoard();
       renderWithIntl(
-        <AdosAgentSection
-          stack="ados-drone-agent"
+        <ArcOsAgentSection
+          stack="arcos-drone-agent"
           boards={[board]}
           loading={false}
           error=""
@@ -291,8 +291,8 @@ describe("AdosAgentSection", () => {
         imageSizeBytes: 0,
       });
       renderWithIntl(
-        <AdosAgentSection
-          stack="ados-drone-agent"
+        <ArcOsAgentSection
+          stack="arcos-drone-agent"
           boards={[board]}
           loading={false}
           error=""
@@ -309,8 +309,8 @@ describe("AdosAgentSection", () => {
     it("renders web-flash notes as a list", () => {
       const board = webFlashBoard();
       renderWithIntl(
-        <AdosAgentSection
-          stack="ados-drone-agent"
+        <ArcOsAgentSection
+          stack="arcos-drone-agent"
           boards={[board]}
           loading={false}
           error=""

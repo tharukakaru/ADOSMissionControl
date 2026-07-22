@@ -34,7 +34,7 @@ export async function exportBackup(includeRecordings = false): Promise<void> {
     JSON.stringify({
       version: 1,
       exportedAt: new Date().toISOString(),
-      app: "ADOS Mission Control",
+      app: "ARCOS Mission Control",
       includesRecordings: includeRecordings,
     }, null, 2),
   );
@@ -76,7 +76,7 @@ export async function exportBackup(includeRecordings = false): Promise<void> {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `ados-backup-${new Date().toISOString().slice(0, 10)}.zip`;
+  a.download = `arcos-backup-${new Date().toISOString().slice(0, 10)}.zip`;
   a.click();
   URL.revokeObjectURL(url);
 }

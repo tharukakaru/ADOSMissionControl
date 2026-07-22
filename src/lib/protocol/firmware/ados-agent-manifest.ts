@@ -1,10 +1,10 @@
 /**
- * ADOS Agent firmware manifest client.
+ * ARCOS Agent firmware manifest client.
  *
  * Fetches the per-board catalog of supported install methods (curl one-liner
  * for boards running stock vendor OS, browser WebUSB image flash for boards
  * that need a baked image). Mirrors the ArduPilotManifest pattern: server-side
- * proxy at /api/ados-manifest with 1-hour in-memory cache.
+ * proxy at /api/arcos-manifest with 1-hour in-memory cache.
  *
  * Schema versioning policy:
  * The current schemaVersion is 1. The client rejects manifests with a higher
@@ -14,20 +14,20 @@
  * web-flash install) are backward-compatible additions and do NOT bump the
  * schemaVersion. Bump it only when a change actually breaks consumers.
  *
- * @module protocol/firmware/ados-agent-manifest
+ * @module protocol/firmware/arcos-agent-manifest
  */
 
-const PROXY_URL = "/api/ados-manifest";
+const PROXY_URL = "/api/arcos-manifest";
 const CACHE_TTL = 60 * 60 * 1000;
 const SUPPORTED_SCHEMA_VERSION = 1;
 
 // ── Schema types ──────────────────────────────────────────
 
-export type AdosAgentArch = "armv7-musl" | "aarch64-musl" | "aarch64-glibc";
+export type ArcOsAgentArch = "armv7-musl" | "aarch64-musl" | "aarch64-glibc";
 
-export type AdosAgentStack = "ados-drone-agent" | "ados-ground-agent";
+export type ArcOsAgentStack = "arcos-drone-agent" | "arcos-ground-agent";
 
-export interface AdosAgentCurlInstall {
+export interface ArcOsAgentCurlInstall {
   method: "curl";
   /** Single shell line the operator copy-pastes onto the board. */
   command: string;
@@ -35,7 +35,7 @@ export interface AdosAgentCurlInstall {
   notes?: string[];
 }
 
-export interface AdosAgentWebFlashInstall {
+export interface ArcOsAgentWebFlashInstall {
   method: "web-flash";
   /** URL of the .img.gz to flash via WebUSB. */
   imageUrl: string;
@@ -61,9 +61,9 @@ export interface AdosAgentWebFlashInstall {
   loaderBlobMinisignSignature?: string;
 }
 
-export type AdosAgentInstall = AdosAgentCurlInstall | AdosAgentWebFlashInstall;
+export type ArcOsAgentInstall = ArcOsAgentCurlInstall | ArcOsAgentWebFlashInstall;
 
-export interface AdosAgentBoard {
+export interface ArcOsAgentBoard {
   /** Stable identifier, kebab-case (e.g. "luckfox-pico-zero"). */
   id: string;
   /** Human-readable label shown in the picker. */
@@ -71,24 +71,24 @@ export interface AdosAgentBoard {
   /** SoC family, e.g. "RV1106G3", "BCM2710A1", "RK3588S2". */
   soc: string;
   /** Binary architecture + libc. */
-  arch: AdosAgentArch;
+  arch: ArcOsAgentArch;
   /** Which stacks this board is allowed to run. */
-  stacks: AdosAgentStack[];
+  stacks: ArcOsAgentStack[];
   /** Per-stack install configuration. */
-  installs: Partial<Record<AdosAgentStack, AdosAgentInstall>>;
+  installs: Partial<Record<ArcOsAgentStack, ArcOsAgentInstall>>;
   /** USB IDs reported in bootrom mode (web-flash boards only). */
   bootrom?: { vendorId: number; productId: number };
   /** Optional short description (RAM, storage, target use case). */
   description?: string;
 }
 
-export interface AdosAgentManifestData {
+export interface ArcOsAgentManifestData {
   schemaVersion: number;
   /** Lite agent release this manifest pins. */
   agentVersion: string;
   /** ISO 8601 timestamp the manifest was generated. */
   generatedAt: string;
-  boards: AdosAgentBoard[];
+  boards: ArcOsAgentBoard[];
   /**
    * "github" when the proxy successfully resolved the upstream release
    * manifest, "fallback" when the proxy served the embedded baseline
@@ -101,11 +101,11 @@ export interface AdosAgentManifestData {
 
 // ── Client ────────────────────────────────────────────────
 
-export class AdosAgentManifest {
-  private manifest: AdosAgentManifestData | null = null;
+export class ArcOsAgentManifest {
+  private manifest: ArcOsAgentManifestData | null = null;
   private fetchedAt = 0;
 
-  async getManifest(): Promise<AdosAgentManifestData> {
+  async getManifest(): Promise<ArcOsAgentManifestData> {
     if (this.manifest && Date.now() - this.fetchedAt < CACHE_TTL) {
       return this.manifest;
     }
@@ -116,12 +116,12 @@ export class AdosAgentManifest {
   }
 
   /** Boards this stack can target. */
-  async getBoardsForStack(stack: AdosAgentStack): Promise<AdosAgentBoard[]> {
+  async getBoardsForStack(stack: ArcOsAgentStack): Promise<ArcOsAgentBoard[]> {
     const manifest = await this.getManifest();
     return manifest.boards.filter((b) => b.stacks.includes(stack));
   }
 
-  async getBoardById(id: string): Promise<AdosAgentBoard | null> {
+  async getBoardById(id: string): Promise<ArcOsAgentBoard | null> {
     const manifest = await this.getManifest();
     return manifest.boards.find((b) => b.id === id) ?? null;
   }
@@ -129,8 +129,8 @@ export class AdosAgentManifest {
   /** Resolve install config for a specific board+stack pair. */
   async getInstall(
     boardId: string,
-    stack: AdosAgentStack,
-  ): Promise<AdosAgentInstall | null> {
+    stack: ArcOsAgentStack,
+  ): Promise<ArcOsAgentInstall | null> {
     const board = await this.getBoardById(boardId);
     if (!board) return null;
     return board.installs[stack] ?? null;
@@ -156,7 +156,7 @@ export class AdosAgentManifest {
     this.fetchedAt = 0;
   }
 
-  private async fetchManifest(): Promise<AdosAgentManifestData> {
+  private async fetchManifest(): Promise<ArcOsAgentManifestData> {
     const response = await fetch(PROXY_URL);
     if (!response.ok) {
       const body = await response.json().catch(() => ({}));
@@ -172,6 +172,6 @@ export class AdosAgentManifest {
         `Manifest schema version ${json.schemaVersion} is newer than this build of Mission Control supports. Update Mission Control to flash this image.`,
       );
     }
-    return json as AdosAgentManifestData;
+    return json as ArcOsAgentManifestData;
   }
 }

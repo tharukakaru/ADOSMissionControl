@@ -80,7 +80,7 @@ export const clientManagerSlice: AgentConnectionSliceCreator<
       try {
         const status = await client.getStatus();
         // Identity gate: a cached IPv4 can, after a DHCP reassignment,
-        // now answer for a DIFFERENT ADOS agent on the same LAN. Before
+        // now answer for a DIFFERENT ARCOS agent on the same LAN. Before
         // committing the connection (and routing telemetry / FC writes to
         // it) confirm the agent that answered is the one we expect. The
         // `/api/pairing/info` route is unauthenticated, so this resolves

@@ -1,6 +1,6 @@
-# AGENTS.md - ADOS Mission Control
+# AGENTS.md - ARCOS Mission Control
 
-Agentic coding instructions for ADOS Mission Control, the open-source browser
+Agentic coding instructions for ARCOS Mission Control, the open-source browser
 and desktop ground control station.
 
 ## Purpose
@@ -153,11 +153,11 @@ the smallest surface that proves the fix.
 - Documentation changes may be needed when setup, API behavior, operator
   workflows, or troubleshooting steps change.
 - Extension host changes must preserve declared slots, permissions, and stable
-  host contracts for `ADOSExtensions`.
+  host contracts for `ARCOSExtensions`.
 
 ## Related Public Projects
 
-- [ADOS Drone Agent](https://github.com/altnautica/ADOSDroneAgent) - companion
+- [ARCOS Drone Agent](https://github.com/altnautica/ARCOSDroneAgent) - companion
   and ground-node agent that Mission Control can connect to.
-- [ADOS Documentation](https://github.com/altnautica/Documentation) - public
+- [ARCOS Documentation](https://github.com/altnautica/Documentation) - public
   docs for user and developer workflows.

@@ -2,7 +2,7 @@
 
 /**
  * @module pluginRegistryDownload
- * @description Node-runtime action that proxies a `.adosplug` download
+ * @description Node-runtime action that proxies a `.arcosplug` download
  * from the GitHub Releases CDN to the browser. GitHub Releases does
  * not serve `Access-Control-Allow-Origin` headers, so direct browser
  * `fetch()` is blocked by CORS. This action runs server-side, pulls
@@ -58,7 +58,7 @@ export const downloadArchive = action({
     /** Authoritative SHA-256 the server computed over the fetched
      * archive bytes. The browser can re-verify if desired. */
     sha256: string;
-    /** Suggested filename, matches `<plugin_id>-<version>.adosplug`. */
+    /** Suggested filename, matches `<plugin_id>-<version>.arcosplug`. */
     file_name: string;
     /** Final byte count of the archive. */
     size_bytes: number;
@@ -146,7 +146,7 @@ export const downloadArchive = action({
 
     const contentType =
       response.headers.get("content-type") ?? "application/zip";
-    const fileName = `${args.plugin_id}-${args.version}.adosplug`;
+    const fileName = `${args.plugin_id}-${args.version}.arcosplug`;
 
     // (5a) Small archives travel back inline. The browser side
     // decodes the base64 into a Blob and feeds it to the existing

@@ -37,7 +37,7 @@ export type PreGenerateMutation = ((args: Record<string, never>) => Promise<{
 }>) | null;
 
 const INSTALL_URL =
-  "https://raw.githubusercontent.com/altnautica/ADOSDroneAgent/main/scripts/install.sh";
+  "https://raw.githubusercontent.com/altnautica/ARCOSDroneAgent/main/scripts/install.sh";
 const CODE_TTL_MS = 15 * 60 * 1000;
 
 export function buildInstallCommand(code: string) {
@@ -321,11 +321,11 @@ export function usePairingFlow({
       }
 
       const info: PairedInfo = {
-        deviceId: result.deviceId || `ados-${agent.pairingCode.toLowerCase()}`,
-        name: result.name || "ADOS Agent",
+        deviceId: result.deviceId || `arcos-${agent.pairingCode.toLowerCase()}`,
+        name: result.name || "ARCOS Agent",
         apiKey: result.apiKey || "",
         mdnsHost:
-          result.mdnsHost || `ados-${agent.pairingCode.toLowerCase()}.local`,
+          result.mdnsHost || `arcos-${agent.pairingCode.toLowerCase()}.local`,
       };
       setPairedInfo(info);
       setState("success");

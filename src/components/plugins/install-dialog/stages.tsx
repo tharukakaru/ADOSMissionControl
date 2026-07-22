@@ -84,12 +84,12 @@ export function PickStage({
       >
         <Upload className="h-8 w-8 text-text-tertiary" />
         <p className="text-sm text-text-primary">
-          Drag a <code>.adosplug</code> here or pick a file.
+          Drag a <code>.arcosplug</code> here or pick a file.
         </p>
         <label className="cursor-pointer text-xs text-accent-primary underline">
           <input
             type="file"
-            accept=".adosplug,application/zip"
+            accept=".arcosplug,application/zip"
             className="hidden"
             onChange={onPick}
           />

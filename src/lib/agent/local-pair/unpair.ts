@@ -2,7 +2,7 @@
  * @module agent/local-pair/unpair
  * @description The unpair half of the pair flow. POSTs the agent's
  * ``/api/pairing/unpair`` route with the stored API key in the
- * ``X-ADOS-Key`` header and treats already-unpaired / key-drift
+ * ``X-ARCOS-Key`` header and treats already-unpaired / key-drift
  * responses as a soft success so a card can always be forgotten.
  * @license GPL-3.0-only
  */
@@ -30,9 +30,9 @@ export async function unpairLocal(
     : await fetch(`${host}/api/pairing/unpair`, {
         method: "POST",
         headers: {
-          // The agent's auth middleware reads X-ADOS-Key; every other
+          // The agent's auth middleware reads X-ARCOS-Key; every other
           // agent surface uses the same header name.
-          "X-ADOS-Key": apiKey,
+          "X-ARCOS-Key": apiKey,
           Accept: "application/json",
         },
         signal,

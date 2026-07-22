@@ -4,7 +4,7 @@
  * Stepped flight-controller flashing flow: Connect -> Select -> Confirm ->
  * Flash. Reuses the existing per-stack section components as step bodies and
  * adds the pre-flight gate, staged progress, live debug panel, and the
- * actionable error-remedy card. Companion-SBC (ADOS) and CAN-node (AP_Periph)
+ * actionable error-remedy card. Companion-SBC (ARCOS) and CAN-node (AP_Periph)
  * stacks keep their own flat layout in FirmwarePanel; this wizard is for the
  * ArduPilot / Betaflight / PX4 chip-flash flow.
  *

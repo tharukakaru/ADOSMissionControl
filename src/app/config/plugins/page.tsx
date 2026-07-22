@@ -167,13 +167,13 @@ export default function PluginsIndexPage() {
         <div className="space-y-3">
           <p className="text-xs text-text-tertiary">
             Paste a git or HTTPS URL to a signed{" "}
-            <code className="rounded bg-bg-tertiary px-1">.adosplug</code>{" "}
+            <code className="rounded bg-bg-tertiary px-1">.arcosplug</code>{" "}
             archive. The agent will fetch, verify the signature, and run
             the same install dialog you see for local files.
           </p>
           <Input
             label="Plugin URL"
-            placeholder="https://example.com/com.example.thermal-1.0.0.adosplug"
+            placeholder="https://example.com/com.example.thermal-1.0.0.arcosplug"
             value={urlValue}
             onChange={(e) => setUrlValue(e.target.value)}
             autoFocus
@@ -189,7 +189,7 @@ function EmptyState({ onInstall }: { onInstall: () => void }) {
     <div className="rounded-md border border-dashed border-border-default p-8 text-center">
       <p className="text-sm text-text-primary">No plugins installed yet.</p>
       <p className="mt-1 text-xs text-text-tertiary">
-        Drag a <code>.adosplug</code> file or pick one to install.
+        Drag a <code>.arcosplug</code> file or pick one to install.
       </p>
       <Button
         variant="secondary"

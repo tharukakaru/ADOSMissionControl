@@ -143,54 +143,54 @@ describe("findHostByCodeOnLan", () => {
         ok: true,
         body: {
           agents: [
-            { host: "ados-aa.local", ipv4: "192.168.1.10", port: 8080, txt: {} },
-            { host: "ados-bb.local", ipv4: "192.168.1.11", port: 8080, txt: {} },
+            { host: "arcos-aa.local", ipv4: "192.168.1.10", port: 8080, txt: {} },
+            { host: "arcos-bb.local", ipv4: "192.168.1.11", port: 8080, txt: {} },
           ],
         },
       },
-      "probe:ados-aa.local": {
+      "probe:arcos-aa.local": {
         ok: true,
         body: {
           device_id: "aa",
-          name: "ados-aa",
+          name: "arcos-aa",
           pairing_code: "ZZZZZZ",
           paired: false,
-          mdns_host: "ados-aa.local",
+          mdns_host: "arcos-aa.local",
         },
       },
       "probe:192.168.1.10": {
         ok: true,
         body: {
           device_id: "aa",
-          name: "ados-aa",
+          name: "arcos-aa",
           pairing_code: "ZZZZZZ",
           paired: false,
-          mdns_host: "ados-aa.local",
+          mdns_host: "arcos-aa.local",
         },
       },
-      "probe:ados-bb.local": {
+      "probe:arcos-bb.local": {
         ok: true,
         body: {
           device_id: "bb",
-          name: "ados-bb",
+          name: "arcos-bb",
           pairing_code: "NCBH76",
           paired: false,
-          mdns_host: "ados-bb.local",
+          mdns_host: "arcos-bb.local",
         },
       },
       "probe:192.168.1.11": {
         ok: true,
         body: {
           device_id: "bb",
-          name: "ados-bb",
+          name: "arcos-bb",
           pairing_code: "NCBH76",
           paired: false,
-          mdns_host: "ados-bb.local",
+          mdns_host: "arcos-bb.local",
         },
       },
     });
     const out = await findHostByCodeOnLan("NCBH76");
-    expect(out.matchedHost).toBe("ados-bb.local");
+    expect(out.matchedHost).toBe("arcos-bb.local");
     expect(out.unpaired).toHaveLength(2);
     expect(out.unpaired.map((a) => a.code).sort()).toEqual(["NCBH76", "ZZZZZZ"]);
   });
@@ -201,14 +201,14 @@ describe("findHostByCodeOnLan", () => {
         ok: true,
         body: {
           agents: [
-            { host: "ados-cc.local", ipv4: "192.168.1.12", port: 8080, txt: {} },
+            { host: "arcos-cc.local", ipv4: "192.168.1.12", port: 8080, txt: {} },
           ],
         },
       },
-      "probe:ados-cc.local": { ok: false, body: {} },
+      "probe:arcos-cc.local": { ok: false, body: {} },
       "probe:192.168.1.12": {
         ok: true,
-        body: { device_id: "cc", name: "ados-cc", pairing_code: "S4KK24", paired: false },
+        body: { device_id: "cc", name: "arcos-cc", pairing_code: "S4KK24", paired: false },
       },
     });
     const out = await findHostByCodeOnLan("S4KK24");
@@ -221,28 +221,28 @@ describe("findHostByCodeOnLan", () => {
         ok: true,
         body: {
           agents: [
-            { host: "ados-dd.local", ipv4: "192.168.1.13", port: 8080, txt: {} },
+            { host: "arcos-dd.local", ipv4: "192.168.1.13", port: 8080, txt: {} },
           ],
         },
       },
-      "probe:ados-dd.local": {
+      "probe:arcos-dd.local": {
         ok: true,
         body: {
           device_id: "dd",
-          name: "ados-dd",
+          name: "arcos-dd",
           pairing_code: "X9N883",
           paired: true,
-          mdns_host: "ados-dd.local",
+          mdns_host: "arcos-dd.local",
         },
       },
       "probe:192.168.1.13": {
         ok: true,
         body: {
           device_id: "dd",
-          name: "ados-dd",
+          name: "arcos-dd",
           pairing_code: "X9N883",
           paired: true,
-          mdns_host: "ados-dd.local",
+          mdns_host: "arcos-dd.local",
         },
       },
     });
@@ -266,28 +266,28 @@ describe("findHostByCodeOnLan", () => {
         ok: true,
         body: {
           agents: [
-            { host: "ados-ee.local", ipv4: "192.168.1.14", port: 8080, txt: {} },
+            { host: "arcos-ee.local", ipv4: "192.168.1.14", port: 8080, txt: {} },
           ],
         },
       },
-      "probe:ados-ee.local": {
+      "probe:arcos-ee.local": {
         ok: true,
         body: {
           device_id: "ee",
-          name: "ados-ee",
+          name: "arcos-ee",
           pairing_code: "WRONG1",
           paired: false,
-          mdns_host: "ados-ee.local",
+          mdns_host: "arcos-ee.local",
         },
       },
       "probe:192.168.1.14": {
         ok: true,
         body: {
           device_id: "ee",
-          name: "ados-ee",
+          name: "arcos-ee",
           pairing_code: "WRONG1",
           paired: false,
-          mdns_host: "ados-ee.local",
+          mdns_host: "arcos-ee.local",
         },
       },
     });
@@ -295,7 +295,7 @@ describe("findHostByCodeOnLan", () => {
     expect(out.matchedHost).toBe(null);
     expect(out.unpaired).toHaveLength(1);
     expect(out.unpaired[0].code).toBe("WRONG1");
-    expect(out.unpaired[0].name).toBe("ados-ee");
+    expect(out.unpaired[0].name).toBe("arcos-ee");
   });
 
   it("swallows per-agent probe errors so one slow node doesn't poison the scan", async () => {

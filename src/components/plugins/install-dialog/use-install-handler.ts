@@ -133,7 +133,7 @@ export function useInstallHandler(args: UseInstallHandlerArgs) {
                 // The mock helper takes a File; for registry sources we
                 // fake a small placeholder so the demo flow stays
                 // realistic without an actual archive on hand.
-                file: new File([new Uint8Array()], "registry.adosplug"),
+                file: new File([new Uint8Array()], "registry.arcosplug"),
                 manifest,
                 grantedPermissions: grantedArr,
                 deviceId: targetDevice.deviceId,

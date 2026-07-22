@@ -2,7 +2,7 @@
  * @module ConnectDialog
  * @description Unified "+" connect modal. Presents two connection stacks side
  * by side: a Flight Controller over direct MAVLink (USB Serial / WebSocket /
- * Bluetooth) on the left, and a Companion Computer running the ADOS Agent
+ * Bluetooth) on the left, and a Companion Computer running the ARCOS Agent
  * (software-defined, hostname / IP / pair code) on the right. Opened from any
  * "+" entry point — both the connect-dialog store and the pair-dialog store
  * drive this one surface.
@@ -99,7 +99,7 @@ export function ConnectDialog() {
             </div>
           </section>
 
-          {/* Right — Companion Computer (ADOS Agent) */}
+          {/* Right — Companion Computer (ARCOS Agent) */}
           <section className="border border-accent-primary/30 rounded">
             <header className="flex items-center gap-2 px-3 py-2 border-b border-accent-primary/20 bg-accent-primary/5">
               <Cpu size={14} className="text-accent-primary" />

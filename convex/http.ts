@@ -374,7 +374,7 @@ function cameraUsbRecoveryField(
   return out;
 }
 
-// ── ADOS Pairing: agent registers its pairing code ──────────
+// ── ARCOS Pairing: agent registers its pairing code ──────────
 
 http.route({
   path: "/pairing/register",
@@ -413,7 +413,7 @@ http.route({
   }),
 });
 
-// ── ADOS Pairing: agent polls for claim status ──────────────
+// ── ARCOS Pairing: agent polls for claim status ──────────────
 
 http.route({
   path: "/pairing/status",
@@ -438,7 +438,7 @@ http.route({
   }),
 });
 
-// ── ADOS Heartbeat: agent sends periodic status ─────────────
+// ── ARCOS Heartbeat: agent sends periodic status ─────────────
 
 http.route({
   path: "/heartbeat",
@@ -480,7 +480,7 @@ http.route({
     const deviceId = stringField(body, "deviceId");
     const version = stringField(body, "version");
     const uptimeSeconds = numberField(body, "uptimeSeconds");
-    const apiKey = request.headers.get("X-ADOS-Key") ?? undefined;
+    const apiKey = request.headers.get("X-ARCOS-Key") ?? undefined;
 
     if (!deviceId || !apiKey || !version || uptimeSeconds === undefined) {
       return new Response(
@@ -654,7 +654,7 @@ http.route({
   handler: httpAction(async (ctx, request) => {
     const url = new URL(request.url);
     const deviceId = url.searchParams.get("deviceId");
-    const apiKey = request.headers.get("X-ADOS-Key") ?? undefined;
+    const apiKey = request.headers.get("X-ARCOS-Key") ?? undefined;
 
     if (!deviceId || !apiKey) {
       return new Response(
@@ -693,7 +693,7 @@ http.route({
     const status = stringField(body, "status");
     const result = commandResultField(body.result);
     const { data } = body;
-    const apiKey = request.headers.get("X-ADOS-Key") ?? undefined;
+    const apiKey = request.headers.get("X-ARCOS-Key") ?? undefined;
 
     if (!commandId || !deviceId || !apiKey) {
       return new Response(
@@ -728,7 +728,7 @@ http.route({
 // ── Explicit log-window export: agent uploads one chosen window ──
 // One authenticated binary POST. Window metadata travels as headers;
 // the body is the raw exported-window blob. Auth mirrors /agent/status
-// (device API key in X-ADOS-Key, validated against the paired drone).
+// (device API key in X-ARCOS-Key, validated against the paired drone).
 // The server recomputes the content hash from the stored bytes inside
 // ingestWindow — the agent never sends a hash claim used for storage.
 
@@ -736,15 +736,15 @@ http.route({
   path: "/agent/logd/window",
   method: "POST",
   handler: httpAction(async (ctx, request) => {
-    const apiKey = request.headers.get("X-ADOS-Key") ?? undefined;
+    const apiKey = request.headers.get("X-ARCOS-Key") ?? undefined;
     const h = request.headers;
-    const deviceId = h.get("X-ADOS-Device") ?? undefined;
-    const sessionId = h.get("X-ADOS-Session") ?? "";
-    const kind = h.get("X-ADOS-Kind") ?? undefined;
-    const format = h.get("X-ADOS-Format") ?? undefined;
-    const windowStartUs = Number(h.get("X-ADOS-Window-Start-Us"));
-    const windowEndUs = Number(h.get("X-ADOS-Window-End-Us"));
-    const rowCount = Number(h.get("X-ADOS-Row-Count"));
+    const deviceId = h.get("X-ARCOS-Device") ?? undefined;
+    const sessionId = h.get("X-ARCOS-Session") ?? "";
+    const kind = h.get("X-ARCOS-Kind") ?? undefined;
+    const format = h.get("X-ARCOS-Format") ?? undefined;
+    const windowStartUs = Number(h.get("X-ARCOS-Window-Start-Us"));
+    const windowEndUs = Number(h.get("X-ARCOS-Window-End-Us"));
+    const rowCount = Number(h.get("X-ARCOS-Row-Count"));
 
     if (
       !deviceId

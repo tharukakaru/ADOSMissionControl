@@ -58,4 +58,4 @@ dmg:
 publish:
   provider: github
   owner: altnautica
-  repo: ADOSMissionControl
+  repo: ArcOS

@@ -16,7 +16,7 @@ import { LanDirectError } from "../lan-direct";
 const baseInputs = {
   agentUrl: "http://drone.local:8080",
   pairingKey: "test-key",
-  url: "https://example.invalid/archive.adosplug",
+  url: "https://example.invalid/archive.arcosplug",
   expectedSha256: "deadbeef",
   grantedPermissions: ["hardware.usb.uvc"],
   jobId: "job-1",

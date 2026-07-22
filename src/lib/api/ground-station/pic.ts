@@ -50,7 +50,7 @@ export async function heartbeatPic(
   clientId: string,
 ): Promise<{ ok: true } | { ok: false; orphaned: true }> {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
-  if (ctx.apiKey) headers["X-ADOS-Key"] = ctx.apiKey;
+  if (ctx.apiKey) headers["X-ARCOS-Key"] = ctx.apiKey;
   const res = await fetch(`${ctx.baseUrl}/api/v1/ground-station/pic/heartbeat`, {
     method: "POST",
     headers,

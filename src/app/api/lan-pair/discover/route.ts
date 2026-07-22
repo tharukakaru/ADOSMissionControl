@@ -1,7 +1,7 @@
 /**
  * @module LanPairDiscoverRoute
- * @description Server-side mDNS browser for ADOS agents on the LAN.
- * Uses ``bonjour-service`` to query ``_ados._tcp.local.`` and returns
+ * @description Server-side mDNS browser for ARCOS agents on the LAN.
+ * Uses ``bonjour-service`` to query ``_arcos._tcp.local.`` and returns
  * the responders within a fixed time budget. Lets the GCS resolve a
  * 6-character pair code locally without a Convex round-trip — the
  * client gets a list of candidate agents, fetches ``/api/pairing/info``
@@ -22,7 +22,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 interface DiscoveredAgent {
-  /** mDNS hostname (e.g. ``ados-bda6b4.local``). */
+  /** mDNS hostname (e.g. ``arcos-bda6b4.local``). */
   host: string;
   /** IPv4 address from the SRV/A record, when available. */
   ipv4?: string;
@@ -55,7 +55,7 @@ export async function GET() {
   const agents = new Map<string, DiscoveredAgent>();
 
   try {
-    const browser = bonjour.find({ type: "ados" });
+    const browser = bonjour.find({ type: "arcos" });
 
     browser.on("up", (service) => {
       const host = (service.host ?? "").replace(/\.$/, "");

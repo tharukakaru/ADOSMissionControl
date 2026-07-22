@@ -139,8 +139,8 @@ const PRESETS: BuildPreset[] = [
     ],
   },
   {
-    id: "7in-ados-reference",
-    name: '7" ADOS Reference',
+    id: "7in-arcos-reference",
+    name: '7" ARCOS Reference',
     description: "Altnautica reference build. CM4 compute, full sensor suite, rangefinder, WFB-ng video, 4G telemetry.",
     category: "reference",
     specs: {

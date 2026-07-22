@@ -21,7 +21,7 @@
  * Radio).
  *
  * Behaviour contract (matches slot 13 spec at
- * `product/specs/ados-plugin-system/08-ui-extension-points.md` 3.13):
+ * `product/specs/arcos-plugin-system/08-ui-extension-points.md` 3.13):
  *
  *   - Tab bodies render only when their tab is the currently active
  *     plugin tab. Inactive bodies render `null` so no iframe is
